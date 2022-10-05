@@ -12,6 +12,13 @@
     else:
         url = url.replace("http://", "https://", 1)
         return url</pre>
+<p></p><h1>Files</h1>
+<p>.ssh/config</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">Host github.com
+User git
+Hostname github.com
+ProxyCommand /usr/bin/ncat --proxy p42.cycu.org:3128 --proxy-type http %h %p
+</pre>
 <p></p><h1>Linux 指令</h1>
 <p>常用 Linux 指令:</p>
 <p>必須熟悉 vi - 以便能在純 text console 模式下進行檔案編輯</p>
@@ -20,7 +27,14 @@
 <p>進入後為指令模式, 可以按下 i 進入 insert 模式, 然後以 i, j, k, l 鍵移動滑鼠游標位置</p>
 <p>按下 esc 可以跳出編輯模式, 重新進入指令模式</p>
 <p>在指令模式下, 以 a 按鍵 append 字元, 以 o 在下一行插入字元, 以 O 在上一行插入字元.</p>
-<p>完成編輯後, 必須進入指令模式, 然後按下 :w, 表示要 write file, 若使用 :q! 表示退出且不存檔, 若使用 :wq, 則存檔案後退出.</p><h1>Brython</h1>
+<p>完成編輯後, 必須進入指令模式, 然後按下 :w, 表示要 write file, 若使用 :q! 表示退出且不存檔, 若使用 :wq, 則存檔案後退出.</p>
+<p>cd cmsimde</p>
+<p>cd ..</p>
+<p>ls -l</p>
+<p>pwd</p>
+<p>mkdir</p>
+<p>chmod u+x acp</p>
+<p></p><h1>Brython</h1>
 <p><a href="https://en.wikipedia.org/wiki/Python_(programming_language)">https://en.wikipedia.org/wiki/Python_(programming_language)</a></p>
 <h4>Examples:</h4>
 <p style="padding-left: 30px;"><a href="https://gist.github.com/mdecycu/d9082d678096bd58378d6afe2c7fa05d">https://gist.github.com/mdecycu/d9082d678096bd58378d6afe2c7fa05d</a></p>

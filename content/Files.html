@@ -141,22 +141,21 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">Files << <a href='Files.html'>Previous</a> <a href='Brython.html'>Next</a> >> Brython<br /><h1>Linux 指令</h1>
-<p>常用 Linux 指令:</p>
-<p>必須熟悉 vi - 以便能在純 text console 模式下進行檔案編輯</p>
-<p>vi acp</p>
-<p>表示要利用 vi 編輯 acp 檔案</p>
-<p>進入後為指令模式, 可以按下 i 進入 insert 模式, 然後以 i, j, k, l 鍵移動滑鼠游標位置</p>
-<p>按下 esc 可以跳出編輯模式, 重新進入指令模式</p>
-<p>在指令模式下, 以 a 按鍵 append 字元, 以 o 在下一行插入字元, 以 O 在上一行插入字元.</p>
-<p>完成編輯後, 必須進入指令模式, 然後按下 :w, 表示要 write file, 若使用 :q! 表示退出且不存檔, 若使用 :wq, 則存檔案後退出.</p>
-<p>cd cmsimde</p>
-<p>cd ..</p>
-<p>ls -l</p>
-<p>pwd</p>
-<p>mkdir</p>
-<p>chmod u+x acp</p>
-<p></p><br />Files << <a href='Files.html'>Previous</a> <a href='Brython.html'>Next</a> >> Brython</div>
+    <div id="tipue_search_content">About << <a href='About.html'>Previous</a> <a href='Linux 指令.html'>Next</a> >> Linux 指令<br /><h1>Files</h1>
+<p>.ssh/config</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">Host github.com
+User git
+Hostname github.com
+ProxyCommand /usr/bin/ncat --proxy p42.cycu.org:3128 --proxy-type http %h %p
+</pre>
+<p>acp</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">#! /bin/bash
+git add .
+git commit -m "$1"
+git push
+</pre>
+<p>進入倉儲根目錄後, 以 vi acp 建立, 完成存檔後, 必須再利用 chmod u+x acp, 將 acp 檔案設為 user 可以 execuate.</p>
+<p>運用 acp 執行 git add, git commit 與 git push 之前, 必須先處理好 SSH 設定, 也就是利用 ssh-keygen 在 .ssh 目錄下分別建立 id_rsa private key, 以及 id_rsa.pub public key, 而 id_rsa.pub 可以利用 sftp 從 Ubuntu 取至 Windows 環境後, 送進 Github SSH 設定處, 而 .ssh 目錄下還需要建立一個 config 設定檔案, 以便指定 ssh 推送資料時使用 Proxy.</p><br />About << <a href='About.html'>Previous</a> <a href='Linux 指令.html'>Next</a> >> Linux 指令</div>
         
     <!-- footer -->
       <div class="container">
