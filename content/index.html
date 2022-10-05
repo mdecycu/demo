@@ -109,14 +109,14 @@ img.add_border {
             <header class="site-navbar py-4 bg-white" role="banner">
               <div class="container">
                 <div class="row align-items-center">
-                <h1>demo</h1>
+                <h1>demo for correct.url function</h1>
                 <div class="pl-4">
                     <form>
                     <input type="text" placeholder="Search" name="q" id="tipue_search_input" pattern=".{2,}" title="At least 2 characters" required>
                     </form>
                 </div>
                   <!-- <div class="col-11 col-xl-2">
-                    <h1 class="mb-0 site-logo"><a href="index.html" class="text-black h2 mb-0">demo</a></h1> 
+                    <h1 class="mb-0 site-logo"><a href="index.html" class="text-black h2 mb-0">demo for correct.url function</a></h1> 
                   </div>
                   -->
                   <div class="col-12 col-md-10 d-none d-xl-block">
@@ -129,7 +129,7 @@ img.add_border {
                             <li><a href="./../blog/index.html">blog</a></li>
                         </ul>
                       </li>
-                     <li><a href='About.html'>About</a><li><a href='Brython.html'>Brython</a></li>
+                     <li><a href='About.html'>About</a><li><a href='Linux 指令.html'>Linux 指令</a><li><a href='Brython.html'>Brython</a></li>
                       </ul>
                 </nav>
               </div>
@@ -140,9 +140,21 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content"> <a href='Brython.html'>Next</a> >> Brython<br /><h1>About</h1>
-<p>有bug, 已知針對非 443 埠號, 使用 Edit 將會跳回 http, 應對方法可以在擷取頁面後, /1 之後就可以編輯該頁面.</p>
-<p>cmsite: wcms use <a href="https://github.com/mdecycu/cmsimde">https://github.com/mdecycu/cmsimde</a> as submodule</p><br /> <a href='Brython.html'>Next</a> >> Brython</div>
+    <div id="tipue_search_content"> <a href='Linux 指令.html'>Next</a> >> Linux 指令<br /><h1>About</h1>
+<p>修正原先 request.url 無法正確在非 443 port 情況下跳回 https 協定進入編輯的 bug.</p>
+<p>correct_url 函式如下:</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">def correct_url():
+
+    """get the correct url for http and https edit mode
+        to replace original request.url under set_admin_css, set_css and set_footer
+    """
+    url = request.url
+    if request.is_secure:
+        return url
+    else:
+        url = url.replace("http://", "https://", 1)
+        return url</pre>
+<p></p><br /> <a href='Linux 指令.html'>Next</a> >> Linux 指令</div>
         
     <!-- footer -->
       <div class="container">
