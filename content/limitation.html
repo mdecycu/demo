@@ -2,6 +2,7 @@
         <head>
         <title>demo</title>
         <meta charset="utf-8">
+<meta property="head" content="H2">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
@@ -140,23 +141,8 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content"> <a href='cmsimde.html'>Next</a> >> cmsimde<br /><h1>About</h1>
-<p>取代 <a href="https://wcms.repl.co">https://wcms.repl.co</a> (免費資源已經耗盡, 所以無法正常啟動) 的 server 為 <a href="https://wcms.cycu.org:5443">https://wcms.cycu.org:5443</a></p>
-<p>修正原先 request.url 無法正確在非 443 port 情況下跳回 https 協定進入編輯的 bug.</p>
-<hr/>
-<p>correct_url 函式如下:</p>
-<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">def correct_url():
-
-    """get the correct url for http and https edit mode
-        to replace original request.url under set_admin_css, set_css and set_footer
-    """
-    url = request.url
-    if request.is_secure:
-        return url
-    else:
-        url = url.replace("http://", "https://", 1)
-        return url</pre>
-<p></p><br /> <a href='cmsimde.html'>Next</a> >> cmsimde</div>
+    <div id="tipue_search_content">Linux 指令 << <a href='Linux 指令.html'>Previous</a> <a href='Brython.html'>Next</a> >> Brython<br /><h1>limitation</h1>
+<p>Ubuntu itself does not limit connections.</p><br />Linux 指令 << <a href='Linux 指令.html'>Previous</a> <a href='Brython.html'>Next</a> >> Brython</div>
         
     <!-- footer -->
       <div class="container">

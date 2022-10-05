@@ -1,6 +1,7 @@
 <h1>About</h1>
 <p>取代 <a href="https://wcms.repl.co">https://wcms.repl.co</a> (免費資源已經耗盡, 所以無法正常啟動) 的 server 為 <a href="https://wcms.cycu.org:5443">https://wcms.cycu.org:5443</a></p>
 <p>修正原先 request.url 無法正確在非 443 port 情況下跳回 https 協定進入編輯的 bug.</p>
+<hr/>
 <p>correct_url 函式如下:</p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">def correct_url():
 
@@ -13,7 +14,15 @@
     else:
         url = url.replace("http://", "https://", 1)
         return url</pre>
-<p></p><h1>Files</h1>
+<p></p><h1>cmsimde</h1>
+<p>能不能將 Blog and Reveal.js 也同動態網站, 直接在線上進行編輯改版?</p>
+<h1>NX</h1>
+<p><a href="https://www.youtube.com/channel/UChYht2a_KxGdqqJBQ00m4lA/videos">NX tutorial</a> </p>
+<h1>CoppeliaSim</h1>
+<p>Opencv 與 Scenes</p>
+<h1>Fusion 360</h1>
+<p>除了 <a href="https://onshape.com">https://onshape.com</a>  還有 Fusion 360 也提供免費教育版:</p>
+<p><a href="https://www.autodesk.com/education/edu-software/overview">https://www.autodesk.com/education/edu-software/overview</a></p><h1>Files</h1>
 <p>.ssh/config</p>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">Host github.com
 User git
@@ -28,6 +37,7 @@ git push
 </pre>
 <p>進入倉儲根目錄後, 以 vi acp 建立, 完成存檔後, 必須再利用 chmod u+x acp, 將 acp 檔案設為 user 可以 execuate.</p>
 <p>運用 acp 執行 git add, git commit 與 git push 之前, 必須先處理好 SSH 設定, 也就是利用 ssh-keygen 在 .ssh 目錄下分別建立 id_rsa private key, 以及 id_rsa.pub public key, 而 id_rsa.pub 可以利用 sftp 從 Ubuntu 取至 Windows 環境後, 送進 Github SSH 設定處, 而 .ssh 目錄下還需要建立一個 config 設定檔案, 以便指定 ssh 推送資料時使用 Proxy.</p><h1>Linux 指令</h1>
+<p>Linux 指令與 Mac BSD 操作系統的指令相同.</p>
 <p>常用 Linux 指令:</p>
 <p>必須熟悉 vi - 以便能在純 text console 模式下進行檔案編輯</p>
 <p>vi acp</p>
@@ -42,7 +52,8 @@ git push
 <p>pwd</p>
 <p>mkdir</p>
 <p>chmod u+x acp</p>
-<p></p><h1>Brython</h1>
+<h2>limitation</h2>
+<p>Ubuntu itself does not limit connections.</p><h1>Brython</h1>
 <p><a href="https://en.wikipedia.org/wiki/Python_(programming_language)">https://en.wikipedia.org/wiki/Python_(programming_language)</a></p>
 <h4>Examples:</h4>
 <p style="padding-left: 30px;"><a href="https://gist.github.com/mdecycu/d9082d678096bd58378d6afe2c7fa05d">https://gist.github.com/mdecycu/d9082d678096bd58378d6afe2c7fa05d</a></p>

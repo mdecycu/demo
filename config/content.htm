@@ -1,6 +1,7 @@
 <h1>About</h1>
 <p>取代 <a href="https://wcms.repl.co">https://wcms.repl.co</a> (免費資源已經耗盡, 所以無法正常啟動) 的 server 為 <a href="https://wcms.cycu.org:5443">https://wcms.cycu.org:5443</a></p>
 <p>修正原先 request.url 無法正確在非 443 port 情況下跳回 https 協定進入編輯的 bug.</p>
+<hr/>
 <p>correct_url 函式如下:</p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">def correct_url():
 
@@ -13,7 +14,15 @@
     else:
         url = url.replace("http://", "https://", 1)
         return url</pre>
-<p></p><h1>Files</h1>
+<p></p><h1>cmsimde</h1>
+<p>能不能將 Blog and Reveal.js 也同動態網站, 直接在線上進行編輯改版?</p>
+<p>能不能將 SSH 設定完成後, 直接在線上 acp?</p><h1>NX</h1>
+<p><a href="https://www.youtube.com/channel/UChYht2a_KxGdqqJBQ00m4lA/videos">NX tutorial</a> </p>
+<h1>CoppeliaSim</h1>
+<p>Opencv 與 Scenes</p>
+<h1>Fusion 360</h1>
+<p>除了 <a href="https://onshape.com">https://onshape.com</a>  還有 Fusion 360 也提供免費教育版:</p>
+<p><a href="https://www.autodesk.com/education/edu-software/overview">https://www.autodesk.com/education/edu-software/overview</a></p><h1>Files</h1>
 <p>.ssh/config</p>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">Host github.com
 User git
@@ -43,7 +52,8 @@ git push
 <p>pwd</p>
 <p>mkdir</p>
 <p>chmod u+x acp</p>
-<p></p><h1>Brython</h1>
+<h2>limitation</h2>
+<p>Ubuntu itself does not limit connections.</p><h1>Brython</h1>
 <p><a href="https://en.wikipedia.org/wiki/Python_(programming_language)">https://en.wikipedia.org/wiki/Python_(programming_language)</a></p>
 <h4>Examples:</h4>
 <p style="padding-left: 30px;"><a href="https://gist.github.com/mdecycu/d9082d678096bd58378d6afe2c7fa05d">https://gist.github.com/mdecycu/d9082d678096bd58378d6afe2c7fa05d</a></p>
