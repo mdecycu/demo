@@ -35,7 +35,7 @@
 <li data-aria-level="1" data-aria-posinset="15"><span data-contrast="auto"><span>上述採用指令模式對  server sftp 也可以利用  </span></span><a href="https://portableapps.com/apps/internet/filezilla_portable"><span data-contrast="auto"><span>Filezilla portable</span></span></a><span data-contrast="auto"><span>, 以圖形介面完成. 而 ssh 也可以透過  putty.exe 執行遠端登入.</span></span><span> </span></li>
 </ol>
 <p><span>config under .ssh 目錄:</span></p>
-<p><span>Host 就是 .ssh/config 設定的對應 session 名稱, 此處若 Host 設為 demo, 則 SSH 對應的 .git/config 中的 URL 就必須使用 <a href="mailto:git@demo:mdecad2022/site-scrum-1.git,">git@demo:mdecad2022/site-scrum-1.git,</a> demo 就是 Host, Port 則是隨後的 %p, %p 則是 Hostname, 也就是 github.com</span></p>
+<p><span>Host 就是 .ssh/config 設定的對應 session 名稱, 此處若 Host 設為 demo, 則 SSH 對應的 .git/config 中的 URL 就必須使用 <a href="mailto:git@demo:mdecad2022/site-scrum-1.git,">git@demo:mdecad2022/site-scrum-1.git,</a> demo 就是 Host, Port 則是隨後的 %p, 也就是 SSH 協定的內建 port 22, %h 則是 Hostname, 也就是 github.com</span></p>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">Host demo
 User git
 Hostname github.com
