@@ -17,6 +17,24 @@
         url = url.replace("http://", "https://", 1)
         return url</pre>
 <p></p><h2>w5</h2>
+<p>Under Windows:</p>
+<ol>
+<li data-aria-level="1" data-aria-posinset="1"><span data-contrast="auto"><span>所謂 Secure Shell 就是利用</span></span><a href="https://zh.m.wikipedia.org/zh-tw/%E5%85%AC%E5%BC%80%E5%AF%86%E9%92%A5%E5%8A%A0%E5%AF%86"><span data-contrast="auto"><span>公開金鑰加密</span></span></a><span data-contrast="auto"><span>, 在傳輸指令的過程對內容加密, 以保障資訊不被第三方取得, 當使用者在近端執行個人倉儲的動態網站後進行編輯改版, 並將動態網站轉為靜態網站, 希望將新的靜態網站內容送到 Github Pages  中的過程, 可以透過 SSH 協定建立一對數位鑰匙, 其公開鑰匙登錄到 Github SSH 設定區, 而私人鑰匙則放在近端電腦或隨身碟中, 當推送資料時只有與帳號下公鑰配對的私鑰擁有者, 有權限更改倉儲內容, 以下為在 Windows 操作系統採 SSH 對 Github 倉儲進行改版的設定過程.</span></span><span> </span></li>
+<li data-aria-level="1" data-aria-posinset="2"><span data-contrast="auto"><span>確定  start.bat 啟動時已經設定 GIT_SSH 變數, 且與 plink.exe 連結, 表示設定之後的 Git  指令, 若採 SSH 協定與 Github 溝通, 近端的金鑰加密格式採用 Putty 所提供的 ppk 格式.</span></span><span> </span></li>
+<li data-aria-level="1" data-aria-posinset="3"><span data-contrast="auto"><span>在 Windows 操作系統, 可以</span></span><span data-contrast="auto"><span>利用 Putty 的 puttygen.exe 產生 public key (OpenSSH 格式, 可登錄到 Github) 與 private key (ppk 格式), 且將 public key 放入 Github 帳號下 settings -&gt; SSH and GPG 設定區.</span></span><span> </span></li>
+<li data-aria-level="1" data-aria-posinset="4"><span data-contrast="auto"><span>將 private key 存入隨身碟或 C 槽後,  送到自己的 onedrive 區, 當設定  putty.exe session 時必須在 session 使用授權區給定私鑰儲存位置.</span></span><span> </span></li>
+<li data-aria-level="1" data-aria-posinset="5"><span data-contrast="auto"><span>利用 putty.exe 在電腦上設定一個 session 名稱, 且此一 session 名稱,</span></span><span data-contrast="auto"><span>代表三項資訊: a. 以 SSH  協定連結到 github.com (default port 為 22),  b. 決定需不需要使用 proxy (github.com 目前僅支援 IPv4), c. ppk 格式的 private key 位置.</span></span><span> </span></li>
+</ol>
+<p><span> </span></p>
+<p><span data-contrast="auto"><span>利用 Putty session 以 SSH 協定 git clone 遠端倉儲, 假如前述設定都正確的話, 就可以在近端改版後, 將版本推向 Github.</span></span><span> </span></p>
+<p><span> </span></p>
+<p><span data-contrast="auto"><span>SSH  從 Github git clone  語法:</span></span><span> </span></p>
+<p><span> </span></p>
+<p><span data-contrast="auto"><span>git clone  --recurse-submodules  </span></span><a href="mailto:git@putty_session_name:github_account/repository_name.git"><span data-contrast="auto"><span>git@putty_session_name:github_account/repository_name.git</span></span></a><span> </span></p>
+<p><span> </span></p>
+<p><span data-contrast="auto"><span>請特別注意  putty_session_name 與  github_account 中間為 :<br/></span></span></p>
+<hr/>
+<p>Under Ubuntu</p>
 <ol>
 <li data-aria-level="1" data-aria-posinset="1"><span data-contrast="auto"><span>(登入 stud.cycu.org)利用 @nfu 電子郵箱收到的帳號與密碼, 登入 stud.cycu.org:  在命令列視窗, 以 ssh </span></span><span data-contrast="auto"><span>cad學號@stud.cycu.org , 輸入對應密後, 可以登入系統</span></span><span> </span></li>
 <li data-aria-level="1" data-aria-posinset="2"><span data-contrast="auto"><span>請到 excel 檔案 </span></span><a href="https://nfuedu-my.sharepoint.com/:x:/g/personal/yen_nfu_edu_tw/ET-JZNPkNtZDhFiLt8BGZZ4BFMVV1HE73WQt1V44y6vnCQ"><span data-contrast="auto"><span>查詢</span></span></a><span data-contrast="auto"><span> stud.cycu.org 中與帳號對應的近端 (給 127.0.0.1 使用) 與遠端 (給 stud.cycu.org) 埠號</span></span><span> </span></li>
