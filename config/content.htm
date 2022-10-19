@@ -2,20 +2,6 @@
 <p>靜態網站: <a href="https://mde.tw/demo/">https://mde.tw/demo/</a></p>
 <p>倉儲: <a href="https://github.com/mdecycu/demo">https://github.com/mdecycu/demo</a></p>
 <p>公佈欄網站: <a href="https://mde.tw/wcms">https://mde.tw/wcms</a></p>
-<p>修正原先 request.url 無法正確在非 443 port 情況下跳回 https 協定進入編輯的 bug.</p>
-<hr/>
-<p>correct_url 函式如下:</p>
-<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">def correct_url():
-
-    """get the correct url for http and https edit mode
-        to replace original request.url under set_admin_css, set_css and set_footer
-    """
-    url = request.url
-    if request.is_secure:
-        return url
-    else:
-        url = url.replace("http://", "https://", 1)
-        return url</pre>
 <p></p><h2>語音輸入</h2>
 <p>cmsimde 動態網頁若能在手機瀏覽器中開啟, 就能使用語音輸入頁面內容</p>
 <p>在這個頁面我們使用手機的語音辨識來輸入內容</p>
@@ -346,7 +332,13 @@ doc["threejsblock"].bind("click", threejsblock.do)
 <p>電腦輔助設計與實習課程</p>
 <p>課程內容包括如何使用電腦輔助設計套件</p>
 <p>以及如何轉檔之後轉入其他工程分析軟體</p>
-<p>包括機電系統控制設計與模擬</p><h2>NX</h2>
+<p>包括機電系統控制設計與模擬</p>
+<p>在 Onshape 上繪製零組件: <a href="https://onshape.com">https://onshape.com</a></p>
+<p>在 Solvespace 上繪製零組件: <a href="https://solvespace.com">https://solvespace.com</a> (自行編譯 <a href="https://github.com/solvespace/solvespace">Solvespace 原始碼</a>)</p>
+<p>在 Siemens NX 上繪製零組件: <a href="https://nfuedu.sharepoint.com/:u:/s/cad2022/EclS-NMhqJ9JvCa-pIQ_jMsBQB1tipr_Zgc8kT8ha1kMtg?e=tQ7A1e">下載 NX2027.3401_lite_cad2022.7z</a> (必須登入 @nfu 所屬的 Teams)</p>
+<p>利用 <a href="https://www.coppeliarobotics.com/">CoppeliaSim</a> 執行機電控制系統設計與模擬</p>
+<p>利用 stud.cycu.org 動態網站整理上述工具實習流程與結果, 並同步內容至個人的 Github Pages 網站.</p>
+<p>相關設計程式包含 server 端的 Python 與 browser 端的 brython, 其間透過 websocket 傳送設計變數.</p><h2>NX</h2>
 <p><a href="https://www.youtube.com/channel/UChYht2a_KxGdqqJBQ00m4lA/videos">NX tutorial</a></p>
 <p>Onshape: <a href="https://cadlab.mde.tw/post/onshape-featurescript-spur-gear-ling-jian.html">https://cadlab.mde.tw/post/onshape-featurescript-spur-gear-ling-jian.html</a></p>
 <h2>STL</h2>
