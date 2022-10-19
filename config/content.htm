@@ -1,4 +1,6 @@
 <h1>About</h1>
+<p>在 2022 Fall 的課程中, 採近全雲端的機械產品設計, 可以透過瀏覽器直接利用 stud 伺服器與 Onshape 執行程式編寫、內容管理與零組件設計繪圖, 唯獨機電模擬目前仍無法全部在瀏覽器中運行, 但至少已經可以透過 Three.js 與 Websocket 的整合, 讓 CoppeliaSim 的模擬場景在瀏覽器中呈現. 另外一個趨勢是, 除了電腦必須讓手機與平板在機械設計流程中扮演更重要的角色. 網站的內容維護與觀看更需考慮在電腦、手機與平板都能平順進行.</p>
+<p>至於近端的機械產品設計流程則可以採 Solvespace 與 NX 完成零組件設計繪圖, 並以可攜程式環境編寫 server 端的應用程式, 用來控制零組件參數或進行機電模擬系統的控制等. 而 cmsimde 在近端也可以如遠端操作進行動態與靜態網頁的維護與展示.</p>
 <p>靜態網站: <a href="https://mde.tw/demo/">https://mde.tw/demo/</a></p>
 <p>倉儲: <a href="https://github.com/mdecycu/demo">https://github.com/mdecycu/demo</a></p>
 <p>公佈欄網站: <a href="https://mde.tw/wcms">https://mde.tw/wcms</a></p>
@@ -78,6 +80,7 @@ ProxyCommand /usr/bin/ncat --proxy p42.cycu.org:3128 --proxy-type http %h %p</pr
 <p><a href="https://code.visualstudio.com/docs/editor/vscode-web#_opening-a-project">https://code.visualstudio.com/docs/editor/vscode-web#_opening-a-project</a></p>
 <h1>cp2022</h1>
 <p>學習 Brython 程式語言</p>
+<p>執行 Three.js 相關 Brython 程式, 需要將 <a href="/downloads/py/pyweb3d.py">pyweb3d.py</a> 放入 downloads/py 目錄中ㄡ</p>
 <p><a href="https://mde.tw/content/Python.html">https://mde.tw/content/Python.html</a></p>
 <p>從 1 累加到 100:</p>
 <p><button id="add1to100">1 add to 100</button></p>
@@ -327,8 +330,7 @@ doc["threejsblock"].bind("click", threejsblock.do)
 <!-- editor2 結束 --><hr/>
 <p>
 <script src="https://unpkg.com/three@0.144.0/build/three.js" type="text/javascript"></script>
-</p>
-<h1>cad2022</h1>
+</p><h1>cad2022</h1>
 <p>電腦輔助設計與實習課程</p>
 <p>課程內容包括如何使用電腦輔助設計套件</p>
 <p>以及如何轉檔之後轉入其他工程分析軟體</p>
