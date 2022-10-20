@@ -4,13 +4,15 @@
 <p>靜態網站: <a href="https://mde.tw/demo/">https://mde.tw/demo/</a></p>
 <p>倉儲: <a href="https://github.com/mdecycu/demo">https://github.com/mdecycu/demo</a></p>
 <p>公佈欄網站: <a href="https://mde.tw/wcms">https://mde.tw/wcms</a></p>
-<p></p><h2>語音輸入</h2>
+<p></p>
+<h2>語音輸入</h2>
 <p>cmsimde 動態網頁若能在手機瀏覽器中開啟, 就能使用語音輸入頁面內容</p>
 <p>在這個頁面我們使用手機的語音辨識來輸入內容</p>
 <p>一方面可以當作備忘錄來使用</p>
 <p>再者可以把一些即時想到的事項</p>
 <p>或者是未來即將處理的網站改版提醒放在這裡</p>
-<p>頁面編輯之後，可以轉為靜態網頁，然後使用 acp 按鈕直接將改版內容提交到 GitHub Pages</p><h2>w5</h2>
+<p>頁面編輯之後，可以轉為靜態網頁，然後使用 acp 按鈕直接將改版內容提交到 GitHub Pages</p>
+<h2>w5</h2>
 <p>Under Windows:</p>
 <ol>
 <li data-aria-level="1" data-aria-posinset="1"><span data-contrast="auto"><span>所謂 Secure Shell 就是利用</span></span><a href="https://zh.m.wikipedia.org/zh-tw/%E5%85%AC%E5%BC%80%E5%AF%86%E9%92%A5%E5%8A%A0%E5%AF%86"><span data-contrast="auto"><span>公開金鑰加密</span></span></a><span data-contrast="auto"><span>, 在傳輸指令的過程對內容加密, 以保障資訊不被第三方取得, 當使用者在近端執行個人倉儲的動態網站後進行編輯改版, 並將動態網站轉為靜態網站, 希望將新的靜態網站內容送到 Github Pages  中的過程, 可以透過 SSH 協定建立一對數位鑰匙, 其公開鑰匙登錄到 Github SSH 設定區, 而私人鑰匙則放在近端電腦或隨身碟中, 當推送資料時只有與帳號下公鑰配對的私鑰擁有者, 有權限更改倉儲內容, 以下為在 Windows 操作系統採 SSH 對 Github 倉儲進行改版的設定過程.</span></span><span> </span></li>
@@ -70,7 +72,8 @@ ProxyCommand /usr/bin/ncat --proxy p42.cycu.org:3128 --proxy-type http %h %p</pr
 <li data-aria-level="2" data-aria-posinset="12"><span data-contrast="auto"><span>接著下載<span> </span></span></span><a href="https://nfuedu.sharepoint.com/:u:/s/cad2022/EXD1ElHAqFNFk6LERfjLYNgBJ4mgWYGSRsRJhq2kQyxK1w?e=rEYXQB"><span data-contrast="auto"><span>server.py</span></span></a><span data-contrast="auto"><span>, 在 Windows 編輯<span> </span></span></span><a href="https://nfuedu.sharepoint.com/:u:/s/cad2022/EXD1ElHAqFNFk6LERfjLYNgBJ4mgWYGSRsRJhq2kQyxK1w?e=rEYXQB"><span data-contrast="auto"><span>server.py</span></span></a><span data-contrast="auto"><span>, 將個人分配到的 9xxxx 埠號填入後存檔, 以 sftp 放入上列取下的倉儲根目錄.</span></span><span> </span></li>
 <li data-aria-level="2" data-aria-posinset="13"><span data-contrast="auto"><span>登入  Ubuntu 後, 會使用的指令: pwd 代表 print working directory, clear -  清除螢幕, cd - 更換目錄, ls -l 列出目錄詳細內容, chmod u+x<span> </span></span></span><a href="https://nfuedu.sharepoint.com/:u:/s/cad2022/EZn5-jIdQ3pMmi_QxSVWWoYBHvcEtgUrAGCPiIlPyDQ6sw?e=9mc7rR"><span data-contrast="auto"><span>acp</span></span></a><span data-contrast="auto"><span><span> </span>表示讓 user 可以 execute acp script (能夠讓使用者以 source acp 加上提交字串進行 git add, git commit, git push, 如何在 Windows 執行 acp.bat 加上提交字串.</span></span><span> </span></li>
 </ol>
-<p></p><h2>cmsimde</h2>
+<p></p>
+<h2>cmsimde</h2>
 <p>能不能將 Blog and Reveal.js 也同動態網站, 直接在線上進行編輯改版?</p>
 <p>能不能將 SSH 設定完成後, 直接在線上 acp? (已經完成) 可以透過 user.py 以 blueprint 架構延伸.</p>
 <p><a href="/user/threegear">https://stud.cycu.org:8000/user/threegear</a></p>
@@ -81,12 +84,13 @@ ProxyCommand /usr/bin/ncat --proxy p42.cycu.org:3128 --proxy-type http %h %p</pr
 <p>stud.cycu.org 目前是透過不同的 port 讓多用戶能在同一台電腦伺服器上運行動態網站, 而 Replit 或其他商用雲端系統的做法則是加入 dns 的動態設定, 讓每一位用戶可以各自擁有獨一的 domain name, 然後經由此一 domain name 啟用動態網站.</p>
 <p>實際的可行作法是讓 demo 用戶在 stud.cycu.org 主機上擁有 demo.stud.cycu.org 或 demo.cycu.org 網域名稱的使用權, 然後當使用者在其帳號下的倉儲執行某一特定的主倉儲動態網站時, 以 demo.cycu.org 啟動, 若執行其帳號下的另一個名稱為 wcms 的倉儲動態網站時, 則以 wcms.demo.cycu.org 啟動, 然後依此類推.</p>
 <p>目前 cadlab 總共管理 mde.nfu.edu.tw 與 eng.nfu.edu.tw 等兩個網域的 dns servers, 因此就網路技術層面而言, 上述建構如 Replit 般的網際應用程式服務是可行的. 較為簡單的做法是直接在 dns server 上建立此一服務.</p>
-<p>若要跨 server 建立上述服務, 則 server 間仍需透過類似 Websocket 程式變數的派送, 並在使用者建立帳號後, 便直接在 dns 伺服器上登錄其使用權, 且在同一台電腦的 IPv6 address 上利用 CNAME 分辨各用戶所屬的 domain, 然後在後續伺服器設定時採用.</p><h2>vscode</h2>
+<p>若要跨 server 建立上述服務, 則 server 間仍需透過類似 Websocket 程式變數的派送, 並在使用者建立帳號後, 便直接在 dns 伺服器上登錄其使用權, 且在同一台電腦的 IPv6 address 上利用 CNAME 分辨各用戶所屬的 domain, 然後在後續伺服器設定時採用.</p>
+<h2>vscode</h2>
 <p><a href="https://code.visualstudio.com/docs/editor/vscode-web#_opening-a-project">https://code.visualstudio.com/docs/editor/vscode-web#_opening-a-project</a></p>
 <h1>cp2022</h1>
 <h2>CP抽點程式</h2>
 <p>2022 Fall 課程代號:</p>
-<p>以下為抽點程式:</p>
+<p>以下為抽點程式 (<a href="https://mde.tw/demo/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/2c6323eff49b496d1bafd210f3ec9707/raw/f9b2c7a6e6db0e75a2a113920be2fb2685e21a84/1_w7_b_cp2022_random_draw.py">執行</a>):</p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># Python 的註解分為單行註解與多行, 單行註解可在字串前方放入 #
 '''多行註解則可以透過三個單引號前後標註字串或文字段落內容, 
 也可以使用三個雙引號作為多行註解的標註
@@ -115,7 +119,8 @@ num = 5
 # 利用 for 重複迴圈與 range() 變數, 列印出 (利用 print() 函式) 已經隨機排列次序的 stud 數列的最前面 num 個學號值
 for i in range(num):
     print(stud[i])</pre>
-<p></p><h2>CP靜態網頁連結</h2>
+<p></p>
+<h2>CP靜態網頁連結</h2>
 <h2>Brython</h2>
 <p>學習 Brython 程式語言</p>
 <p>執行 Three.js 相關 Brython 程式, 需要將 <a href="/downloads/py/pyweb3d.py">pyweb3d.py</a> 放入 downloads/py 目錄中ㄡ</p>
@@ -368,7 +373,8 @@ doc["threejsblock"].bind("click", threejsblock.do)
 <!-- editor2 結束 --><hr/>
 <p>
 <script src="https://unpkg.com/three@0.144.0/build/three.js" type="text/javascript"></script>
-</p><h1>cad2022</h1>
+</p>
+<h1>cad2022</h1>
 <p>電腦輔助設計與實習課程</p>
 <p>課程內容包括如何使用電腦輔助設計套件</p>
 <p>以及如何轉檔之後轉入其他工程分析軟體</p>
@@ -378,21 +384,24 @@ doc["threejsblock"].bind("click", threejsblock.do)
 <p>在 Siemens NX 上繪製零組件: <a href="https://nfuedu.sharepoint.com/:u:/s/cad2022/EclS-NMhqJ9JvCa-pIQ_jMsBQB1tipr_Zgc8kT8ha1kMtg?e=tQ7A1e">下載 NX2027.3401_lite_cad2022.7z</a> (必須登入 @nfu 所屬的 Teams)</p>
 <p>利用 <a href="https://www.coppeliarobotics.com/">CoppeliaSim</a> 執行機電控制系統設計與模擬</p>
 <p>利用 stud.cycu.org 動態網站整理上述工具實習流程與結果, 並同步內容至個人的 Github Pages 網站.</p>
-<p>相關設計程式包含 server 端的 Python 與 browser 端的 brython, 其間透過 websocket 傳送設計變數.</p><h2>NX</h2>
+<p>相關設計程式包含 server 端的 Python 與 browser 端的 brython, 其間透過 websocket 傳送設計變數.</p>
+<h2>NX</h2>
 <p><a href="https://www.youtube.com/channel/UChYht2a_KxGdqqJBQ00m4lA/videos">NX tutorial</a></p>
 <p>Onshape: <a href="https://cadlab.mde.tw/post/onshape-featurescript-spur-gear-ling-jian.html">https://cadlab.mde.tw/post/onshape-featurescript-spur-gear-ling-jian.html</a></p>
 <h2>STL</h2>
-<p><a href="https://www.adobe.com/creativecloud/file-types/image/vector/stl-file.html">https://www.adobe.com/creativecloud/file-types/image/vector/stl-file.html</a> </p>
-<p><a href="https://en.wikipedia.org/wiki/STL_(file_format)">https://en.wikipedia.org/wiki/STL_(file_format)</a> </p>
-<p><a href="https://github.com/omrips/viewstl">https://github.com/omrips/viewstl</a> </p>
-<p><a href="https://github.com/topics/stl-viewer?l=javascript">https://github.com/topics/stl-viewer?l=javascript</a> </p>
-<p><a href="https://github.com/kaitlynhova/Three.js-STL-Viewer">https://github.com/kaitlynhova/Three.js-STL-Viewer</a> </p>
-<p></p><h2>CoppeliaSim</h2>
+<p><a href="https://www.adobe.com/creativecloud/file-types/image/vector/stl-file.html">https://www.adobe.com/creativecloud/file-types/image/vector/stl-file.html</a></p>
+<p><a href="https://en.wikipedia.org/wiki/STL_(file_format)">https://en.wikipedia.org/wiki/STL_(file_format)</a></p>
+<p><a href="https://github.com/omrips/viewstl">https://github.com/omrips/viewstl</a></p>
+<p><a href="https://github.com/topics/stl-viewer?l=javascript">https://github.com/topics/stl-viewer?l=javascript</a></p>
+<p><a href="https://github.com/kaitlynhova/Three.js-STL-Viewer">https://github.com/kaitlynhova/Three.js-STL-Viewer</a></p>
+<p></p>
+<h2>CoppeliaSim</h2>
 <p>Opencv 與 Scenes</p>
 <p><a href="http://mod.cycu.org">http://mod.cycu.org</a> has coppeliaSim on Ubuntu desktop</p>
 <h1>Ext</h1>
 <p>這裡主要是放入一些延伸內容</p>
-<p>包括電腦輔助設計與計算機程式</p><h2>Fusion 360</h2>
+<p>包括電腦輔助設計與計算機程式</p>
+<h2>Fusion 360</h2>
 <p>除了 <a href="https://onshape.com">https://onshape.com</a>  還有 Fusion 360 也提供免費教育版:</p>
 <p><a href="https://www.autodesk.com/education/edu-software/overview">https://www.autodesk.com/education/edu-software/overview</a></p>
 <h2>Files</h2>
@@ -428,7 +437,7 @@ git push
 <p>chmod u+x acp</p>
 <h3>limitation</h3>
 <p>Ubuntu itself does not limit connections.</p>
-<h2>Brython</h2>
+<h2>Brython2</h2>
 <p><a href="https://en.wikipedia.org/wiki/Python_(programming_language)">https://en.wikipedia.org/wiki/Python_(programming_language)</a></p>
 <h4>Examples:</h4>
 <p style="padding-left: 30px;"><a href="https://gist.github.com/mdecycu/d9082d678096bd58378d6afe2c7fa05d">https://gist.github.com/mdecycu/d9082d678096bd58378d6afe2c7fa05d</a></p>
