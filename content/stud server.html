@@ -145,7 +145,9 @@ img.add_border {
 <h4>ps command</h4>
 <p>ps axo pid,comm,user</p>
 <h4>specifig port for certain user:</h4>
-<p><a href="https://unix.stackexchange.com/questions/486945/restrict-local-port-access-to-a-specific-user">https://unix.stackexchange.com/questions/486945/restrict-local-port-access-to-a-specific-user</a> </p><br />cad2022 << <a href='cad2022.html'>Previous</a> <a href='Solvespace.html'>Next</a> >> Solvespace</div>
+<p><a href="https://unix.stackexchange.com/questions/486945/restrict-local-port-access-to-a-specific-user">https://unix.stackexchange.com/questions/486945/restrict-local-port-access-to-a-specific-user</a></p>
+<p>ip6tables -I OUTPUT -o lo -p tcp --dport 5000 --match owner --uid-owner 1000 -j DROP</p>
+<p><a href="https://github.com/hkbakke/fwgen">https://github.com/hkbakke/fwgen</a> </p><br />cad2022 << <a href='cad2022.html'>Previous</a> <a href='Solvespace.html'>Next</a> >> Solvespace</div>
         
     <!-- footer -->
       <div class="container">
