@@ -130,7 +130,7 @@ img.add_border {
                             <li><a href="./../blog/index.html">blog</a></li>
                         </ul>
                       </li>
-                     <li class='has-children'><a href='About.html'>About</a><ul class='dropdown'><li><a href='語音輸入.html'>語音輸入</a><li><a href='w5.html'>w5</a><li><a href='cmsimde.html'>cmsimde</a><li><a href='vscode.html'>vscode</a></li></ul><li class='has-children'><a href='cp2022.html'>cp2022</a><ul class='dropdown'><li><a href='CP抽點程式.html'>CP抽點程式</a><li><a href='CP靜態網頁連結.html'>CP靜態網頁連結</a><li><a href='Brython.html'>Brython</a></li></ul><li class='has-children'><a href='cad2022.html'>cad2022</a><ul class='dropdown'><li><a href='stud server.html'>stud server</a><li><a href='Solvespace.html'>Solvespace</a><li><a href='NX.html'>NX</a><li><a href='STL.html'>STL</a><li><a href='CoppeliaSim.html'>CoppeliaSim</a></li></ul><li class='has-children'><a href='Ext.html'>Ext</a><ul class='dropdown'><li><a href='Fusion 360.html'>Fusion 360</a><li><a href='Files.html'>Files</a><li class='has-children'><a href='Linux 指令.html'>Linux 指令</a><ul class='dropdown'><li><a href='limitation.html'>limitation</a></li></ul><li><a href='Brython2.html'>Brython2</a></li>
+                     <li class='has-children'><a href='About.html'>About</a><ul class='dropdown'><li><a href='語音輸入.html'>語音輸入</a><li><a href='w5.html'>w5</a><li><a href='cmsimde.html'>cmsimde</a><li><a href='vscode.html'>vscode</a></li></ul><li class='has-children'><a href='cp2022.html'>cp2022</a><ul class='dropdown'><li><a href='CP抽點程式.html'>CP抽點程式</a><li><a href='CP 靜態網頁連結.html'>CP 靜態網頁連結</a><li><a href='Brython.html'>Brython</a></li></ul><li class='has-children'><a href='cad2022.html'>cad2022</a><ul class='dropdown'><li><a href='stud server.html'>stud server</a><li><a href='Solvespace.html'>Solvespace</a><li><a href='NX.html'>NX</a><li><a href='STL.html'>STL</a><li><a href='CoppeliaSim.html'>CoppeliaSim</a></li></ul><li class='has-children'><a href='Ext.html'>Ext</a><ul class='dropdown'><li><a href='Fusion 360.html'>Fusion 360</a><li><a href='Files.html'>Files</a><li class='has-children'><a href='Linux 指令.html'>Linux 指令</a><ul class='dropdown'><li><a href='limitation.html'>limitation</a></li></ul><li><a href='Brython2.html'>Brython2</a></li>
                       </ul>
                 </nav>
               </div>
@@ -141,8 +141,52 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">CP抽點程式 << <a href='CP抽點程式.html'>Previous</a> <a href='Brython.html'>Next</a> >> Brython<br /><h1>CP靜態網頁連結</h1>
-<br />CP抽點程式 << <a href='CP抽點程式.html'>Previous</a> <a href='Brython.html'>Next</a> >> Brython</div>
+    <div id="tipue_search_content">CP抽點程式 << <a href='CP抽點程式.html'>Previous</a> <a href='Brython.html'>Next</a> >> Brython<br /><h1>CP 靜態網頁連結</h1>
+<p><a href="https://mde.tw/demo/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/2c6323eff49b496d1bafd210f3ec9707/raw/85a93f022cbf05d8e4fc370762a6cabb65b760ba/cp2022_w6b_gen_pages_link.py">靜態網頁連結執行</a></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># 從 Brython 的 browser 模組導入 document 與 html 程式庫
+from browser import document, html
+
+# 利用 document 物件, 以索引 "brython_div1" 取得已經位於 html 網頁中 id="brython_div1" 的位置, 且對應到 brython_div1 變數
+brython_div1 = document["brython_div1"]
+# 可以用三個單引號或三個雙引號標註多行註解
+# 其中的 html 物件有許多建立 html 超文件內容的方法, 以下分別建立
+# BUTTON 按鈕, BR 跳行 (break), 以及 A 網站連結 (Anchor)
+# &lt;= 是 Brython 程式語言的特殊符號, 專用於將 html 超文件資料送給網頁對應變數
+"""
+brython_div1 &lt;= html.BUTTON("hello")
+brython_div1 &lt;= html.BR()
+brython_div1 &lt;= html.A("google", href="https://google.com")
+"""
+
+# 將 1b.txt 資料從 Github Pages 網頁中取下
+url = "https://mde.tw/studlist/2022fall/1b.txt"
+# 利用 open() 開啟網頁, 利用 read() 讀取網頁內容
+# 然後利用 split() 方法, 利用跳行符號對資料進行切割, 切割後的資料結構為 list
+# list 資料結構以 [] 區隔, 表示資料為數列, 其起始的索引值為 0
+data = open(url).read().split("\n")
+# 將每一位學員的靜態網頁共同的網路連結部分設為字串, 且與 mdecp2022 變數對應
+mdecp2022 = "https://mdecp2022.github.io/site-"
+# 因為取下的資料第一筆為標題, 而最後一筆為空字串, 可以利用 Brython 的數列索引取值範圍將索引 0 與最後一個數列值去除
+data = data[1:-1]
+# 利用 for 重複迴圈逐一取出 data 數列中的值, 然後以 \t, 也就是 tab 符號切割
+for i in data:
+    stud = i.split("\t")
+    # 第一欄位為學號
+    stud_num = stud[0]
+    # 第二欄未為 github 帳號
+    github_acc = stud[1]
+    #print(stud_num, github_acc)
+    # 若沒有找到 github 帳號, 以學號作為帳號
+    if github_acc == "":
+        github_acc = stud_num
+    # 將靜態網頁共同連結的變數與各自的 github 帳號, 組成完整的各學員靜態網頁連結
+    site = mdecp2022 + github_acc
+    # 利用 A 物件產生連結, 然後放入 id="brython_div1 所在的網頁位置
+    link = html.A(stud_num, href=site)
+    brython_div1 &lt;= link
+    # 每一筆資料列出後, 以 break 標註跳行
+    brython_div1 &lt;= html.BR()</pre>
+<p><br/><br/></p><br />CP抽點程式 << <a href='CP抽點程式.html'>Previous</a> <a href='Brython.html'>Next</a> >> Brython</div>
         
     <!-- footer -->
       <div class="container">
