@@ -442,6 +442,7 @@ doc["threejsblock"].bind("click", threejsblock.do)
 <p>152815 python3 cad41023240<br/> 189883 python3 demo<br/> 208291 python3 cad41023210<br/> 219678 python3 cad41023247<br/> 223605 python3 cad41023216<br/> 256296 python3 cad41023124<br/> 257116 python3 cad41023118<br/> 257188 python3 cad41023119</p>
 <h3>websocket</h3>
 <p>網際前端與網際後端傳送設計參數, 若 stud server 可以安裝 NX, 則使用者可以從網際前端將設計變數送到 server 後, 將此設計變數透過 NXOpen 驅動 NX 改變零件尺寸或組立位置.</p>
+<p>相同機制, 也可以從網際前端將操控 Web based CoppeliaSim 的控制變數送到  server 端後, 直接操控網際場景中作動的機電系統模擬. 例如: 使用者在網際前端送出控制手足球一端連桿的平移距離與速度, 然後經由手足球 server 端的 Python 程式接收後, 以 Remote API 程式架構控制手足球場景.</p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># Brython websocket example
 """
 # Python WebSocket server
