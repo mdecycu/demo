@@ -120,6 +120,7 @@ num = 5
 for i in range(num):
     print(stud[i])</pre>
 <h2>CP 靜態網頁連結</h2>
+<p><a href="https://mde.tw/demo/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/2c6323eff49b496d1bafd210f3ec9707/raw/85a93f022cbf05d8e4fc370762a6cabb65b760ba/cp2022_w6b_gen_pages_link.py">靜態網頁連結執行</a></p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># 從 Brython 的 browser 模組導入 document 與 html 程式庫
 from browser import document, html
 
@@ -429,11 +430,11 @@ doc["threejsblock"].bind("click", threejsblock.do)
 <p>相關設計程式包含 server 端的 Python 與 browser 端的 brython, 其間透過 websocket 傳送設計變數.</p>
 <h2>stud server</h2>
 <h4>ps command</h4>
-<p>ps axo pid,comm,user</p>
+<p>ps axo pid,comm,user | grep "3122"</p>
 <h4>specifig port for certain user:</h4>
 <p><a href="https://unix.stackexchange.com/questions/486945/restrict-local-port-access-to-a-specific-user">https://unix.stackexchange.com/questions/486945/restrict-local-port-access-to-a-specific-user</a></p>
 <p>ip6tables -I OUTPUT -o lo -p tcp --dport 5000 --match owner --uid-owner 1000 -j DROP</p>
-<p><a href="https://github.com/hkbakke/fwgen">https://github.com/hkbakke/fwgen</a> </p><h2>Solvespace</h2>
+<p><a href="https://github.com/hkbakke/fwgen">https://github.com/hkbakke/fwgen</a></p><h2>Solvespace</h2>
 <p><span>利用 <a href="https://nfuedu.sharepoint.com/:u:/s/cad2022/Eb7vLI6zX5BOrvj1Gc0M3N8BljxC8i5qp-ftW-PLZT7j7w?e=tXGqbO">portable_2022_fall_13GB.7z</a></span><span>, 完成編譯.</span></p>
 <p>由於利用<span> </span><a href="https://www.msys2.org/">MSYS2</a><span> </span>編譯 Solvespace, 需要 install cmake</p>
 <p>pacman -S mingw-w64-x86_64-cmake</p>
