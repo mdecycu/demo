@@ -2,7 +2,7 @@
         <head>
         <title>demo on stud</title>
         <meta charset="utf-8">
-<meta property="head" content="H2">
+<meta property="head" content="H3">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
@@ -141,23 +141,83 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">Files << <a href='Files.html'>Previous</a> <a href='limitation.html'>Next</a> >> limitation<br /><h1>Linux 指令</h1>
-<p>Linux 指令與 Mac BSD 操作系統的指令相同.</p>
-<p>常用 Linux 指令:</p>
-<p>必須熟悉 vi - 以便能在純 text console 模式下進行檔案編輯</p>
-<p>vi acp</p>
-<p>表示要利用 vi 編輯 acp 檔案</p>
-<p>進入後為指令模式, 可以按下 i 進入 insert 模式, 然後以 i, j, k, l 鍵移動滑鼠游標位置</p>
-<p>按下 esc 可以跳出編輯模式, 重新進入指令模式</p>
-<p>在指令模式下, 以 a 按鍵 append 字元, 以 o 在下一行插入字元, 以 O 在上一行插入字元.</p>
-<p>完成編輯後, 必須進入指令模式, 然後按下 :w, 表示要 write file, 若使用 :q! 表示退出且不存檔, 若使用 :wq, 則存檔案後退出.</p>
-<p>cd cmsimde</p>
-<p>cd ..</p>
-<p>ls -l</p>
-<p>pwd</p>
-<p>mkdir</p>
-<p>chmod u+x acp</p>
-<br />Files << <a href='Files.html'>Previous</a> <a href='limitation.html'>Next</a> >> limitation</div>
+    <div id="tipue_search_content">cadw7 << <a href='cadw7.html'>Previous</a> <a href='Solvespace.html'>Next</a> >> Solvespace<br /><h1>websocket</h1>
+<p>網際前端與網際後端傳送設計參數, 若 stud server 可以安裝 NX, 則使用者可以從網際前端將設計變數送到 server 後, 將此設計變數透過 NXOpen 驅動 NX 改變零件尺寸或組立位置.</p>
+<p>相同機制, 也可以從網際前端將操控 Web based CoppeliaSim 的控制變數送到  server 端後, 直接操控網際場景中作動的機電系統模擬. 例如: 使用者在網際前端送出控制手足球一端連桿的平移距離與速度, 然後經由手足球 server 端的 Python 程式接收後, 以 Remote API 程式架構控制手足球場景.</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># Brython websocket example
+"""
+# Python WebSocket server
+# pip install asyncio websockets
+import asyncio
+import websockets
+
+async def hello(websocket, path):
+    name = await websocket.recv()
+    print(f"&lt; {name}")
+
+    greeting = f"Hello {name}!"
+
+    await websocket.send(greeting)
+    print(f"&gt; {greeting}")
+
+start_server = websockets.serve(hello, "localhost", 8765)
+
+asyncio.get_event_loop().run_until_complete(start_server)
+asyncio.get_event_loop().run_forever()
+"""
+
+from browser import document
+from browser import html, window, websocket
+
+# 將 brython_div 變數設為 id 為 "brython_div 的 doc 物件
+brython_div = document["brython_div"]
+
+# 插入輸入表單
+form = html.FORM()
+gearNumInput = html.INPUT(type="text", id="data", value="特斯拉")
+button = html.BUTTON("Run Websocket", id="run")
+button3 = html.BUTTON("Close Connection", id="close")
+form &lt;= "Name: " + gearNumInput  + html.BR()
+brython_div &lt;= form + button + html.BR()
+brython_div &lt;= button3 + html.BR()
+
+def on_open(evt):
+    # Web Socket is connected, send data using send()
+    data = document["data"].value
+    if data:
+        ws.send(data)
+        alert("Message is sent")
+
+def on_message(evt):
+    # message received from server
+    alert("Message received : %s" %evt.data)
+
+def on_close(evt):
+    # websocket is closed
+    alert("Connection is closed")
+
+ws = None
+def _test(_):
+    global ws
+    # open a web socket
+    # ws 為一般連線, wss 為 secure 連線
+    ws = websocket.WebSocket("ws://localhost:8765")
+    # attach functions to web sockets events
+    ws.bind("open", on_open)
+    ws.bind("message", on_message)
+    ws.bind("close", on_close)
+
+def close_connection(_):
+    ws.close()
+
+def hello(ev):
+    alert("Hello !")
+
+# 假如不導入 websocket, 也可以執行 Javascript 的 WebSocket
+#websocket = window.WebSocket.new
+document["run"].bind("click", _test)
+document["close"].bind("click", close_connection)</pre>
+<p></p><br />cadw7 << <a href='cadw7.html'>Previous</a> <a href='Solvespace.html'>Next</a> >> Solvespace</div>
         
     <!-- footer -->
       <div class="container">

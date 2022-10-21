@@ -439,7 +439,84 @@ doc["threejsblock"].bind("click", threejsblock.do)
 <p>ip6tables -I OUTPUT -o lo -p tcp --dport 5000 --match owner --uid-owner 1000 -j DROP</p>
 <p><a href="https://github.com/hkbakke/fwgen">https://github.com/hkbakke/fwgen</a></p>
 <h3>cadw7</h3>
-<p>152815 python3 cad41023240<br/> 189883 python3 demo<br/> 208291 python3 cad41023210<br/> 219678 python3 cad41023247<br/> 223605 python3 cad41023216<br/> 256296 python3 cad41023124<br/> 257116 python3 cad41023118<br/> 257188 python3 cad41023119</p><h2>Solvespace</h2>
+<p>152815 python3 cad41023240<br/> 189883 python3 demo<br/> 208291 python3 cad41023210<br/> 219678 python3 cad41023247<br/> 223605 python3 cad41023216<br/> 256296 python3 cad41023124<br/> 257116 python3 cad41023118<br/> 257188 python3 cad41023119</p>
+<h3>websocket</h3>
+<p>網際前端與網際後端傳送設計參數, 若 stud server 可以安裝 NX, 則使用者可以從網際前端將設計變數送到 server 後, 將此設計變數透過 NXOpen 驅動 NX 改變零件尺寸或組立位置.</p>
+<p>相同機制, 也可以從網際前端將操控 Web based CoppeliaSim 的控制變數送到  server 端後, 直接操控網際場景中作動的機電系統模擬. 例如: 使用者在網際前端送出控制手足球一端連桿的平移距離與速度, 然後經由手足球 server 端的 Python 程式接收後, 以 Remote API 程式架構控制手足球場景.</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># Brython websocket example
+"""
+# Python WebSocket server
+# pip install asyncio websockets
+import asyncio
+import websockets
+
+async def hello(websocket, path):
+    name = await websocket.recv()
+    print(f"&lt; {name}")
+
+    greeting = f"Hello {name}!"
+
+    await websocket.send(greeting)
+    print(f"&gt; {greeting}")
+
+start_server = websockets.serve(hello, "localhost", 8765)
+
+asyncio.get_event_loop().run_until_complete(start_server)
+asyncio.get_event_loop().run_forever()
+"""
+
+from browser import document
+from browser import html, window, websocket
+
+# 將 brython_div 變數設為 id 為 "brython_div 的 doc 物件
+brython_div = document["brython_div"]
+
+# 插入輸入表單
+form = html.FORM()
+gearNumInput = html.INPUT(type="text", id="data", value="特斯拉")
+button = html.BUTTON("Run Websocket", id="run")
+button3 = html.BUTTON("Close Connection", id="close")
+form &lt;= "Name: " + gearNumInput  + html.BR()
+brython_div &lt;= form + button + html.BR()
+brython_div &lt;= button3 + html.BR()
+
+def on_open(evt):
+    # Web Socket is connected, send data using send()
+    data = document["data"].value
+    if data:
+        ws.send(data)
+        alert("Message is sent")
+
+def on_message(evt):
+    # message received from server
+    alert("Message received : %s" %evt.data)
+
+def on_close(evt):
+    # websocket is closed
+    alert("Connection is closed")
+
+ws = None
+def _test(_):
+    global ws
+    # open a web socket
+    # ws 為一般連線, wss 為 secure 連線
+    ws = websocket.WebSocket("ws://localhost:8765")
+    # attach functions to web sockets events
+    ws.bind("open", on_open)
+    ws.bind("message", on_message)
+    ws.bind("close", on_close)
+
+def close_connection(_):
+    ws.close()
+
+def hello(ev):
+    alert("Hello !")
+
+# 假如不導入 websocket, 也可以執行 Javascript 的 WebSocket
+#websocket = window.WebSocket.new
+document["run"].bind("click", _test)
+document["close"].bind("click", close_connection)</pre>
+<p></p><h2>Solvespace</h2>
 <p><span>利用 <a href="https://nfuedu.sharepoint.com/:u:/s/cad2022/Eb7vLI6zX5BOrvj1Gc0M3N8BljxC8i5qp-ftW-PLZT7j7w?e=tXGqbO">portable_2022_fall_13GB.7z</a></span><span>, 完成編譯.</span></p>
 <p>由於利用<span> </span><a href="https://www.msys2.org/">MSYS2</a><span> </span>編譯 Solvespace, 需要 install cmake</p>
 <p>pacman -S mingw-w64-x86_64-cmake</p>
