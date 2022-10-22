@@ -85,7 +85,8 @@ ProxyCommand /usr/bin/ncat --proxy p42.cycu.org:3128 --proxy-type http %h %p</pr
 <p>實際的可行作法是讓 demo 用戶在 stud.cycu.org 主機上擁有 demo.stud.cycu.org 或 demo.cycu.org 網域名稱的使用權, 然後當使用者在其帳號下的倉儲執行某一特定的主倉儲動態網站時, 以 demo.cycu.org 啟動, 若執行其帳號下的另一個名稱為 wcms 的倉儲動態網站時, 則以 wcms.demo.cycu.org 啟動, 然後依此類推.</p>
 <p>目前 cadlab 總共管理 mde.nfu.edu.tw 與 eng.nfu.edu.tw 等兩個網域的 dns servers, 因此就網路技術層面而言, 上述建構如 Replit 般的網際應用程式服務是可行的. 較為簡單的做法是直接在 dns server 上建立此一服務.</p>
 <p>若要跨 server 建立上述服務, 則 server 間仍需透過類似 Websocket 程式變數的派送, 並在使用者建立帳號後, 便直接在 dns 伺服器上登錄其使用權, 且在同一台電腦的 IPv6 address 上利用 CNAME 分辨各用戶所屬的 domain, 然後在後續伺服器設定時採用.</p>
-<h2>TCExam</h2>
+<h3>手機專用</h3>
+<p>為了讓手機上的照片或語音輸入能夠使用順暢，上傳的照片可能要能讓使用者能夠更改檔名，或者讓使用者選擇處理相片大小或進行相關編輯.</p><h2>TCExam</h2>
 <p>啟動流程:</p>
 <p>進入 C:\tcexam\pgsql 執行 start.bat 啟動資料庫伺服器</p>
 <p>其餘對應的 nginx 與 php 執行對應都採 service 啟動</p>
@@ -99,7 +100,10 @@ ProxyCommand /usr/bin/ncat --proxy p42.cycu.org:3128 --proxy-type http %h %p</pr
 <p><a href="https://www.vice.com/en/article/pkgxqz/record-labels-say-ai-music-generators-threaten-music-industry">https://www.vice.com/en/article/pkgxqz/record-labels-say-ai-music-generators-threaten-music-industry</a> </p>
 <p><a href="https://edition.cnn.com/2022/10/21/tech/artists-ai-images/index.html">https://edition.cnn.com/2022/10/21/tech/artists-ai-images/index.html</a> </p>
 <p><a href="https://www.techspot.com/news/96392-someone-wrote-javascript-app-accurately-emulates-windows-95.html">https://www.techspot.com/news/96392-someone-wrote-javascript-app-accurately-emulates-windows-95.html</a> </p>
-<p></p><h1>cp2022</h1><h2>CP抽點程式</h2>
+<p>下一張圖片是用手機直接拍攝後轉入</p>
+<p><img alt="" height="225" src="/images/image.jpg" width="300"/></p>
+<p>下一張照片則是由手機取畫面後轉入</p>
+<p><img alt="" height="534" src="/images/A04E0941-5835-4CAF-B9FA-DBF235FF6401.png" width="300"/></p><h1>cp2022</h1><h2>CP抽點程式</h2>
 <p>2022 Fall 課程代號:</p>
 <p>以下為抽點程式 (<a href="https://mde.tw/demo/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/2c6323eff49b496d1bafd210f3ec9707/raw/f9b2c7a6e6db0e75a2a113920be2fb2685e21a84/1_w7_b_cp2022_random_draw.py">執行</a>):</p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># Python 的註解分為單行註解與多行, 單行註解可在字串前方放入 #
