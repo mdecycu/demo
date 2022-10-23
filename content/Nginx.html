@@ -2,7 +2,7 @@
         <head>
         <title>demo on stud</title>
         <meta charset="utf-8">
-<meta property="head" content="H2">
+<meta property="head" content="H3">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
@@ -141,23 +141,11 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">Files << <a href='Files.html'>Previous</a> <a href='limitation.html'>Next</a> >> limitation<br /><h1>Linux 指令</h1>
-<p>Linux 指令與 Mac BSD 操作系統的指令相同.</p>
-<p>常用 Linux 指令:</p>
-<p>必須熟悉 vi - 以便能在純 text console 模式下進行檔案編輯</p>
-<p>vi acp</p>
-<p>表示要利用 vi 編輯 acp 檔案</p>
-<p>進入後為指令模式, 可以按下 i 進入 insert 模式, 然後以 i, j, k, l 鍵移動滑鼠游標位置</p>
-<p>按下 esc 可以跳出編輯模式, 重新進入指令模式</p>
-<p>在指令模式下, 以 a 按鍵 append 字元, 以 o 在下一行插入字元, 以 O 在上一行插入字元.</p>
-<p>完成編輯後, 必須進入指令模式, 然後按下 :w, 表示要 write file, 若使用 :q! 表示退出且不存檔, 若使用 :wq, 則存檔案後退出.</p>
-<p>cd cmsimde</p>
-<p>cd ..</p>
-<p>ls -l</p>
-<p>pwd</p>
-<p>mkdir</p>
-<p>chmod u+x acp</p>
-<br />Files << <a href='Files.html'>Previous</a> <a href='limitation.html'>Next</a> >> limitation</div>
+    <div id="tipue_search_content">手機專用 << <a href='手機專用.html'>Previous</a> <a href='TCExam.html'>Next</a> >> TCExam<br /><h1>Nginx</h1>
+<p>目前的 stud 伺服器採用 ports 讓多用戶可以在同一台主機上執行動態 cmsimde 網站. 另一種配置方法, 就如同 Github Pages 與 Replit 的作法, 透過 DNS 的配置, 為每一位用戶建立一個獨特的 domain name.</p>
+<p>假如要讓 stud 伺服器能為每位用戶建立一個獨特的 domain name. 在 DNS 的架構下, 可以讓同一個 IPv6 address 透過多個 CNAME 別名的方式達成. 而在同一台主機中伺服多個 domain name 網站的方法, 則可以使用 Nginx 中的 virtual host 設定達成. 也就是各網站都透過同一個 443 埠號, 為每一個網站建立 server 設定, 並讓 server_name 分別對應至各用戶的網站 domain name. 然後利用 Nginx server 中的 proxy_pass 指向近端的 python3 server.py 所啟動的 localhost 網站內容即可.</p>
+<p>至於各別名的 https 網站數位簽章, 則可以利用 Let's Encrypt 的設定達成, 只是一次要在同一台伺服器共享超過兩百個 domain names, 必須透過實作才知道是否可行.</p>
+<p>此外, 由於配置過程中若採 interactive 模式必須要動態讓 Python 程式在 DNS 伺服器中以管理者執行 script. 或許可以試試採用 subprocess.check_call(['sudo', 'your_dns_modification_script']) 方式執行.</p><br />手機專用 << <a href='手機專用.html'>Previous</a> <a href='TCExam.html'>Next</a> >> TCExam</div>
         
     <!-- footer -->
       <div class="container">
