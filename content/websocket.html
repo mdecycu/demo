@@ -142,81 +142,56 @@ img.add_border {
           
         </header>
     <div id="tipue_search_content">cadw7 << <a href='cadw7.html'>Previous</a> <a href='Solvespace.html'>Next</a> >> Solvespace<br /><h1>websocket</h1>
+<p><a href="https://snyk.io/blog/how-to-build-a-secure-websocket-server-in-python/">https://snyk.io/blog/how-to-build-a-secure-websocket-server-in-python/</a>　?</p>
 <p>網際前端與網際後端傳送設計參數, 若 stud server 可以安裝 NX, 則使用者可以從網際前端將設計變數送到 server 後, 將此設計變數透過 NXOpen 驅動 NX 改變零件尺寸或組立位置.</p>
 <p>相同機制, 也可以從網際前端將操控 Web based CoppeliaSim 的控制變數送到  server 端後, 直接操控網際場景中作動的機電系統模擬. 例如: 使用者在網際前端送出控制手足球一端連桿的平移距離與速度, 然後經由手足球 server 端的 Python 程式接收後, 以 Remote API 程式架構控制手足球場景.</p>
-<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># Brython websocket example
-"""
-# Python WebSocket server
-# pip install asyncio websockets
-import asyncio
-import websockets
+<p>Websocket client: <a href="https://github.com/websocket-client/websocket-client">https://github.com/websocket-client/websocket-client</a></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># pip install websocket-client rel
+import websocket
+import _thread
+import time
+import rel
 
-async def hello(websocket, path):
-    name = await websocket.recv()
-    print(f"&lt; {name}")
+def on_message(ws, message):
+    print(message)
 
-    greeting = f"Hello {name}!"
+def on_error(ws, error):
+    print(error)
 
-    await websocket.send(greeting)
-    print(f"&gt; {greeting}")
+def on_close(ws, close_status_code, close_msg):
+    print("### closed ###")
 
-start_server = websockets.serve(hello, "localhost", 8765)
+def on_open(ws):
+    print("Opened connection")
 
-asyncio.get_event_loop().run_until_complete(start_server)
-asyncio.get_event_loop().run_forever()
-"""
+if __name__ == "__main__":
+    websocket.enableTrace(True)
+    ''''
+    ws = websocket.WebSocketApp("wss://api.gemini.com/v1/marketdata/BTCUSD",
+                              on_open=on_open,
+                              on_message=on_message,
+                              on_error=on_error,
+                              on_close=on_close)
+    '''
+    ws = websocket.WebSocketApp("ws://localhost:13254",
+                              on_open=on_open,
+                              on_message=on_message,
+                              on_error=on_error,
+                              on_close=on_close)
+    ws.run_forever(dispatcher=rel)  # Set dispatcher to automatic reconnection
+    rel.signal(2, rel.abort)  # Keyboard Interrupt
+    rel.dispatch()</pre>
+<p>Wesocket server: <a href="https://github.com/Pithikos/python-websocket-server">https://github.com/Pithikos/python-websocket-server</a> </p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># pip install websocket-server
+import logging
+from websocket_server import WebsocketServer
 
-from browser import document
-from browser import html, window, websocket
+def new_client(client, server):
+	server.send_message_to_all("Hey all, a new client has joined us")
 
-# 將 brython_div 變數設為 id 為 "brython_div 的 doc 物件
-brython_div = document["brython_div"]
-
-# 插入輸入表單
-form = html.FORM()
-gearNumInput = html.INPUT(type="text", id="data", value="特斯拉")
-button = html.BUTTON("Run Websocket", id="run")
-button3 = html.BUTTON("Close Connection", id="close")
-form &lt;= "Name: " + gearNumInput  + html.BR()
-brython_div &lt;= form + button + html.BR()
-brython_div &lt;= button3 + html.BR()
-
-def on_open(evt):
-    # Web Socket is connected, send data using send()
-    data = document["data"].value
-    if data:
-        ws.send(data)
-        alert("Message is sent")
-
-def on_message(evt):
-    # message received from server
-    alert("Message received : %s" %evt.data)
-
-def on_close(evt):
-    # websocket is closed
-    alert("Connection is closed")
-
-ws = None
-def _test(_):
-    global ws
-    # open a web socket
-    # ws 為一般連線, wss 為 secure 連線
-    ws = websocket.WebSocket("ws://localhost:8765")
-    # attach functions to web sockets events
-    ws.bind("open", on_open)
-    ws.bind("message", on_message)
-    ws.bind("close", on_close)
-
-def close_connection(_):
-    ws.close()
-
-def hello(ev):
-    alert("Hello !")
-
-# 假如不導入 websocket, 也可以執行 Javascript 的 WebSocket
-#websocket = window.WebSocket.new
-document["run"].bind("click", _test)
-document["close"].bind("click", close_connection)</pre>
+server = WebsocketServer(host='127.0.0.1', port=13254, loglevel=logging.INFO)
+server.set_fn_new_client(new_client)
+server.run_forever()</pre>
 <p></p><br />cadw7 << <a href='cadw7.html'>Previous</a> <a href='Solvespace.html'>Next</a> >> Solvespace</div>
         
     <!-- footer -->
