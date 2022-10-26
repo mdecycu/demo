@@ -96,6 +96,7 @@ ProxyCommand /usr/bin/ncat --proxy p42.cycu.org:3128 --proxy-type http %h %p</pr
 <p>假如要讓 stud 伺服器能為每位用戶建立一個獨特的 domain name. 在 DNS 的架構下, 可以讓同一個 IPv6 address 透過多個 CNAME 別名的方式達成. 而在同一台主機中伺服多個 domain name 網站的方法, 則可以使用 Nginx 中的 virtual hosts (在一台伺服器中建立多個不同符號名稱的網站) 設定達成. 也就是各網站都透過同一個 443 埠號, 為每一個網站建立 server 設定, 並讓 server_name 分別對應至各用戶的網站 domain name. 然後利用 Nginx server 中的 proxy_pass 指向近端的 python3 server.py 所啟動的 localhost 網站內容即可.</p>
 <p>至於各別名的 https 網站數位簽章, 則可以利用 Let's Encrypt 的設定達成, 只是一次要在同一台伺服器共享超過兩百個 domain names, 必須透過實作才知道是否可行.</p>
 <p>此外, 由於配置過程中若採 interactive 模式必須要動態讓 Python 程式在 DNS 伺服器中以管理者執行 script. 或許可以試試採用 subprocess.check_call(['sudo', 'your_dns_modification_script']) 方式執行.</p><h2>TCExam</h2>
+<p>53 機器, 外部 pj2022 內部 tcexam</p>
 <p>啟動流程:</p>
 <p>進入 C:\tcexam\pgsql 執行 start.bat 啟動資料庫伺服器</p>
 <p>其餘對應的 nginx 與 php 執行對應都採 service 啟動</p>
@@ -103,6 +104,8 @@ ProxyCommand /usr/bin/ncat --proxy p42.cycu.org:3128 --proxy-type http %h %p</pr
 <p>C:\tcexam\tcexam\shared\config\tce_user_registration.php</p>
 <p>由 define('K_USRREG_ENABLED', false); 控制是否開放用戶註冊</p><h2>vscode</h2>
 <p><a href="https://code.visualstudio.com/docs/editor/vscode-web#_opening-a-project">https://code.visualstudio.com/docs/editor/vscode-web#_opening-a-project</a></p><h1>News</h1>
+<p><a href="https://www.digitaltrends.com/news/search-and-rescue-jetpack-aces-flight-test-in-lousy-weather/">https://www.digitaljournal.com/business/video-games-could-improve-kids-brains-study/article</a></p>
+<p><a href="https://www.digitaltrends.com/news/search-and-rescue-jetpack-aces-flight-test-in-lousy-weather/">https://www.datacenterdynamics.com/en/news/ibm-begins-installing-on-premise-quantum-computer-at-ohios-cleveland-clinic/</a></p>
 <p><a href="https://www.digitaltrends.com/news/search-and-rescue-jetpack-aces-flight-test-in-lousy-weather/">https://www.digitaltrends.com/news/search-and-rescue-jetpack-aces-flight-test-in-lousy-weather/</a> </p>
 <p><a href="https://www.reuters.com/technology/exclusive-automakers-double-spending-evs-batteries-12-trillion-by-2030-2022-10-21/">https://www.reuters.com/technology/exclusive-automakers-double-spending-evs-batteries-12-trillion-by-2030-2022-10-21/</a> </p>
 <p><a href="https://www.engadget.com/metas-ai-translator-can-interpret-unwritten-languages-150001511.html">https://www.engadget.com/metas-ai-translator-can-interpret-unwritten-languages-150001511.html</a> </p>
@@ -470,11 +473,12 @@ doc["threejsblock"].bind("click", threejsblock.do)
 <h2>stud server</h2>
 <h4>ps command</h4>
 <p>ps axo pid,comm,user|grep "python3"</p>
+<p>before w8:</p>
+<p> 208291 python3         cad41023210<br/> 219678 python3         cad41023247<br/> 223605 python3         cad41023216<br/> 343086 python3         demo<br/> 352074 python3         cad41023219<br/> 353608 python3         cad41023212</p>
 <h4>specifig port for certain user:</h4>
 <p><a href="https://unix.stackexchange.com/questions/486945/restrict-local-port-access-to-a-specific-user">https://unix.stackexchange.com/questions/486945/restrict-local-port-access-to-a-specific-user</a></p>
 <p>ip6tables -I OUTPUT -o lo -p tcp --dport 5000 --match owner --uid-owner 1000 -j DROP</p>
-<p><a href="https://github.com/hkbakke/fwgen">https://github.com/hkbakke/fwgen</a></p>
-<h3>cadw7</h3>
+<p><a href="https://github.com/hkbakke/fwgen">https://github.com/hkbakke/fwgen</a></p><h3>cadw7</h3>
 <p>stage1</p>
 <p>152815 python3 cad41023240<br/> 189883 python3 demo<br/> 208291 python3 cad41023210<br/> 219678 python3 cad41023247<br/> 223605 python3 cad41023216<br/> 256296 python3 cad41023124<br/> 257116 python3 cad41023118<br/> 257188 python3 cad41023119</p>
 <p>stage2</p>
