@@ -91,7 +91,21 @@ ProxyCommand /usr/bin/ncat --proxy p42.cycu.org:3128 --proxy-type http %h %p</pr
 <p style="padding-left: 30px;"><a href="https://github.com/nhn/tui.image-editor">https://github.com/nhn/tui.image-editor</a> </p>
 <p style="padding-left: 30px;"><a href="https://github.com/viliusle/miniPaint">https://github.com/viliusle/miniPaint</a> </p>
 <p>另外一項可能的功能是，當使用者在編輯模式下，可直接選擇將拍攝的照片插入頁面中。</p>
-<p>並且針對特定頁面中使用者已經輸入的照片檔案，選擇送至伺服器進行影像辨識，並將結果自動嵌入頁面。</p><h3>Nginx</h3>
+<p>並且針對特定頁面中使用者已經輸入的照片檔案，選擇送至伺服器進行影像辨識，並將結果自動嵌入頁面。</p><h3>CMS 改版</h3>
+<p><a href="https://github.com/mdecycu/cmsimde/blob/master/static/axuploader.js">https://github.com/mdecycu/cmsimde/blob/master/static/axuploader.js</a> </p>
+<p>影片上傳後自動縮圖或允許使用者線上編輯</p>
+<p><a href="https://link.springer.com/book/10.1007/978-1-4842-4395-4">Beginning Javascript</a> (2019)</p>
+<p style="padding-left: 30px;">Introduction to Javascript</p>
+<p style="padding-left: 30px;">Javascript and Debelopment Tools</p>
+<p style="padding-left: 30px;">Javascript Variables</p>
+<p style="padding-left: 30px;">Javascript Objects and Arrays</p>
+<p style="padding-left: 30px;">Javascript Functions and Context</p>
+<p style="padding-left: 30px;">Javascript and Events</p>
+<p style="padding-left: 30px;">Javascript and Programming Paradigms</p>
+<p style="padding-left: 30px;">Javascript and Debugging</p>
+<p><a href="https://link.springer.com/book/10.1007/978-1-4842-5394-6">Javascript Next</a> (2019)</p>
+<p><a href="https://link.springer.com/book/10.1007/978-1-4842-0787-1">Pratical JQuery</a> (2015)</p>
+<p><a href="https://link.springer.com/book/10.1007/978-1-4842-3027-5">Beginning JQuery</a> (2017)</p><h3>Nginx</h3>
 <p>目前的 stud 伺服器採用 ports 讓多用戶可以在同一台主機上執行動態 cmsimde 網站. 另一種配置方法, 就如同 Github Pages 與 Replit 的作法, 透過 DNS 的配置, 為每一位用戶建立一個獨特的 domain name.</p>
 <p>假如要讓 stud 伺服器能為每位用戶建立一個獨特的 domain name. 在 DNS 的架構下, 可以讓同一個 IPv6 address 透過多個 CNAME 別名的方式達成. 而在同一台主機中伺服多個 domain name 網站的方法, 則可以使用 Nginx 中的 virtual hosts (在一台伺服器中建立多個不同符號名稱的網站) 設定達成. 也就是各網站都透過同一個 443 埠號, 為每一個網站建立 server 設定, 並讓 server_name 分別對應至各用戶的網站 domain name. 然後利用 Nginx server 中的 proxy_pass 指向近端的 python3 server.py 所啟動的 localhost 網站內容即可.</p>
 <p>至於各別名的 https 網站數位簽章, 則可以利用 Let's Encrypt 的設定達成, 只是一次要在同一台伺服器共享超過兩百個 domain names, 必須透過實作才知道是否可行.</p>
