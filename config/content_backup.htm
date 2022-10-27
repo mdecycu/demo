@@ -119,8 +119,9 @@ ProxyCommand /usr/bin/ncat --proxy p42.cycu.org:3128 --proxy-type http %h %p</pr
 <p>由 define('K_USRREG_ENABLED', false); 控制是否開放用戶註冊</p>
 <h3>bugs</h3>
 <p>原始碼出處: <a href="https://github.com/tecnickcom/tcexam">https://github.com/tecnickcom/tcexam</a> </p>
-<p>1. During shhow test result:</p>
+<p>1. During show test result (<span style="color: #ff0000;">fixed by adding round() from line 503 to 590</span>) :</p>
 <p>ATTENTION: [8192] Implicit conversion from float 64.2 to int loses precision | LINE: 620 | FILE: C:\tcexam\tcexam\shared\code\tce_functions_test_stats.php</p>
+<p>討論: 是否要將 tce_functions_test_stats 中的 round() 除式,  改為 <a href="https://www.php.net/manual/en/function.intdiv.php">intdiv</a>()</p>
 <p></p>
 <p>2. During exam (<span style="color: #ff0000;">can avoid</span>):</p>
 <p style="padding-left: 30px;">shared code</p>
@@ -517,7 +518,7 @@ doc["threejsblock"].bind("click", threejsblock.do)
 <h4>ps command</h4>
 <p>ps axo pid,comm,user|grep "python3"</p>
 <p>before w8:</p>
-<p> 208291 python3         cad41023210<br/> 219678 python3         cad41023247<br/> 223605 python3         cad41023216<br/> 343086 python3         demo<br/> 352074 python3         cad41023219<br/> 353608 python3         cad41023212</p>
+<p> 208291 python3         cad41023210<br/> 219678 python3         cad41023247<br/> 223605 python3         cad41023216<br/> 343086 python3         demo<br> 352074 python3         cad41023219<br/> 353608 python3         cad41023212</br></p>
 <h4>specifig port for certain user:</h4>
 <p><a href="https://unix.stackexchange.com/questions/486945/restrict-local-port-access-to-a-specific-user">https://unix.stackexchange.com/questions/486945/restrict-local-port-access-to-a-specific-user</a></p>
 <p>ip6tables -I OUTPUT -o lo -p tcp --dport 5000 --match owner --uid-owner 1000 -j DROP</p>
@@ -600,7 +601,7 @@ server.run_forever()</pre>
 <p>Onshape: <a href="https://cadlab.mde.tw/post/onshape-featurescript-spur-gear-ling-jian.html">https://cadlab.mde.tw/post/onshape-featurescript-spur-gear-ling-jian.html</a></p><h3>NX Drill Press</h3>
 <p><a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=8076193">Implementation of recognition algorithm with NXOpen API in Siemens NX</a> (2017)</p>
 <p><a href="https://pdf.sciencedirectassets.com/306234/1-s2.0-S2351978920X00151/1-s2.0-S2351978920319247/main.pdf?X-Amz-Security-Token=IQoJb3JpZ2luX2VjECkaCXVzLWVhc3QtMSJGMEQCIFH315Qdec7j4wpPuU6SaCislMPBLir12O%2FmYHtm3Y7sAiBB3y1oDZ7n2laTMhfr4Y%2Bp%2Fba0R2mEIxsezzLDye0WnSrMBAgSEAUaDDA1OTAwMzU0Njg2NSIM56rdvYT90bUiMhuqKqkEpR5C%2Fw8ZwvpMr%2FcsRueioSuK3xygenOWLkiZT578RXcwVGFUvpcaZliD%2BrO2BcquXcQWQoQvg8p7L3ryttPmOICEZBEZWi%2BhuQNaBxi3p6oqLBVUGYV0MyO%2FFzq%2Bo%2BpRi94v7uEMCboqCWloVPliJVuEE%2BPphwCig8JgiQjMW8M6tw8dKFdg9BjtEJKXDq5TZt653IyB4zyMYbgzSIjmJscEU2f5aJ1U5I%2B8Dqi75OX8If115r8qG%2FrLRP5AqkuEy6lhs5ZRRiRy9IryfczkXD6Rj34ZITvd%2F0xj6fkMw9EVPueBdJyOyLC2Hem0J%2FV%2F8HGO2oQkwDoy%2B%2BXGLh08Mmu%2BDkQKj6r8bt9Z3fBYGYBg7%2FP00OiKLXZtlbig5McfrTBHAKyEG4VNmMxXmH%2BB%2BxRWgDOq5dzh%2FvMKFV4MLudjW5reUEInN15DH%2FtRRFoqTkWWFQY9VpCpzi7Cah8HdKcGhl88tsco%2BJHdobNhitpuu5j%2BiOSwQDE6ZZGRzhRamVu6CqeA7lR17OkIJ5CRS49MWB9iU0T4x5r%2FBvp3NKo92NsBB1m4ZxrxCPTigqAfXYxTBJK3LHNjm99MOUCluf7UWq9yoeKZ7F2eZNPSa%2BhOWiGAlA%2BuMGsFUx4vnElKa1EHixH65oHMfwY4tZOvNkoXB1BJnJCbB1IXu1HrWZXCjuf5FnwjTqeieMWtOEcz4PvfQ%2FS3mEDQdjyyaM5ZWQkWm7hukYDUzDDThemaBjqqAZDIEmpPxM%2BhcXC0ENvkFBypqwJWF2E2fZkGOqjbj%2F5A5YPbwmP%2FLxlXCdL4obgO4QCNLm1NbHAwJiXkh1ZNJi%2BlTmmE8It3Vq3AcXS68ch1mmW399zHohLyRf8krVXakhPcY%2FFH1QUD83zOnToZDNcMapZk8ge0CaKXmpwIRSPBLAsKstqgNIePeyFJ8ktMq4Kq00U%2B2lpZFT4nk8D2LIfB3Id8Pim3OQHz&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Date=20221027T092810Z&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Expires=300&amp;X-Amz-Credential=ASIAQ3PHCVTYX2T3KX6I%2F20221027%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Signature=26a21edf5c01ce6191feb5b76bfe39726e4e387d4412af946a9fdf36c2dc8cd6&amp;hash=f483b415ae2e64f9211e0b7a7552fd70e7dcc57ea61f013894876f5f54b98e28&amp;host=68042c943591013ac2b2430a89b270f6af2c76d8dfd086a07176afe7c76c2c61&amp;pii=S2351978920319247&amp;tid=spdf-41af57d8-d0fd-433d-ba4a-ef7240b14045&amp;sid=72d997746acea64db248a7d5e62c58169abegxrqa&amp;type=client&amp;ua=4d545207545253515058&amp;rr=760a666758fcf23c">Automatic weld path definition in CAD</a> (2020)</p>
-<p><a href="https://www.diva-portal.org/smash/get/diva2:849129/FULLTEXT01.pdf">Multidisciplinary analysis of jet engine components - Development of methods and tools for design automatisation in a multidisciplinary context</a> (2015)</p>
+<p><a href="https://www.diva-portal.org/smash/get/diva2:849129/FULLTEXT01.pdf">Multidisciplinary analysis of jet engine components - Development of methods and tools for design automatisation in a multidisciplinary context</a> (2015) - <a href="https://ju.se/en/about-us/school-of-engineering.html">School of Engineering</a></p>
 <p><a href="http://cadabout.ru/2017/02/01/siemens-nx-convert-part-units/">http://cadabout.ru/2017/02/01/siemens-nx-convert-part-units/</a> </p>
 <p><a href="https://community.sw.siemens.com/s/question/0D54O00006E5zkoSAB/when-converting-parasolid-to-parametric-model-there-should-not-any-parent-child-relationship">When converting parasolid to Parametric model, there should not any parent child relationship (siemens.com)</a></p>
 <p><a href="https://www.eng-tips.com/viewthread.cfm?qid=354285">Conversion of un-parametric model to parametric model in UG NX. - Siemens: UG/NX - Eng-Tips</a></p>

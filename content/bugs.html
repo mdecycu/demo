@@ -143,8 +143,9 @@ img.add_border {
         </header>
     <div id="tipue_search_content">TCExam << <a href='TCExam.html'>Previous</a> <a href='vscode.html'>Next</a> >> vscode<br /><h1>bugs</h1>
 <p>原始碼出處: <a href="https://github.com/tecnickcom/tcexam">https://github.com/tecnickcom/tcexam</a> </p>
-<p>1. During shhow test result:</p>
+<p>1. During show test result (<span style="color: #ff0000;">fixed by adding round() from line 503 to 590</span>) :</p>
 <p>ATTENTION: [8192] Implicit conversion from float 64.2 to int loses precision | LINE: 620 | FILE: C:\tcexam\tcexam\shared\code\tce_functions_test_stats.php</p>
+<p>討論: 是否要將 tce_functions_test_stats 中的 round() 除式,  改為 <a href="https://www.php.net/manual/en/function.intdiv.php">intdiv</a>()</p>
 <p></p>
 <p>2. During exam (<span style="color: #ff0000;">can avoid</span>):</p>
 <p style="padding-left: 30px;">shared code</p>
@@ -152,15 +153,15 @@ img.add_border {
 <p style="padding-left: 30px;">public code</p>
 <p style="padding-left: 30px;">tce_test_execute.php 119</p>
 <p style="padding-left: 30px;">發生原因, 其中一題只有題目沒有選項,  造成 $num_answers = 0 放到計算 partial 得分時出現 division by zero 錯誤.</p>
-<p>3. During list the test content:</p>
+<p>3. During list the test content (<span style="color: #ff0000;">only happened for old test questions?</span>):</p>
 <p style="padding-left: 30px;">ATTENTION: [8192] htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated | LINE: 793 | FILE: C:\tcexam\tcexam\admin\code\tce_edit_answer.php&lt;/div&gt;<br/>&gt;</p>
-<p>4. During list the test content:</p>
+<p>4. During list the test content (<span style="color: #ff0000;">fixed</span>):</p>
 <div class="warning" style="padding-left: 30px;">ATTENTION: [8192] Implicit conversion from float 55.6 to int loses precision | LINE: 620 | FILE: C:\tcexam\tcexam\shared\code\tce_functions_test_stats.php</div>
 <div class="warning" style="padding-left: 30px;">ATTENTION: [8192] Implicit conversion from float 60.44444444444444 to int loses precision | LINE: 639 | FILE: C:\tcexam\tcexam\shared\code\tce_functions_test_stats.php</div>
 <div class="warning" style="padding-left: 30px;"></div>
 <div class="warning" style="padding-left: 30px;">ATTENTION: [8192] Implicit conversion from float 106.6 to int loses precision | LINE: 620 | FILE: C:\tcexam\tcexam\shared\code\tce_functions_test_stats.php<br/>ATTENTION: [8192] Implicit conversion from float 44.5 to int loses precision | LINE: 639 | FILE: C:\tcexam\tcexam\shared\code\tce_functions_test_stats.php<br/>ATTENTION: [8192] Implicit conversion from float 134.16666666666666 to int loses precision | LINE: 639 | FILE: C:\tcexam\tcexam\shared\code\tce_functions_test_stats.php<br/><br/></div>
 <p style="padding-left: 30px;"><a href="https://stackoverflow.com/questions/71534654/implicit-conversion-from-float-number-to-int-loses-precision">參考1</a>, <a href="https://stackoverflow.com/questions/73653446/deprecated-implicit-conversion-from-float-to-int-loses-precision/73653527">參考2</a></p>
-<div class="warning">5.</div>
+<div class="warning">5. <span style="color: #ff0000;">Not sure if this bug fixed or not</span>.</div>
 <div class="warning"></div>
 <div class="warning" style="padding-left: 30px;">ATTENTION: [8192] htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated | LINE: 793 | FILE: C:\tcexam\tcexam\admin\code\tce_edit_answer.php&lt;/div&gt;</div>
 <div class="warning"></div>
