@@ -116,7 +116,25 @@ ProxyCommand /usr/bin/ncat --proxy p42.cycu.org:3128 --proxy-type http %h %p</pr
 <p>其餘對應的 nginx 與 php 執行對應都採 service 啟動</p>
 <p>管理設定:</p>
 <p>C:\tcexam\tcexam\shared\config\tce_user_registration.php</p>
-<p>由 define('K_USRREG_ENABLED', false); 控制是否開放用戶註冊</p><h2>vscode</h2>
+<p>由 define('K_USRREG_ENABLED', false); 控制是否開放用戶註冊</p>
+<h3>bugs</h3>
+<p>原始碼出處: <a href="https://github.com/tecnickcom/tcexam">https://github.com/tecnickcom/tcexam</a> </p>
+<p>1. During shhow test result:</p>
+<p>ATTENTION: [8192] Implicit conversion from float 64.2 to int loses precision | LINE: 620 | FILE: C:\tcexam\tcexam\shared\code\tce_functions_test_stats.php</p>
+<p></p>
+<p>2. During exam (<span style="color: #ff0000;">can avoid</span>):</p>
+<p style="padding-left: 30px;">shared code</p>
+<p style="padding-left: 30px;">tce_functions_test.php 1516</p>
+<p style="padding-left: 30px;">public code</p>
+<p style="padding-left: 30px;">tce_test_execute.php 119</p>
+<p style="padding-left: 30px;">發生原因, 其中一題只有題目沒有選項,  造成 $num_answers = 0 放到計算 partial 得分時出現 division by zero 錯誤.</p>
+<p>3. During list the test content:</p>
+<p style="padding-left: 30px;">ATTENTION: [8192] htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated | LINE: 793 | FILE: C:\tcexam\tcexam\admin\code\tce_edit_answer.php&lt;/div&gt;<br/>&gt;</p>
+<p>4. During list the test content:</p>
+<div class="warning" style="padding-left: 30px;">ATTENTION: [8192] Implicit conversion from float 55.6 to int loses precision | LINE: 620 | FILE: C:\tcexam\tcexam\shared\code\tce_functions_test_stats.php</div>
+<div class="warning" style="padding-left: 30px;">ATTENTION: [8192] Implicit conversion from float 60.44444444444444 to int loses precision | LINE: 639 | FILE: C:\tcexam\tcexam\shared\code\tce_functions_test_stats.php</div>
+<div class="warning" style="padding-left: 30px;"></div>
+<div class="warning" style="padding-left: 30px;"><a href="https://stackoverflow.com/questions/71534654/implicit-conversion-from-float-number-to-int-loses-precision">參考1</a>, <a href="https://stackoverflow.com/questions/73653446/deprecated-implicit-conversion-from-float-to-int-loses-precision/73653527">參考2</a></div><h2>vscode</h2>
 <p><a href="https://code.visualstudio.com/docs/editor/vscode-web#_opening-a-project">https://code.visualstudio.com/docs/editor/vscode-web#_opening-a-project</a></p><h1>News</h1>
 <p><a href="https://www.pcgamer.com/a-single-chip-has-managed-to-transfer-the-entire-internets-traffic-in-a-single-second/">https://www.pcgamer.com/a-single-chip-has-managed-to-transfer-the-entire-internets-traffic-in-a-single-second/</a> - 網路連線速度只有更快沒有最快</p>
 <p><a href="https://www.digitaltrends.com/news/search-and-rescue-jetpack-aces-flight-test-in-lousy-weather/">https://www.digitaljournal.com/business/video-games-could-improve-kids-brains-study/article</a> - 不是所有的線上遊戲都對孩童有害</p>
