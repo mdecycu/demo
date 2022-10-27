@@ -129,15 +129,15 @@ ProxyCommand /usr/bin/ncat --proxy p42.cycu.org:3128 --proxy-type http %h %p</pr
 <p style="padding-left: 30px;">public code</p>
 <p style="padding-left: 30px;">tce_test_execute.php 119</p>
 <p style="padding-left: 30px;">發生原因, 其中一題只有題目沒有選項,  造成 $num_answers = 0 放到計算 partial 得分時出現 division by zero 錯誤.</p>
-<p>3. During list the test content:</p>
+<p>3. During list the test content (<span style="color: #ff0000;">only happened for old test questions?</span>):</p>
 <p style="padding-left: 30px;">ATTENTION: [8192] htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated | LINE: 793 | FILE: C:\tcexam\tcexam\admin\code\tce_edit_answer.php&lt;/div&gt;<br/>&gt;</p>
-<p>4. During list the test content:</p>
+<p>4. During list the test content (<span style="color: #ff0000;">fixed</span>):</p>
 <div class="warning" style="padding-left: 30px;">ATTENTION: [8192] Implicit conversion from float 55.6 to int loses precision | LINE: 620 | FILE: C:\tcexam\tcexam\shared\code\tce_functions_test_stats.php</div>
 <div class="warning" style="padding-left: 30px;">ATTENTION: [8192] Implicit conversion from float 60.44444444444444 to int loses precision | LINE: 639 | FILE: C:\tcexam\tcexam\shared\code\tce_functions_test_stats.php</div>
 <div class="warning" style="padding-left: 30px;"></div>
 <div class="warning" style="padding-left: 30px;">ATTENTION: [8192] Implicit conversion from float 106.6 to int loses precision | LINE: 620 | FILE: C:\tcexam\tcexam\shared\code\tce_functions_test_stats.php<br/>ATTENTION: [8192] Implicit conversion from float 44.5 to int loses precision | LINE: 639 | FILE: C:\tcexam\tcexam\shared\code\tce_functions_test_stats.php<br/>ATTENTION: [8192] Implicit conversion from float 134.16666666666666 to int loses precision | LINE: 639 | FILE: C:\tcexam\tcexam\shared\code\tce_functions_test_stats.php<br/><br/></div>
 <p style="padding-left: 30px;"><a href="https://stackoverflow.com/questions/71534654/implicit-conversion-from-float-number-to-int-loses-precision">參考1</a>, <a href="https://stackoverflow.com/questions/73653446/deprecated-implicit-conversion-from-float-to-int-loses-precision/73653527">參考2</a></p>
-<div class="warning">5.</div>
+<div class="warning">5. <span style="color: #ff0000;">Not sure if this bug fixed or not</span>.</div>
 <div class="warning"></div>
 <div class="warning" style="padding-left: 30px;">ATTENTION: [8192] htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated | LINE: 793 | FILE: C:\tcexam\tcexam\admin\code\tce_edit_answer.php&lt;/div&gt;</div>
 <div class="warning"></div>
@@ -518,7 +518,7 @@ doc["threejsblock"].bind("click", threejsblock.do)
 <h4>ps command</h4>
 <p>ps axo pid,comm,user|grep "python3"</p>
 <p>before w8:</p>
-<p> 208291 python3         cad41023210<br/> 219678 python3         cad41023247<br/> 223605 python3         cad41023216<br/> 343086 python3         demo<br> 352074 python3         cad41023219<br/> 353608 python3         cad41023212</br></p>
+<p> 208291 python3         cad41023210<br/> 219678 python3         cad41023247<br/> 223605 python3         cad41023216<br/> 343086 python3         demo<br/> 352074 python3         cad41023219<br/> 353608 python3         cad41023212</p>
 <h4>specifig port for certain user:</h4>
 <p><a href="https://unix.stackexchange.com/questions/486945/restrict-local-port-access-to-a-specific-user">https://unix.stackexchange.com/questions/486945/restrict-local-port-access-to-a-specific-user</a></p>
 <p>ip6tables -I OUTPUT -o lo -p tcp --dport 5000 --match owner --uid-owner 1000 -j DROP</p>
