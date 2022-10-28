@@ -1,5 +1,4 @@
 <h1>About</h1>
-<p>w8 1a</p>
 <p>在 2022 Fall 的課程中, 採近全雲端的機械產品設計, 可以透過瀏覽器直接利用 stud 伺服器與 Onshape 執行程式編寫、內容管理與零組件設計繪圖, 唯獨機電模擬目前仍無法全部在瀏覽器中運行, 但至少已經可以透過 Three.js 與 Websocket 的整合, 讓 CoppeliaSim 的模擬場景在瀏覽器中呈現. 另外一個趨勢是, 除了電腦必須讓手機與平板在機械設計流程中扮演更重要的角色. 網站的內容維護與觀看更需考慮在電腦、手機與平板都能平順進行.</p>
 <p>至於近端的機械產品設計流程則可以採 Solvespace 與 NX 完成零組件設計繪圖, 並以可攜程式環境編寫 server 端的應用程式, 用來控制零組件參數或進行機電模擬系統的控制等. 而 cmsimde 在近端也可以如遠端操作進行動態與靜態網頁的維護與展示.</p>
 <p>靜態網站: <a href="https://mde.tw/demo/">https://mde.tw/demo/</a></p>
@@ -92,8 +91,10 @@ ProxyCommand /usr/bin/ncat --proxy p42.cycu.org:3128 --proxy-type http %h %p</pr
 <p style="padding-left: 30px;"><a href="https://github.com/viliusle/miniPaint">https://github.com/viliusle/miniPaint</a> </p>
 <p>另外一項可能的功能是，當使用者在編輯模式下，可直接選擇將拍攝的照片插入頁面中。</p>
 <p>並且針對特定頁面中使用者已經輸入的照片檔案，選擇送至伺服器進行影像辨識，並將結果自動嵌入頁面。</p><h3>CMS 改版</h3>
-<p><a href="https://github.com/mdecycu/cmsimde/blob/master/static/axuploader.js">https://github.com/mdecycu/cmsimde/blob/master/static/axuploader.js</a> </p>
-<p>影片上傳後自動縮圖或允許使用者線上編輯</p>
+<p><a href="https://github.com/mdecycu/cmsimde/blob/master/static/axuploader.js">https://github.com/mdecycu/cmsimde/blob/master/static/axuploader.js</a></p>
+<p>1. 其實完成 image upload 之後, 檔案已經在 server 端, 因此可以利用 Python 處理手機所上傳的圖片檔案. 使用者之後就可以直接在圖片上加註說明文字.</p>
+<p>2. 另外一個重點是, 當 server 收到一組圖檔後, 是否需要進行 OCR 辨識及零件尺寸辨識.</p>
+<p><a href="https://stackoverflow.com/questions/31797867/invoke-brython-function-from-javascript">python 3.x - Invoke Brython function from JavaScript - Stack Overflow</a></p>
 <p><a href="https://link.springer.com/book/10.1007/978-1-4842-4395-4">Beginning Javascript</a> (2019)</p>
 <p style="padding-left: 30px;">Introduction to Javascript</p>
 <p style="padding-left: 30px;">Javascript and Debelopment Tools</p>
@@ -142,7 +143,9 @@ ProxyCommand /usr/bin/ncat --proxy p42.cycu.org:3128 --proxy-type http %h %p</pr
 <div class="warning" style="padding-left: 30px;">ATTENTION: [8192] htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated | LINE: 793 | FILE: C:\tcexam\tcexam\admin\code\tce_edit_answer.php&lt;/div&gt;</div>
 <div class="warning"></div>
 <div class="warning"></div><h2>vscode</h2>
-<p><a href="https://code.visualstudio.com/docs/editor/vscode-web#_opening-a-project">https://code.visualstudio.com/docs/editor/vscode-web#_opening-a-project</a></p><h1>News</h1>
+<p><a href="https://code.visualstudio.com/docs/editor/vscode-web#_opening-a-project">https://code.visualstudio.com/docs/editor/vscode-web#_opening-a-project</a></p>
+<h2>Windows</h2>
+<p><a href="https://zhuanlan.zhihu.com/p/549971797">如何查找 Windows PC 的序列号 - 知乎 (zhihu.com)</a></p><h1>News</h1>
 <p><a href="https://phys.org/news/2022-10-scientists-exotic-quantum-state-room.html">https://phys.org/news/2022-10-scientists-exotic-quantum-state-room.html</a> </p>
 <p><a href="https://www.pcgamer.com/a-single-chip-has-managed-to-transfer-the-entire-internets-traffic-in-a-single-second/">https://www.pcgamer.com/a-single-chip-has-managed-to-transfer-the-entire-internets-traffic-in-a-single-second/</a> - 網路連線速度只有更快沒有最快</p>
 <p><a href="https://www.digitaltrends.com/news/search-and-rescue-jetpack-aces-flight-test-in-lousy-weather/">https://www.digitaljournal.com/business/video-games-could-improve-kids-brains-study/article</a> - 不是所有的線上遊戲都對孩童有害</p>
@@ -250,9 +253,18 @@ for i in data:
     # 每一筆資料列出後, 以 break 標註跳行
     brython_div1 &lt;= html.BR()</pre>
 <p><br/><br/></p><h2>Brython</h2>
+<p><a href="https://zhuanlan.zhihu.com/p/459819939">【python】Brython：浏览器中的Python-第一篇 - 知乎 (zhihu.com)</a></p>
+<p><a href="https://www.geeksforgeeks.org/introduction-to-brython/">Introduction to Brython - GeeksforGeeks</a></p>
+<p><a href="https://www.it145.com/9/102373.html">【python】Brython：瀏覽器中的Python-第二篇 - IT145.com</a></p>
+<p><a href="https://www.it145.com/9/102415.html">【python】Brython：瀏覽器中的Python-第四篇 - IT145.com</a></p>
+<p><a href="https://www.it145.com/9/102475.html">【python】Brython：瀏覽器中的Python-第六篇 - IT145.com</a></p>
+<p><a href="https://www.it145.com/9/102567.html">【python】Brython：瀏覽器中的Python-第七篇 - IT145.com</a></p>
+<p><a href="https://www.it145.com/9/102581.html">【python】Brython：瀏覽器中的Python-第八篇 - IT145.com</a></p>
+<p><a href="https://www.it145.com/9/102659.html">【python】Brython：瀏覽器中的Python-第十篇 - IT145.com</a></p>
+<p><a href="https://www.it145.com/9/102658.html">【python】Brython：瀏覽器中的Python-最終篇 - IT145.com</a></p>
 <p>Pyscript?:</p>
 <p style="padding-left: 30px;"><a href="https://www.jhanley.com/blog/pyscript-javascript-and-python-interoperability/">https://www.jhanley.com/blog/pyscript-javascript-and-python-interoperability/</a>　</p>
-<p style="padding-left: 30px;"><a href="https://realpython.com/pyscript-python-in-browser/">https://realpython.com/pyscript-python-in-browser/</a> </p>
+<p style="padding-left: 30px;"><a href="https://realpython.com/pyscript-python-in-browser/">https://realpython.com/pyscript-python-in-browser/</a></p>
 <p>學習 Brython 程式語言</p>
 <p>執行 Three.js 相關 Brython 程式, 需要將 <a href="/downloads/py/pyweb3d.py">pyweb3d.py</a> 放入 downloads/py 目錄中ㄡ</p>
 <p><a href="https://mde.tw/content/Python.html">https://mde.tw/content/Python.html</a></p>
@@ -515,7 +527,8 @@ doc["threejsblock"].bind("click", threejsblock.do)
 <p>利用 <a href="https://www.coppeliarobotics.com/">CoppeliaSim</a> 執行機電控制系統設計與模擬</p>
 <p>利用 stud.cycu.org 動態網站整理上述工具實習流程與結果, 並同步內容至個人的 Github Pages 網站.</p>
 <p>相關設計程式包含 server 端的 Python 與 browser 端的 brython, 其間透過 websocket 傳送設計變數.</p>
-<h2>stud server</h2>
+<h2>w8</h2>
+<p><img alt="" height="538" src="/images/w8_onshape_solvespace_nx_drill_press.png" width="600"/></p><h2>stud server</h2>
 <h4>ps command</h4>
 <p>ps axo pid,comm,user|grep "python3"</p>
 <p>before w8:</p>
@@ -578,18 +591,20 @@ def new_client(client, server):
 server = WebsocketServer(host='127.0.0.1', port=13254, loglevel=logging.INFO)
 server.set_fn_new_client(new_client)
 server.run_forever()</pre>
-<p></p><h2>Solvespace</h2>
-<p><a href="https://github.com/solvespace/solvespace/milestone/4">https://github.com/solvespace/solvespace/milestone/4</a> </p>
-<p><a href="https://www.inapps.net/how-solvespace-is-retooling-its-3d-cad-open-source-community-inapps-2022/">https://www.inapps.net/how-solvespace-is-retooling-its-3d-cad-open-source-community-inapps-2022/</a> </p>
-<p><a href="https://github.com/KmolYuan/solvespace">https://github.com/KmolYuan/solvespace</a> </p>
-<p><a href="https://hackaday.com/2020/07/16/freecad-vs-solvespace/">https://hackaday.com/2020/07/16/freecad-vs-solvespace/</a> </p>
+<p></p><h2>STEP</h2>
+<p>The standard STEP AP242 (ISO 10303-242) “Managed model based 3D engineering" is the merging of  2 ISO standards:<br/><br/>- Aerospace's STEP AP203 "Configuration controlled 3D design",<br/>- and Automotive's STEP AP214 "Core data for automotive mechanical design processes.</p>
+<h2>Solvespace</h2>
+<p><a href="https://github.com/solvespace/solvespace/milestone/4">https://github.com/solvespace/solvespace/milestone/4</a></p>
+<p><a href="https://www.inapps.net/how-solvespace-is-retooling-its-3d-cad-open-source-community-inapps-2022/">https://www.inapps.net/how-solvespace-is-retooling-its-3d-cad-open-source-community-inapps-2022/</a></p>
+<p><a href="https://github.com/KmolYuan/solvespace">https://github.com/KmolYuan/solvespace</a></p>
+<p><a href="https://hackaday.com/2020/07/16/freecad-vs-solvespace/">https://hackaday.com/2020/07/16/freecad-vs-solvespace/</a></p>
 <p><span>利用 <a href="https://nfuedu.sharepoint.com/:u:/s/cad2022/Eb7vLI6zX5BOrvj1Gc0M3N8BljxC8i5qp-ftW-PLZT7j7w?e=tXGqbO">portable_2022_fall_13GB.7z</a></span><span>, 完成編譯.</span></p>
 <p>由於利用<span> </span><a href="https://www.msys2.org/">MSYS2</a><span> </span>編譯 Solvespace, 需要 install cmake</p>
 <p>pacman -S mingw-w64-x86_64-cmake</p>
 <p>而且必須 rename Y:\msys64_20210419\mingw64\bin\sh.exe 與 Y:\portablegit_2.31.1\bin\sh.exe 換成其他名稱.</p>
 <p>git clone --recurse-submodules https://github.com/solvespace/solvespace.git<br/>cd solvespace<br/>mkdir build<br/>cd build<br/>cmake .. -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=Release<br/>make<br/><br/>need libwinpthread-1.dll to execute solvespace.exe</p>
 <p>Reference:</p>
-<p><a href="https://www.researchgate.net/profile/Zackary-Stull/publication/311764735_Evaluation_and_Adaptation_of_Open-Source_Development_Tools_for_Mechatronic_Systems/links/58594d9908aeabd9a58b4488/Evaluation-and-Adaptation-of-Open-Source-Development-Tools-for-Mechatronic-Systems.pdf?origin=publication_detail">https://www.researchgate.net/profile/Zackary-Stull/publication/311764735_Evaluation_and_Adaptation_of_Open-Source_Development_Tools_for_Mechatronic_Systems/links/58594d9908aeabd9a58b4488/Evaluation-and-Adaptation-of-Open-Source-Development-Tools-for-Mechatronic-Systems.pdf?origin=publication_detail</a> </p><h2>Onshape</h2>
+<p><a href="https://www.researchgate.net/profile/Zackary-Stull/publication/311764735_Evaluation_and_Adaptation_of_Open-Source_Development_Tools_for_Mechatronic_Systems/links/58594d9908aeabd9a58b4488/Evaluation-and-Adaptation-of-Open-Source-Development-Tools-for-Mechatronic-Systems.pdf?origin=publication_detail">https://www.researchgate.net/profile/Zackary-Stull/publication/311764735_Evaluation_and_Adaptation_of_Open-Source_Development_Tools_for_Mechatronic_Systems/links/58594d9908aeabd9a58b4488/Evaluation-and-Adaptation-of-Open-Source-Development-Tools-for-Mechatronic-Systems.pdf?origin=publication_detail</a></p><h2>Onshape</h2>
 <p><a href="https://cad.onshape.com/documents/349085d7029902d4ce9e141d/w/2f10eab3484f8addb1157a25/e/e29b5743830bcea674ae2bcd?renderMode=0&amp;uiState=63524dc50594ef47ab72b47f">Drill Press 鑽床</a></p>
 <p><iframe height="600" src="https://configurator.cae.tech/" width="800"></iframe></p>
 <h3>Onshape Drill Press</h3>
