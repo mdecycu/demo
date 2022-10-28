@@ -181,7 +181,7 @@ if __name__ == "__main__":
     ws.run_forever(dispatcher=rel)  # Set dispatcher to automatic reconnection
     rel.signal(2, rel.abort)  # Keyboard Interrupt
     rel.dispatch()</pre>
-<p>Wesocket server: <a href="https://github.com/Pithikos/python-websocket-server">https://github.com/Pithikos/python-websocket-server</a> </p>
+<p>Wesocket server: <a href="https://github.com/Pithikos/python-websocket-server">https://github.com/Pithikos/python-websocket-server</a></p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># pip install websocket-server
 import logging
 from websocket_server import WebsocketServer
@@ -192,7 +192,8 @@ def new_client(client, server):
 server = WebsocketServer(host='127.0.0.1', port=13254, loglevel=logging.INFO)
 server.set_fn_new_client(new_client)
 server.run_forever()</pre>
-<p></p><br />cadw7 << <a href='cadw7.html'>Previous</a> <a href='STEP.html'>Next</a> >> STEP</div>
+<p></p>
+<br />cadw7 << <a href='cadw7.html'>Previous</a> <a href='STEP.html'>Next</a> >> STEP</div>
         
     <!-- footer -->
       <div class="container">
