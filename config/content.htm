@@ -7,6 +7,7 @@
 <p></p>
 <h2>手機使用問題</h2>
 <p>新頁面很難輸入新的標題</p>
+<p>是否新增指令按鈕, 在頁面頭或尾端加入 h1, h2 或 h3 標題, 選擇後跳出表單, 讓使用者輸入頁面標題與 level</p>
 <h4>語音輸入</h4>
 <p>cmsimde 動態網頁若能在手機瀏覽器中開啟, 就能使用語音輸入頁面內容</p>
 <p>在這個頁面我們使用手機的語音辨識來輸入內容</p>
@@ -75,6 +76,10 @@ ProxyCommand /usr/bin/ncat --proxy p42.cycu.org:3128 --proxy-type http %h %p</pr
 </ol>
 <p></p>
 <h2>cmsimde</h2>
+<p>Online IDE for developing cmsimde?</p>
+<p>script editor</p>
+<p>web-based restart server.py</p>
+<hr/>
 <p>能不能將 Blog and Reveal.js 也同動態網站, 直接在線上進行編輯改版?</p>
 <p>能不能將 SSH 設定完成後, 直接在線上 acp? (已經完成) 可以透過 user.py 以 blueprint 架構延伸.</p>
 <p><a href="/user/threegear">https://stud.cycu.org:8000/user/threegear</a></p>
@@ -85,8 +90,7 @@ ProxyCommand /usr/bin/ncat --proxy p42.cycu.org:3128 --proxy-type http %h %p</pr
 <p>stud.cycu.org 目前是透過不同的 port 讓多用戶能在同一台電腦伺服器上運行動態網站, 而 Replit 或其他商用雲端系統的做法則是加入 dns 的動態設定, 讓每一位用戶可以各自擁有獨一的 domain name, 然後經由此一 domain name 啟用動態網站.</p>
 <p>實際的可行作法是讓 demo 用戶在 stud.cycu.org 主機上擁有 demo.stud.cycu.org 或 demo.cycu.org 網域名稱的使用權, 然後當使用者在其帳號下的倉儲執行某一特定的主倉儲動態網站時, 以 demo.cycu.org 啟動, 若執行其帳號下的另一個名稱為 wcms 的倉儲動態網站時, 則以 wcms.demo.cycu.org 啟動, 然後依此類推.</p>
 <p>目前 cadlab 總共管理 mde.nfu.edu.tw 與 eng.nfu.edu.tw 等兩個網域的 dns servers, 因此就網路技術層面而言, 上述建構如 Replit 般的網際應用程式服務是可行的. 較為簡單的做法是直接在 dns server 上建立此一服務.</p>
-<p>若要跨 server 建立上述服務, 則 server 間仍需透過類似 Websocket 程式變數的派送, 並在使用者建立帳號後, 便直接在 dns 伺服器上登錄其使用權, 且在同一台電腦的 IPv6 address 上利用 CNAME 分辨各用戶所屬的 domain, 然後在後續伺服器設定時採用.</p>
-<h3>手機專用</h3>
+<p>若要跨 server 建立上述服務, 則 server 間仍需透過類似 Websocket 程式變數的派送, 並在使用者建立帳號後, 便直接在 dns 伺服器上登錄其使用權, 且在同一台電腦的 IPv6 address 上利用 CNAME 分辨各用戶所屬的 domain, 然後在後續伺服器設定時採用.</p><h3>手機專用</h3>
 <p>為了讓手機上的照片或語音輸入能夠使用順暢，上傳的照片要能讓使用者更改檔名，並且讓使用者選擇處理相片大小或進行相關編輯。</p>
 <p>Reference:</p>
 <p style="padding-left: 30px;"><a href="https://github.com/nhn/tui.image-editor">https://github.com/nhn/tui.image-editor</a></p>
@@ -198,7 +202,7 @@ ProxyCommand /usr/bin/ncat --proxy p42.cycu.org:3128 --proxy-type http %h %p</pr
 <p>stud 8000 : demo</p>
 <p>stud 8800 : mde.tw</p>
 <p>stud 8900 : cmsimde_site</p><h1>cp2022</h1>
-<h2>CP抽點程式</h2>
+<p><a href="https://github.com/odenipinedo/Python/blob/master/datacamp/introduction%20to%20Python.ipynb">https://github.com/odenipinedo/Python/blob/master/datacamp/introduction%20to%20Python.ipynb</a> </p><h2>CP抽點程式</h2>
 <p>Python dictionary 資料結構: <a href="https://docs.python.org/3/tutorial/datastructures.html#dictionaries">https://docs.python.org/3/tutorial/datastructures.html#dictionaries</a></p>
 <p>2022 Fall 課程代號:1a 為 0747, 1b 為 0761, 2a 為 0773, 2b 為 0786</p>
 <p style="padding-left: 30px;">每一學期各系所開始的相同課程都使用不同課程代號的程式設計, 並非是很好的資料結構設計, 因為使用者若要列出某科系所開設的課程歷史資料時, 都需要使用不同課程代號執行查詢.</p>
@@ -282,7 +286,8 @@ for i in data:
     # 每一筆資料列出後, 以 break 標註跳行
     brython_div1 &lt;= html.BR()</pre>
 <p><br/><br/></p>
-<h2>Brython</h2>
+<h2>Control</h2>
+<p><a href="https://lcapy.readthedocs.io/en/latest/">https://lcapy.readthedocs.io/en/latest/</a> </p><h2>Brython</h2>
 <p><a href="https://zhuanlan.zhihu.com/p/459819939">【python】Brython：浏览器中的Python-第一篇 - 知乎 (zhihu.com)</a></p>
 <p><a href="https://www.geeksforgeeks.org/introduction-to-brython/">Introduction to Brython - GeeksforGeeks</a></p>
 <p><a href="https://www.it145.com/9/102373.html">【python】Brython：瀏覽器中的Python-第二篇 - IT145.com</a></p>
@@ -546,8 +551,7 @@ doc["threejsblock"].bind("click", threejsblock.do)
 <!-- editor2 結束 --><hr/>
 <p>
 <script src="https://unpkg.com/three@0.144.0/build/three.js" type="text/javascript"></script>
-</p>
-<h1>cad2022</h1>
+</p><h1>cad2022</h1>
 <p><a href="https://www.nist.gov/services-resources/software/step-file-analyzer-and-viewer">STEP File Analyzer and Viewer | NIST</a> </p>
 <p><a href="https://pages.nist.gov/CAD-PMI-Testing/step-file-viewer.html">https://pages.nist.gov/CAD-PMI-Testing/step-file-viewer.html</a></p>
 <p><a href="https://github.com/usnistgov/STP2X3D">https://github.com/usnistgov/STP2X3D</a> in C++</p>
@@ -653,7 +657,10 @@ server.run_forever()</pre>
 <p>What Imventor do to convert step into parametric part:</p>
 <p style="padding-left: 30px;"><a href="https://knowledge.autodesk.com/support/inventor/getting-started/caas/simplecontent/content/inventor-step-file-to-parametric-model.html">https://knowledge.autodesk.com/support/inventor/getting-started/caas/simplecontent/content/inventor-step-file-to-parametric-model.html</a></p>
 <p style="padding-left: 30px;"><a href="https://itsacadworld.blogspot.com/2019/09/inventor-from-step-file-to-parametric.html">https://itsacadworld.blogspot.com/2019/09/inventor-from-step-file-to-parametric.html</a></p>
-<h2>NX</h2>
+<h3>Edu resource</h3>
+<p><a href="https://learn.onshape.com/courses/teaching-a-class-in-onshape">https://learn.onshape.com/courses/teaching-a-class-in-onshape</a> </p>
+<p><a href="https://learn.onshape.com/learning-paths/introduction-to-cad">https://learn.onshape.com/learning-paths/introduction-to-cad</a> </p>
+<p><a href="https://learn.onshape.com/catalog?query=Educator%20Resources">Educator Resources</a></p><h2>NX</h2>
 <p><a href="https://www.youtube.com/channel/UChYht2a_KxGdqqJBQ00m4lA/videos">NX tutorial</a></p>
 <p><a href="https://nxjournaling.com/content/converting-bodies-parts">converting bodies to parts | NX Journaling</a></p>
 <p>Onshape: <a href="https://cadlab.mde.tw/post/onshape-featurescript-spur-gear-ling-jian.html">https://cadlab.mde.tw/post/onshape-featurescript-spur-gear-ling-jian.html</a></p>
@@ -678,7 +685,7 @@ server.run_forever()</pre>
 <h2>CoppeliaSim</h2>
 <p>Opencv 與 Scenes</p>
 <p><a href="http://mod.cycu.org">http://mod.cycu.org</a> has coppeliaSim on Ubuntu desktop</p>
-<h1>Ext</h1>
+<p><a href="https://github.com/ljmanso/coppeliasim_pythonic_api">GitHub - ljmanso/coppeliasim_pythonic_api</a></p><h1>Ext</h1>
 <p>這裡主要是放入一些延伸內容</p>
 <p>包括電腦輔助設計與計算機程式</p>
 <h2>Fusion 360</h2>
