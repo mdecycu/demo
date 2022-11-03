@@ -5,14 +5,15 @@
 <p>倉儲: <a href="https://github.com/mdecycu/demo">https://github.com/mdecycu/demo</a></p>
 <p>公佈欄網站: <a href="https://mde.tw/wcms">https://mde.tw/wcms</a></p>
 <p></p>
-<h2>語音輸入</h2>
+<h2>手機使用問題</h2>
+<p>新頁面很難輸入新的標題</p>
+<h4>語音輸入</h4>
 <p>cmsimde 動態網頁若能在手機瀏覽器中開啟, 就能使用語音輸入頁面內容</p>
 <p>在這個頁面我們使用手機的語音辨識來輸入內容</p>
 <p>一方面可以當作備忘錄來使用</p>
 <p>再者可以把一些即時想到的事項</p>
 <p>或者是未來即將處理的網站改版提醒放在這裡</p>
-<p>頁面編輯之後，可以轉為靜態網頁，然後使用 acp 按鈕直接將改版內容提交到 GitHub Pages</p>
-<h2>w5</h2>
+<p>頁面編輯之後，可以轉為靜態網頁，然後使用 acp 按鈕直接將改版內容提交到 GitHub Pages</p><h2>w5</h2>
 <p>Under Windows:</p>
 <ol>
 <li data-aria-level="1" data-aria-posinset="1"><span data-contrast="auto"><span>所謂 Secure Shell 就是利用</span></span><a href="https://zh.m.wikipedia.org/zh-tw/%E5%85%AC%E5%BC%80%E5%AF%86%E9%92%A5%E5%8A%A0%E5%AF%86"><span data-contrast="auto"><span>公開金鑰加密</span></span></a><span data-contrast="auto"><span>, 在傳輸指令的過程對內容加密, 以保障資訊不被第三方取得, 當使用者在近端執行個人倉儲的動態網站後進行編輯改版, 並將動態網站轉為靜態網站, 希望將新的靜態網站內容送到 Github Pages  中的過程, 可以透過 SSH 協定建立一對數位鑰匙, 其公開鑰匙登錄到 Github SSH 設定區, 而私人鑰匙則放在近端電腦或隨身碟中, 當推送資料時只有與帳號下公鑰配對的私鑰擁有者, 有權限更改倉儲內容, 以下為在 Windows 操作系統採 SSH 對 Github 倉儲進行改版的設定過程.</span></span><span> </span></li>
@@ -145,9 +146,14 @@ ProxyCommand /usr/bin/ncat --proxy p42.cycu.org:3128 --proxy-type http %h %p</pr
 <div class="warning">5. <span style="color: #ff0000;">Not sure if this bug fixed or not</span>.</div>
 <div class="warning"></div>
 <div class="warning" style="padding-left: 30px;">ATTENTION: [8192] htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated | LINE: 793 | FILE: C:\tcexam\tcexam\admin\code\tce_edit_answer.php&lt;/div&gt;</div>
+<div class="warning" style="padding-left: 30px;"></div>
+<div class="warning">6.
+<div class="error" style="padding-left: 30px;">ERROR: [2] pg_query(): Query failed: ERROR: invalid input syntax for type boolean: "" LINE 2: answer_enabled=\'\', ^ | LINE: 83 | FILE: C:\tcexam\tcexam\shared\code\tce_db_dal_postgresql.php</div>
+<div class="warning" style="padding-left: 30px;">ATTENTION: [8192] pg_last_error(): Automatic fetching of PostgreSQL connection is deprecated | LINE: 69 | FILE: C:\tcexam\tcexam\shared\code\tce_db_dal_postgresql.php</div>
+<div class="error" style="padding-left: 30px;">ERROR: ERROR: invalid input syntax for type boolean: "" LINE 2: answer_enabled=\'\', ^</div>
+</div>
 <div class="warning"></div>
-<div class="warning"></div>
-<h2>vscode</h2>
+<div class="warning"></div><h2>vscode</h2>
 <p><a href="https://code.visualstudio.com/docs/editor/vscode-web#_opening-a-project">https://code.visualstudio.com/docs/editor/vscode-web#_opening-a-project</a></p>
 <h2>Windows</h2>
 <p><a href="https://zhuanlan.zhihu.com/p/549971797">如何查找 Windows PC 的序列号 - 知乎 (zhihu.com)</a></p>
