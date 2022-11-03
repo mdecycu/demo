@@ -142,7 +142,11 @@ img.add_border {
           
         </header>
     <div id="tipue_search_content">cp2022 << <a href='cp2022.html'>Previous</a> <a href='CP 靜態網頁連結.html'>Next</a> >> CP 靜態網頁連結<br /><h1>CP抽點程式</h1>
-<p>2022 Fall 課程代號:</p>
+<p>Python dictionary 資料結構: <a href="https://docs.python.org/3/tutorial/datastructures.html#dictionaries">https://docs.python.org/3/tutorial/datastructures.html#dictionaries</a></p>
+<p>2022 Fall 課程代號:1a 為 0747, 1b 為 0761, 2a 為 0773, 2b 為 0786</p>
+<p style="padding-left: 30px;">每一學期各系所開始的相同課程都使用不同課程代號的程式設計, 並非是很好的資料結構設計, 因為使用者若要列出某科系所開設的課程歷史資料時, 都需要使用不同課程代號執行查詢.</p>
+<p style="padding-left: 30px;">若能以在資料結構中加入一個科系代號, 並且固定各科系所開設的特定課程代號, 例如: 若計算機程式為工學院必修課, 則工學院各科系都使用相同課程代號, 使用者就可以針對各科系的固定代號與計算機課程的固定代號, 查詢每一個學期的相關資料.</p>
+<p style="padding-left: 30px;">範例: <a href="http://catalog.mit.edu/degree-charts/mechanical-engineering-course-2/">http://catalog.mit.edu/degree-charts/mechanical-engineering-course-2/</a></p>
 <p>以下為抽點程式 (<a href="https://mde.tw/demo/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/2c6323eff49b496d1bafd210f3ec9707/raw/f9b2c7a6e6db0e75a2a113920be2fb2685e21a84/1_w7_b_cp2022_random_draw.py">執行</a>):</p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># Python 的註解分為單行註解與多行, 單行註解可在字串前方放入 #
 '''多行註解則可以透過三個單引號前後標註字串或文字段落內容, 
@@ -150,6 +154,7 @@ img.add_border {
 '''
 # 使用 import 導入 random 模組, 隨後就可以直接引用 random 模組的方法
 import random
+# 以 { } 區隔資料內容的 Python 資料型別稱為 dict, 分別帶有 key 與對應值
 courses = {"1a": "0747", "1b": "0761", "2a": "0773", "2b": "0786"}
 c_name = "1b"
 c = courses[c_name]
@@ -171,8 +176,7 @@ random.shuffle(stud)
 num = 5
 # 利用 for 重複迴圈與 range() 變數, 列印出 (利用 print() 函式) 已經隨機排列次序的 stud 數列的最前面 num 個學號值
 for i in range(num):
-    print(stud[i])</pre>
-<br />cp2022 << <a href='cp2022.html'>Previous</a> <a href='CP 靜態網頁連結.html'>Next</a> >> CP 靜態網頁連結</div>
+    print(stud[i])</pre><br />cp2022 << <a href='cp2022.html'>Previous</a> <a href='CP 靜態網頁連結.html'>Next</a> >> CP 靜態網頁連結</div>
         
     <!-- footer -->
       <div class="container">

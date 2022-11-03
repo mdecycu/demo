@@ -154,7 +154,7 @@ img.add_border {
 <p style="padding-left: 30px;">tce_test_execute.php 119</p>
 <p style="padding-left: 30px;">發生原因, 其中一題只有題目沒有選項,  造成 $num_answers = 0 放到計算 partial 得分時出現 division by zero 錯誤.</p>
 <p>3. During list the test content (<span style="color: #ff0000;">only happened for old test questions?</span>):</p>
-<p style="padding-left: 30px;">ATTENTION: [8192] htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated | LINE: 793 | FILE: C:\tcexam\tcexam\admin\code\tce_edit_answer.php&lt;/div&gt;<br/>&gt;</p>
+<p style="padding-left: 30px;">ATTENTION: [8192] htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated | LINE: 793 | FILE: C:\tcexam\tcexam\admin\code\tce_edit_answer.php&lt;/div&gt;</p>
 <p>4. During list the test content (<span style="color: #ff0000;">fixed</span>):</p>
 <div class="warning" style="padding-left: 30px;">ATTENTION: [8192] Implicit conversion from float 55.6 to int loses precision | LINE: 620 | FILE: C:\tcexam\tcexam\shared\code\tce_functions_test_stats.php</div>
 <div class="warning" style="padding-left: 30px;">ATTENTION: [8192] Implicit conversion from float 60.44444444444444 to int loses precision | LINE: 639 | FILE: C:\tcexam\tcexam\shared\code\tce_functions_test_stats.php</div>
@@ -168,7 +168,15 @@ img.add_border {
 <div class="warning">6.
 <div class="error" style="padding-left: 30px;">ERROR: [2] pg_query(): Query failed: ERROR: invalid input syntax for type boolean: "" LINE 2: answer_enabled=\'\', ^ | LINE: 83 | FILE: C:\tcexam\tcexam\shared\code\tce_db_dal_postgresql.php</div>
 <div class="warning" style="padding-left: 30px;">ATTENTION: [8192] pg_last_error(): Automatic fetching of PostgreSQL connection is deprecated | LINE: 69 | FILE: C:\tcexam\tcexam\shared\code\tce_db_dal_postgresql.php</div>
-<div class="error" style="padding-left: 30px;">ERROR: ERROR: invalid input syntax for type boolean: "" LINE 2: answer_enabled=\'\', ^</div>
+<div class="error" style="padding-left: 30px;">ERROR: ERROR: invalid input syntax for type boolean: "" LINE 2: answer_enabled=\'\', </div>
+<div class="error" style="padding-left: 30px;"></div>
+<div class="error">7.</div>
+<div class="error" style="padding-left: 30px;">ATTENTION: [8192] stripos(): Passing null to parameter #1 ($haystack) of type string is deprecated | LINE: 333 | FILE: C:\tcexam\tcexam\shared\code\tce_functions_test_stats.php</div>
+<div class="error" style="padding-left: 30px;">Ref: <a href="https://php.watch/versions/8.1/internal-func-non-nullable-null-deprecation">https://php.watch/versions/8.1/internal-func-non-nullable-null-deprecation</a></div>
+<div class="error"></div>
+<div class="error">8.</div>
+<div class="error" style="padding-left: 30px;">ATTENTION: [8192] strtolower(): Passing null to parameter #1 ($string) of type string is deprecated | LINE: 309 | FILE: C:\tcexam\tcexam\shared\code\tce_functions_general.php</div>
+<div class="error" style="padding-left: 30px;">Ref: <a href="https://php.watch/versions/8.1/internal-func-non-nullable-null-deprecation">https://php.watch/versions/8.1/internal-func-non-nullable-null-deprecation</a></div>
 </div>
 <div class="warning"></div>
 <div class="warning"></div><br />TCExam << <a href='TCExam.html'>Previous</a> <a href='vscode.html'>Next</a> >> vscode</div>
