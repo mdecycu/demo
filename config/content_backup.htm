@@ -1,11 +1,12 @@
 <h1>About</h1>
+<div style="text-align: right;"><strong>When change itself can give no more, 'Tis easy to be true.</strong></div>
+<div style="text-align: right;"><strong>-- <a href="https://en.wikipedia.org/wiki/Sir_Charles_Sedley,_5th_Baronet">Charles Sedley</a><br/></strong></div>
 <p>在 2022 Fall 的課程中, 採近全雲端的機械產品設計, 可以透過瀏覽器直接利用 stud 伺服器與 Onshape 執行程式編寫、內容管理與零組件設計繪圖, 唯獨機電模擬目前仍無法全部在瀏覽器中運行, 但至少已經可以透過 Three.js 與 Websocket 的整合, 讓 CoppeliaSim 的模擬場景在瀏覽器中呈現. 另外一個趨勢是, 除了電腦必須讓手機與平板在機械設計流程中扮演更重要的角色. 網站的內容維護與觀看更需考慮在電腦、手機與平板都能平順進行.</p>
 <p>至於近端的機械產品設計流程則可以採 Solvespace 與 NX 完成零組件設計繪圖, 並以可攜程式環境編寫 server 端的應用程式, 用來控制零組件參數或進行機電模擬系統的控制等. 而 cmsimde 在近端也可以如遠端操作進行動態與靜態網頁的維護與展示.</p>
 <p>靜態網站: <a href="https://mde.tw/demo/">https://mde.tw/demo/</a></p>
 <p>倉儲: <a href="https://github.com/mdecycu/demo">https://github.com/mdecycu/demo</a></p>
 <p>公佈欄網站: <a href="https://mde.tw/wcms">https://mde.tw/wcms</a></p>
-<p></p>
-<h2>手機使用問題</h2>
+<p></p><h2>手機使用問題</h2>
 <p>新頁面很難輸入新的標題</p>
 <p>是否新增指令按鈕, 在頁面頭或尾端加入 h1, h2 或 h3 標題, 選擇後跳出表單, 讓使用者輸入頁面標題與 level</p>
 <h4>語音輸入</h4>
@@ -114,12 +115,406 @@ ProxyCommand /usr/bin/ncat --proxy p42.cycu.org:3128 --proxy-type http %h %p</pr
 <p><a href="https://link.springer.com/book/10.1007/978-1-4842-5394-6">Javascript Next</a> (2019)</p>
 <p><a href="https://link.springer.com/book/10.1007/978-1-4842-0787-1">Pratical JQuery</a> (2015)</p>
 <p><a href="https://link.springer.com/book/10.1007/978-1-4842-3027-5">Beginning JQuery</a> (2017)</p>
-<h3>Nginx</h3>
+<h3>upload</h3>
+<p><a href="https://nfuedu.sharepoint.com/:b:/s/cp20222/EYD_ezXKPblEvR1lATxbe7QBX0YWuj61kaY_ckx_9EP6tQ?e=DEMJYr">Beginning JQuery.pdf</a> (for @nfu users only)</p>
+<p><a href="https://nfuedu.sharepoint.com/:b:/s/cp20222/EZEeL8lMZDRGs4EXQlqW_DEBiR9myLoLk4rp9xapGPjNcg?e=lDL8FS">2015 Pro JQuery</a> (for @nfu users only)</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">/*!
+ * jQuery AXuploader
+ * Alban Xhaferllari
+ * albanx@gmail.com
+ * Copyright 2010, AUTHORS.txt (http://www.albanx.com)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * 
+ */
+// 2013.08.21 Yen modified Chrome file append error
+
+(function($)
+{
+	var methods =
+	{
+		init : function(options)
+		{
+
+    	    return this.each(function() 
+    	    {
+    	        var settings = {
+        	      'remotePath' : 'js/',
+        	      'url':'phplibs/uploadfiles.php',
+        	      'data':'',
+        	      'async':true,
+        	      'maxFiles':9999,
+        	      'allowExt':['all'],
+        	      'showSize':'Mb',
+        	      'success':function(respTxt,fileName) {},
+        	      'finish':function(respTxt,filesName) {},
+        	      'error':function(e){},
+        	      'GIFprogress':'',
+        	      'enable':true,
+        	      'chunkSize':1024*1024//default 1Mb
+    	        };
+
+				var _this=this;
+				if(options)	$.extend(settings,options);
+				var allowExt=settings.allowExt.join('|').toLowerCase();
+
+/*================================================================================*\
+				 Test if support pure ajax upload
+				\*================================================================================*/
+				var _browse = document.createElement('input');
+				_browse.type = 'file'; 
+				_browse.name='ax-files[]';
+			    var isAjaxUpload=('multiple' in _browse &amp;&amp;  typeof File != "undefined" &amp;&amp;  typeof (new XMLHttpRequest()).upload != "undefined" );
+			   // isAjaxUpload=false;
+
+				/*================================================================================*\
+				 helper variables
+				\*================================================================================*/
+			    var fileCount=0;//Number of selected files
+			    var totalFiles=0;
+
+				/*================================================================================*\
+				 Form for classic upload
+				\*================================================================================*/
+			    var onLoadIframe=false;
+			    var mainFrame=$('&lt;iframe src="javascript:false;" name="ax-main-frame" /&gt;').hide().appendTo(_this).load(function(){
+			    	if(onLoadIframe)
+			    	{
+			    		fileCount=1;
+			    		$(_this).find('.ax-progress-div').html('100%');
+			    		onFinish(this.contentWindow.document.body.innerHTML,'',$(_this).find('.ax-upload'));
+			    	}
+				});
+
+			    var mainForm=$('&lt;form target="ax-main-frame" method="POST" action="" encType="multipart/form-data" /&gt;').appendTo(_this);
+
+
+				/*================================================================================*\
+				 Browse input used for selecting files to upload. Cloned for normal upload
+				\*================================================================================*/
+
+
+			    var browse=$(_browse).attr('multiple',isAjaxUpload).appendTo(mainForm).bind('change',function(){
+					if(isAjaxUpload)
+					{
+						for (var i = 0; i &lt; this.files.length; i++) 
+						{
+							if(fileCount&lt;=settings.maxFiles)
+							{
+								add_file(fileList,this.files[i],this.files[i].name,this.files[i].size,fileCount);
+							}
+						}
+					}
+					else
+					{
+						if(fileCount&lt;=settings.maxFiles)
+						{
+							add_file(fileList,this,this.value.replace(/^.*\\/, ''),0,fileCount);
+						}
+					}
+				});
+
+				/*================================================================================*\
+				Upload All files button that upload files at once on click
+				\*================================================================================*/
+				var uploadAll=$('&lt;input style="margin-left:5px;" type="button" value="Upload all" class="ax-uploadall" /&gt;').attr('disabled',true).appendTo(mainForm).bind('click',function(){
+					if(isAjaxUpload)
+					{
+						$(_this).find('.ax-upload:not(:disabled)').click();
+					}
+					else
+					{
+						onLoadIframe=true;
+						var finalUrl=get_final_url('');
+						mainForm.attr('action',finalUrl).submit();
+
+						$(_this).find('.ax-upload').attr('disabled',true);
+						if(settings.GIFprogress!='')
+							$(_this).find('.ax-progress-div').html('&lt;img src="'+settings.GIFprogress+'" alt="uploading..." /&gt;');
+						else
+							$(_this).find('.ax-progress-div').html('Uploading...');
+					}
+				});
+
+				/*================================================================================*\
+				Clear buttons that resets file list and variables
+				\*================================================================================*/
+				var clear=$('&lt;input style="margin-left:5px;" type="button" value="Clear" class="ax-clear" /&gt;').appendTo(mainForm).bind('click',function(){
+					fileCount=0;
+					totalFiles=0;
+					uploadAll.attr('disabled',fileCount==0);
+					fileList.children('tbody').remove();
+				});
+
+
+				/*================================================================================*\
+				Table with the list of files and their details
+				\*================================================================================*/
+			    var fileList=$('&lt;table class="ax-file-list" /&gt;').append('&lt;thead&gt;&lt;tr&gt;'+
+													 	'&lt;th&gt;File&lt;/th&gt;'+
+													 	'&lt;th&gt;Size&lt;/th&gt;'+
+													 	'&lt;th&gt;Progress&lt;/th&gt;'+
+													 	'&lt;th&gt;Remove&lt;/th&gt;'+
+													 	'&lt;th&gt;Upload&lt;/th&gt;'+
+													 '&lt;/tr&gt;&lt;/thead&gt;').appendTo(mainForm);
+
+
+				/*================================================================================*\
+				Functions that sets the url for sending additional data
+				\*================================================================================*/
+			    function get_final_url(enc_name)
+			    {
+					/*================================================================================*\
+					 Encode remote path and calculate it if given as function
+					\*================================================================================*/
+					settings.remotePath=(typeof(settings.remotePath)=='function')?settings.remotePath():settings.remotePath;
+
+					/*================================================================================*\
+					 set other URL data
+					\*================================================================================*/
+
+					var c=(settings.url.indexOf('?')==-1)?'?':'&amp;';
+					var url=settings.url+c+'ax-file-path='+encodeURIComponent(settings.remotePath)+'&amp;ax-allow-ext='+encodeURIComponent(allowExt);
+
+					settings.data=(typeof(settings.data)=='function')?settings.data():settings.data;
+					return url+'&amp;ax-file-name='+enc_name+'&amp;'+settings.data;//final url with other data
+			    }
+
+				/*================================================================================*\
+				Functions that executes and the end of file uploading
+				\*================================================================================*/
+			    function onFinish(txt,currF,up,ab)
+			    {
+					fileCount--;//count upload files
+
+					up.attr('disabled',false);
+					settings.success(txt,currF);
+					if(fileCount==0)
+					{
+						var filesArr=new Array();
+						$(_this).find('.ax-file-name').each(function(){
+							filesArr.push($(this).attr('title'));
+						});
+						fileCount=totalFiles;
+						settings.finish(txt,filesArr);
+						uploadAll.attr('disabled',false);
+					}
+			    }
+
+				/*================================================================================*\
+				Functions creates file form and xmlhttprequest for upload
+				\*================================================================================*/
+				function add_file(t,o,n,s,numF)
+				{
+					var ext=n.split('.').pop().toLowerCase();//file ext
+
+					/*================================================================================*\
+					File extension control
+					\*================================================================================*/
+					if(allowExt.indexOf(ext)&lt;0 &amp;&amp; allowExt!='all')	return;
+
+					/*================================================================================*\
+					Display file size in MB o Kb settings
+					\*================================================================================*/
+					switch(settings.showSize.toLowerCase())
+					{
+						case 'mb':s=s/(1024*1024);break;
+						case 'kb':s=s/1024;break;
+					}
+					s=(Math.round(s*100)/100)+' '+settings.showSize;
+
+
+					fileCount++;//update file number
+					totalFiles++;
+
+					uploadAll.attr('disabled',fileCount==0);
+					//remove button action bind
+					var rm=$('&lt;input type="button" value="Remove" /&gt;').bind('click',function(){
+						fileCount--;
+						totalFiles--;
+						uploadAll.attr('disabled',fileCount==0);
+						$(this).parents('tr:first').remove();
+					});
+
+					//prepare abort and upload button
+					var up=$('&lt;input type="button" value="Upload" class="ax-upload" /&gt;').bind('click',function(){ this.disabled=true; });
+
+					var tr=$('&lt;tr /&gt;').appendTo(t);
+					var td_n=$('&lt;td class="ax-file-name" title="'+n+'" /&gt;').appendTo(tr).html(n);
+					var td_s=$('&lt;td class="ax-size-td" /&gt;').appendTo(tr).html(s);
+					var td_p=$('&lt;td class="ax-progress-td" /&gt;').appendTo(tr);
+					var div_p=$('&lt;div  class="ax-progress-div" /&gt;').css({'width':'0%','background-color':'red'}).html(0).appendTo(td_p);
+					var td_r=$('&lt;td class="ax-remove-td" /&gt;').appendTo(tr).append(rm);
+					var td_u=$('&lt;td class="ax-upload-td" /&gt;').appendTo(tr).append(up);
+
+					/*================================================================================*\
+					 Prepare to send
+					\*================================================================================*/
+					var enc_name=encodeURIComponent(n);//encode file name
+
+					if(!isAjaxUpload)
+					{
+						var file_holder=$('&lt;div /&gt;').appendTo(td_n).hide().append(o);						
+						up.bind('click',function(){
+							/*================================================================================*\
+							 Target Iframe for async upload with iframes
+							\*================================================================================*/
+							var targetFrame=$('&lt;iframe src="javascript:false;" name="ax-frame-'+numF+'" /&gt;').hide().appendTo(td_n).load(function(){
+								if($(this).attr('load')=='1')
+								{
+									div_p.html('Finish');
+									onFinish(this.contentWindow.document.body.innerHTML,n,up);
+								}
+							}).attr('load','0');
+							div_p.html('Uploading...');
+							targetFrame.attr('load','1');
+
+							var finalUrl=get_final_url(enc_name);
+
+							$('&lt;form method="POST" action="'+finalUrl+'" encType="multipart/form-data" /&gt;').attr('target','ax-frame-'+numF).appendTo(td_n).hide().append(o).submit();
+						});
+
+						//clone browse file and append it to main form for selecting other files
+						$(o).clone(true).val('').prependTo(mainForm);
+					}
+					else
+					{
+						/*================================================================================*\
+						 bind actions to buttons
+						\*================================================================================*/
+						up.bind('click',function(){
+							uploadFileXhr(o,0,$(this),div_p);
+						});
+					}
+				}
+
+				//recrusive file upload with chunk method
+				function uploadFileXhr(o,start_byte,up,div_p)
+				{
+					var totals=o.size;
+					var chunk;	
+					var peice=settings.chunkSize;//bytes to upload at once
+
+					var end_byte=start_byte+peice;
+					var peice_count=end_byte/peice;
+					var is_last=(totals-end_byte&lt;=0)?1:0;
+
+					/*===============================================================*\
+					 * Detect support slice method
+					 * if slice is not supported then send all file at once
+					\*==============================================================*/
+
+//Initialize a new FileReader object
+var reader = new FileReader();
+
+//Slice the file into the desired chunk
+var chunk = o.slice(start_byte, end_byte);
+reader.readAsBinaryString(chunk);
+
+/*================================================================================*\
+					 Prepare xmlhttpreq object for file upload Bind functions and progress
+					\*================================================================================*/
+					var xhr = new XMLHttpRequest();//prepare xhr for upload
+
+					xhr.onreadystatechange=function()
+					{
+						if(this.readyState == 4 &amp;&amp; this.status == 200)
+						{
+							if(is_last==0)
+							{
+								uploadFileXhr(o,end_byte,up,div_p);
+							}
+							else
+							{
+								onFinish(xhr.responseText,o.name,up);
+								div_p.html('100%').css('width','100%');
+							}
+						}
+					};
+					xhr.upload.onprogress=function(e)
+					{
+						if (e.lengthComputable) 
+						{
+							var perc = Math.round((e.loaded+peice_count*peice-peice)*100/totals);
+							div_p.html(perc+'%').css('width',perc+'%');
+						}
+					};
+
+					xhr.upload.onerror=settings.error(xhr.responseText,o.name);
+					var finalUrl=get_final_url(encodeURIComponent(o.name));
+					xhr.open('POST',finalUrl+'&amp;start='+start_byte,settings.async);//url + async/sync
+					xhr.setRequestHeader('Cache-Control', 'no-cache');
+					xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');//header
+                    // have to use json utf-8 charset
+                    xhr.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+					xhr.send(chunk);//send request of file 
+				}
+
+				/*=======================================================
+				 * Disable option
+				 *======================================================*/
+	    	    if(!settings.enable)
+	    	    	$(this).find('input:not(:disabled), button:not(:disabled)').addClass('ax-disabled').attr('disabled',true);
+
+    	    });
+		},
+		enable:function()
+		{
+			return this.each(function()
+			{
+				$(this).find('.ax-disabled').attr('disabled',false).removeClass('ax-disabled');
+			});
+		},
+		disable:function()
+		{
+			return this.each(function()
+			{
+				$(this).find('input:not(:disabled), button:not(:disabled)').addClass('ax-disabled').attr('disabled',true);
+			});
+		},
+		start:function()
+		{
+			$(this).find('.ax-uploadall:not(:disabled)').click();
+		},
+		clear:function()
+		{
+			(this).find('.ax-clear:not(:disabled)').click();
+		},
+		destroy : function()
+		{
+			return this.each(function()
+			{
+				var $this = $(this);
+				$this.removeData('settings');
+				$this.html('');
+			});
+		}
+	};
+
+	$.fn.axuploader = function(method, options)
+	{
+		if(methods[method])
+		{
+			return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
+		}
+		else if(typeof method === 'object' || !method)
+		{
+			return methods.init.apply(this, arguments);
+		}
+		else
+		{
+			$.error('Method ' + method + ' does not exist on jQuery.axuploader');
+		}
+	};
+
+})(jQuery);
+</pre>
+<p></p><h3>Nginx</h3>
 <p>目前的 stud 伺服器採用 ports 讓多用戶可以在同一台主機上執行動態 cmsimde 網站. 另一種配置方法, 就如同 Github Pages 與 Replit 的作法, 透過 DNS 的配置, 為每一位用戶建立一個獨特的 domain name.</p>
 <p>假如要讓 stud 伺服器能為每位用戶建立一個獨特的 domain name. 在 DNS 的架構下, 可以讓同一個 IPv6 address 透過多個 CNAME 別名的方式達成. 而在同一台主機中伺服多個 domain name 網站的方法, 則可以使用 Nginx 中的 virtual hosts (在一台伺服器中建立多個不同符號名稱的網站) 設定達成. 也就是各網站都透過同一個 443 埠號, 為每一個網站建立 server 設定, 並讓 server_name 分別對應至各用戶的網站 domain name. 然後利用 Nginx server 中的 proxy_pass 指向近端的 python3 server.py 所啟動的 localhost 網站內容即可.</p>
 <p>至於各別名的 https 網站數位簽章, 則可以利用 Let's Encrypt 的設定達成, 只是一次要在同一台伺服器共享超過兩百個 domain names, 必須透過實作才知道是否可行.</p>
-<p>此外, 由於配置過程中若採 interactive 模式必須要動態讓 Python 程式在 DNS 伺服器中以管理者執行 script. 或許可以試試採用 subprocess.check_call(['sudo', 'your_dns_modification_script']) 方式執行.</p>
-<h2>TCExam</h2>
+<p>此外, 由於配置過程中若採 interactive 模式必須要動態讓 Python 程式在 DNS 伺服器中以管理者執行 script. 或許可以試試採用 subprocess.check_call(['sudo', 'your_dns_modification_script']) 方式執行.</p><h2>TCExam</h2>
 <p>53 機器, 外部 pj2022 內部 tcexam</p>
 <p>啟動流程:</p>
 <p>進入 C:\tcexam\pgsql 執行 start.bat 啟動資料庫伺服器</p>
@@ -659,7 +1054,8 @@ server.run_forever()</pre>
 <p style="padding-left: 30px;"><a href="https://itsacadworld.blogspot.com/2019/09/inventor-from-step-file-to-parametric.html">https://itsacadworld.blogspot.com/2019/09/inventor-from-step-file-to-parametric.html</a></p>
 <h3>Edu resource</h3>
 <p><a href="https://learn.onshape.com/courses/teaching-a-class-in-onshape">https://learn.onshape.com/courses/teaching-a-class-in-onshape</a> </p>
-<p><a href="https://learn.onshape.com/learning-paths/introduction-to-cad">https://learn.onshape.com/learning-paths/introduction-to-cad</a> </p><h2>NX</h2>
+<p><a href="https://learn.onshape.com/learning-paths/introduction-to-cad">https://learn.onshape.com/learning-paths/introduction-to-cad</a> </p>
+<p><a href="https://learn.onshape.com/catalog?query=Educator%20Resources">Educator Resources</a></p><h2>NX</h2>
 <p><a href="https://www.youtube.com/channel/UChYht2a_KxGdqqJBQ00m4lA/videos">NX tutorial</a></p>
 <p><a href="https://nxjournaling.com/content/converting-bodies-parts">converting bodies to parts | NX Journaling</a></p>
 <p>Onshape: <a href="https://cadlab.mde.tw/post/onshape-featurescript-spur-gear-ling-jian.html">https://cadlab.mde.tw/post/onshape-featurescript-spur-gear-ling-jian.html</a></p>
