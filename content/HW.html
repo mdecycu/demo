@@ -2,7 +2,7 @@
         <head>
         <title>demo on stud</title>
         <meta charset="utf-8">
-<meta property="head" content="H3">
+<meta property="head" content="H2">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
@@ -141,11 +141,26 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">upload << <a href='upload.html'>Previous</a> <a href='TCExam.html'>Next</a> >> TCExam<br /><h1>Nginx</h1>
-<p>目前的 stud 伺服器採用 ports 讓多用戶可以在同一台主機上執行動態 cmsimde 網站. 另一種配置方法, 就如同 Github Pages 與 Replit 的作法, 透過 DNS 的配置, 為每一位用戶建立一個獨特的 domain name.</p>
-<p>假如要讓 stud 伺服器能為每位用戶建立一個獨特的 domain name. 在 DNS 的架構下, 可以讓同一個 IPv6 address 透過多個 CNAME 別名的方式達成. 而在同一台主機中伺服多個 domain name 網站的方法, 則可以使用 Nginx 中的 virtual hosts (在一台伺服器中建立多個不同符號名稱的網站) 設定達成. 也就是各網站都透過同一個 443 埠號, 為每一個網站建立 server 設定, 並讓 server_name 分別對應至各用戶的網站 domain name. 然後利用 Nginx server 中的 proxy_pass 指向近端的 python3 server.py 所啟動的 localhost 網站內容即可.</p>
-<p>至於各別名的 https 網站數位簽章, 則可以利用 Let's Encrypt 的設定達成, 只是一次要在同一台伺服器共享超過兩百個 domain names, 必須透過實作才知道是否可行.</p>
-<p>此外, 由於配置過程中若採 interactive 模式必須要動態讓 Python 程式在 DNS 伺服器中以管理者執行 script. 或許可以試試採用 subprocess.check_call(['sudo', 'your_dns_modification_script']) 方式執行.</p><br />upload << <a href='upload.html'>Previous</a> <a href='TCExam.html'>Next</a> >> TCExam</div>
+    <div id="tipue_search_content">CP 靜態網頁連結 << <a href='CP 靜態網頁連結.html'>Previous</a> <a href='Control-1.html'>Next</a> >> Control-1<br /><h1>HW</h1>
+<p>w10-1</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import json
+import ast
+
+url = "https://gist.githubusercontent.com/mdecycu/9df4b372ac1b7386cf259ced15f1a2b2/raw/a6825f13b1bb0b61e09e74dd117729eefe1d947f/20221110_cp1b_w10_quiz.json"
+json_data = open(url).read()
+
+big_dict = ast.literal_eval(json_data)
+data = big_dict["body"]["testuser"]
+for i in data:
+    print(data[i]["user_name"], end=",")
+    print(int(float(data[i]["total_score"])))</pre>
+<p><a href="https://mde.tw/demo/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/9df4b372ac1b7386cf259ced15f1a2b2/raw/6501364cab3070f3793e577b2004d8d96338e875/get_1b_w10_quiz_score.py">1b_w10_quiz_result</a></p>
+<p><a href="https://mde.tw/demo/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/9df4b372ac1b7386cf259ced15f1a2b2/raw/6501364cab3070f3793e577b2004d8d96338e875/get_2b_w10_quiz_score.py">2b_w10_quiz_result</a></p>
+<p>w10-2</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">a = "1"
+for i in range(3, 10, 2):
+    a = a + ", " + str(i)
+print(a)</pre><br />CP 靜態網頁連結 << <a href='CP 靜態網頁連結.html'>Previous</a> <a href='Control-1.html'>Next</a> >> Control-1</div>
         
     <!-- footer -->
       <div class="container">

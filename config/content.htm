@@ -688,8 +688,27 @@ for i in data:
     # 每一筆資料列出後, 以 break 標註跳行
     brython_div1 &lt;= html.BR()</pre>
 <p><br/><br/></p>
-<h2>Control</h2>
-<p><a href="https://lcapy.readthedocs.io/en/latest/">https://lcapy.readthedocs.io/en/latest/</a> </p><h2>Brython</h2>
+<h2>HW</h2>
+<p>w10-1</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import json
+import ast
+
+url = "https://gist.githubusercontent.com/mdecycu/9df4b372ac1b7386cf259ced15f1a2b2/raw/a6825f13b1bb0b61e09e74dd117729eefe1d947f/20221110_cp1b_w10_quiz.json"
+json_data = open(url).read()
+
+big_dict = ast.literal_eval(json_data)
+data = big_dict["body"]["testuser"]
+for i in data:
+    print(data[i]["user_name"], end=",")
+    print(int(float(data[i]["total_score"])))</pre>
+<p><a href="https://mde.tw/demo/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/9df4b372ac1b7386cf259ced15f1a2b2/raw/6501364cab3070f3793e577b2004d8d96338e875/get_1b_w10_quiz_score.py">1b_w10_quiz_result</a></p>
+<p><a href="https://mde.tw/demo/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/9df4b372ac1b7386cf259ced15f1a2b2/raw/6501364cab3070f3793e577b2004d8d96338e875/get_2b_w10_quiz_score.py">2b_w10_quiz_result</a></p>
+<p>w10-2</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">a = "1"
+for i in range(3, 10, 2):
+    a = a + ", " + str(i)
+print(a)</pre><h2>Control</h2>
+<p><a href="https://lcapy.readthedocs.io/en/latest/">https://lcapy.readthedocs.io/en/latest/</a></p><h2>Brython</h2>
 <p><a href="https://zhuanlan.zhihu.com/p/459819939">【python】Brython：浏览器中的Python-第一篇 - 知乎 (zhihu.com)</a></p>
 <p><a href="https://www.geeksforgeeks.org/introduction-to-brython/">Introduction to Brython - GeeksforGeeks</a></p>
 <p><a href="https://www.it145.com/9/102373.html">【python】Brython：瀏覽器中的Python-第二篇 - IT145.com</a></p>
