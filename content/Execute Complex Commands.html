@@ -2,7 +2,7 @@
         <head>
         <title>demo on stud</title>
         <meta charset="utf-8">
-<meta property="head" content="H2">
+<meta property="head" content="H3">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
@@ -141,12 +141,149 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">Solvespace << <a href='Solvespace.html'>Previous</a> <a href='Onshape Drill Press.html'>Next</a> >> Onshape Drill Press<br /><h1>Onshape</h1>
-<p><a href="https://www.onshape.com/en/education/">https://www.onshape.com/en/education/</a></p>
-<p><a href="https://learn.onshape.com/catalog?labels=%5B%22Self-Paced%20Courses%22%5D&amp;values=%5B%22All%22%5D">self-path learning </a></p>
-<p><a href="https://cad.onshape.com/documents/349085d7029902d4ce9e141d/w/2f10eab3484f8addb1157a25/e/e29b5743830bcea674ae2bcd?renderMode=0&amp;uiState=63524dc50594ef47ab72b47f">Drill Press 鑽床</a></p>
-<p><iframe height="600" src="https://configurator.cae.tech/" width="800"></iframe></p>
-<br />Solvespace << <a href='Solvespace.html'>Previous</a> <a href='Onshape Drill Press.html'>Next</a> >> Onshape Drill Press</div>
+    <div id="tipue_search_content">以 remote API 取 camera 影像 << <a href='以 remote API 取 camera 影像.html'>Previous</a> <a href='xml.html'>Next</a> >> xml<br /><h1>Execute Complex Commands</h1>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># This example illustrates how to execute complex commands from
+# a remote API client. You can also use a similar construct for
+# commands that are not directly supported by the remote API.
+#
+# Load the demo scene 'remoteApiCommandServerExample.ttt' in V-REP, then 
+# start the simulation and run this program.
+#
+# IMPORTANT: for each successful call to simxStart, there
+# should be a corresponding call to simxFinish at the end!
+#
+# When running Python 3.x, add a 'b' prefix to strings, e.g.:
+# 'hello world' becomes b'hello world'
+ 
+def getCmdString(id,cnt,data):
+    l=12+len(data)
+    retData=vrep.simxPackInts([id,cnt,l])
+    return retData+data
+ 
+def waitForCmdReply(cnt):
+    while True:
+        result,string=vrep.simxReadStringStream(clientID,'repliesToRemoteApiClient',vrep.simx_opmode_streaming)
+        if result==vrep.simx_return_ok:
+            while len(string)!=0:
+                headerPacked=string[0:12]
+                header=vrep.simxUnpackInts(headerPacked)
+                if cnt==header[1]:
+                    replyData=''
+                    if header[2]&gt;12:
+                        replyData=string[12:header[2]]
+                    return replyData
+                string=string[header[2]:len(string)]
+try:
+    import vrep
+except:
+    print ('--------------------------------------------------------------')
+    print ('"vrep.py" could not be imported. This means very probably that')
+    print ('either "vrep.py" or the remoteApi library could not be found.')
+    print ('Make sure both are in the same folder as this file,')
+    print ('or appropriately adjust the file "vrep.py"')
+    print ('--------------------------------------------------------------')
+    print ('')
+ 
+import ctypes
+print ('Program started')
+vrep.simxFinish(-1) # just in case, close all opened connections
+clientID=vrep.simxStart('127.0.0.1',19999,True,True,5000,5) # Connect to V-REP
+if clientID!=-1:
+    print ('Connected to remote API server')
+ 
+    # Commands are send via the string signal 'commandsFromRemoteApiClient'.
+    # Commands are simply appended to that string signal
+    # Each command is coded in following way:
+    # 1. Command ID (integer, 4 chars)
+    # 2. Command counter (integer, 4 chars). Simply start with 0 and increment for each command you send
+    # 3. Command length (integer, includes the command ID, the command counter, the command length, and the additional data (i.e. command data))
+    # 4. Command data (chars, can be of any length, depending on the command)
+    #
+    # Replies are coded in a same way. An executed command should reply with the same command counter.
+    # 
+    # Above simple protocol is just an example: you could use your own protocol! (but it has to be the same on the V-REP side)
+ 
+    # 1. First send a command to display a specific message in a dialog box:
+    cmdID=1 # this command id means: 'display a text in a message box'
+    cmdCnt=0
+    cmdData='Hello world!'
+    stringToSend=getCmdString(cmdID,cmdCnt,cmdData)
+    raw_ubytes = (ctypes.c_ubyte * len(stringToSend)).from_buffer_copy(stringToSend)
+    vrep.simxWriteStringStream(clientID,'commandsFromRemoteApiClient',raw_ubytes,vrep.simx_opmode_oneshot)
+    print ('Return string: ',waitForCmdReply(cmdCnt)) # display the reply from V-REP (in this case, just a string)
+ 
+    # 2. Now create a dummy object at coordinate 0.1,0.2,0.3:
+    cmdID=2 # this command id means: 'create a dummy at a specific coordinate with a specific name'
+    cmdCnt=cmdCnt+1
+    cmdData='MyDummyName'+vrep.simxPackFloats([0.1,0.2,0.3])
+    stringToSend=getCmdString(cmdID,cmdCnt,cmdData)
+    raw_ubytes = (ctypes.c_ubyte * len(stringToSend)).from_buffer_copy(stringToSend)
+    vrep.simxWriteStringStream(clientID,'commandsFromRemoteApiClient',raw_ubytes,vrep.simx_opmode_oneshot)
+    replyData=waitForCmdReply(cmdCnt)
+    print ('Dummy handle: ',vrep.simxUnpackInts(replyData)[0]) # display the reply from V-REP (in this case, the handle of the created dummy)
+ 
+    # Now close the connection to V-REP:   
+    vrep.simxFinish(clientID)
+else:
+    print ('Failed connecting to remote API server')
+print ('Program ended')</pre>
+<p><span>與上述 Client 端程式配合的 V-rep non-threaded child 程式碼:</span></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">if (sim_call_type==sim_childscriptcall_initialization) then
+   simExtRemoteApiStart(19999)
+end
+ 
+if (sim_call_type==sim_childscriptcall_actuation) then
+   local commands=simGetStringSignal('commandsFromRemoteApiClient') -- Read commands sent from a remote API client
+   if commands then
+      simClearStringSignal('commandsFromRemoteApiClient') -- Clear the signal
+      -- Process the commands in following loop:
+      while #commands&gt;0 do
+         local cmdID=simUnpackInts(commands,0,1)[1]
+         local cmdCounter=simUnpackInts(commands,1,1)[1]
+         local cmdLength=simUnpackInts(commands,2,1)[1]
+         local cmdData=''
+         if cmdLength&gt;12 then
+            cmdData=string.sub(commands,13,13+cmdLength-12)
+         end
+         commands=string.sub(commands,cmdLength+1) -- this contains the next commands
+ 
+         -- Now process the command, and prepare a reply string signal:
+         local reply=''
+         if cmdID==1 then
+            -- We have to process the command with ID 1, in this example, simply display a dialog box that prints the text stored in cmdData:
+            simDisplayDialog('Message from the remote API client',cmdData,sim_dlgstyle_ok,false)
+            reply='message was displayed'
+         end
+         if cmdID==2 then
+            -- We have to process the command with ID 2, in this example, create a dummy object at coordinates specified in cmdData:
+            local dummyHandle=simCreateDummy(0.05)
+            local dummyNameSize=#cmdData-12 -- cmdData should contain the dummy name, plus the x/y/z coordinates
+            local position=simUnpackFloats(cmdData,0,0,dummyNameSize)
+            if dummyNameSize&gt;0 then
+               local errorReportMode=simGetIntegerParameter(sim_intparam_error_report_mode)
+               simSetIntegerParameter(sim_intparam_error_report_mode,0) -- temporarily suppress error output (because we are not allowed to have two times the same object name)
+               simSetObjectName(dummyHandle,string.sub(cmdData,1,dummyNameSize))
+               simSetIntegerParameter(sim_intparam_error_report_mode,errorReportMode) -- restore the original error report mode
+            end
+            simSetObjectPosition(dummyHandle,-1,position)
+            reply=simPackInts({dummyHandle})
+         end
+         if cmdID==3 then
+            -- You can add as many commands as needed
+         end
+ 
+         -- Now, before setting up the reply string, append the cmdID, and a reply length:
+         local replyLength=12+#reply
+         local replyFromOtherCommands=simGetStringSignal('repliesToRemoteApiClient')
+         if not replyFromOtherCommands then
+            replyFromOtherCommands=''
+         end
+         local totalReplySignal=replyFromOtherCommands..simPackInts({cmdID})..simPackInts({cmdCounter})..simPackInts({replyLength})..reply
+         simSetStringSignal('repliesToRemoteApiClient',totalReplySignal) -- update the reply signal
+      end
+   end
+end</pre>
+<p></p><br />以 remote API 取 camera 影像 << <a href='以 remote API 取 camera 影像.html'>Previous</a> <a href='xml.html'>Next</a> >> xml</div>
         
     <!-- footer -->
       <div class="container">
