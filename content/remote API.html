@@ -2,7 +2,7 @@
         <head>
         <title>demo on stud</title>
         <meta charset="utf-8">
-<meta property="head" content="H2">
+<meta property="head" content="H3">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
@@ -141,12 +141,193 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">Solvespace << <a href='Solvespace.html'>Previous</a> <a href='Onshape Drill Press.html'>Next</a> >> Onshape Drill Press<br /><h1>Onshape</h1>
-<p><a href="https://www.onshape.com/en/education/">https://www.onshape.com/en/education/</a></p>
-<p><a href="https://learn.onshape.com/catalog?labels=%5B%22Self-Paced%20Courses%22%5D&amp;values=%5B%22All%22%5D">self-path learning </a></p>
-<p><a href="https://cad.onshape.com/documents/349085d7029902d4ce9e141d/w/2f10eab3484f8addb1157a25/e/e29b5743830bcea674ae2bcd?renderMode=0&amp;uiState=63524dc50594ef47ab72b47f">Drill Press 鑽床</a></p>
-<p><iframe height="600" src="https://configurator.cae.tech/" width="800"></iframe></p>
-<br />Solvespace << <a href='Solvespace.html'>Previous</a> <a href='Onshape Drill Press.html'>Next</a> >> Onshape Drill Press</div>
+    <div id="tipue_search_content">CoppeliaSim << <a href='CoppeliaSim.html'>Previous</a> <a href='xml.html'>Next</a> >> xml<br /><h1>remote API</h1>
+<p>one link change velocity:</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import vrep
+import sys
+# child threaded script: 
+# 內建使用 port 19997 若要加入其他 port, 在  serve 端程式納入
+#simExtRemoteApiStart(19999)
+ 
+vrep.simxFinish(-1)
+ 
+clientID = vrep.simxStart('127.0.0.1', 19997, True, True, 5000, 5)
+ 
+if clientID!= -1:
+    print("Connected to remote server")
+else:
+    print('Connection not successful')
+    sys.exit('Could not connect')
+ 
+errorCode,Revolute_joint_handle=vrep.simxGetObjectHandle(clientID,'Revolute_joint',vrep.simx_opmode_oneshot_wait)
+ 
+if errorCode == -1:
+    print('Can not find left or right motor')
+    sys.exit()
+ 
+errorCode=vrep.simxSetJointTargetVelocity(clientID,Revolute_joint_handle,2, vrep.simx_opmode_oneshot_wait)
+ 
+while True:
+    choice = input("(e to exit, p to pause and enter to exec)&gt;")
+    if choice == "e":
+        print("exiting")
+        vrep.simxStopSimulation(clientID, vrep.simx_opmode_oneshot_wait)
+        break
+    elif choice == "p":
+        vrep.simxPauseSimulation(clientID, vrep.simx_opmode_oneshot_wait)
+    else:
+        vrep.simxStartSimulation(clientID, vrep.simx_opmode_oneshot_wait)</pre>
+<p>Position control</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import vrep
+import sys, math
+# child threaded script: 
+# 內建使用 port 19997 若要加入其他 port, 在  serve 端程式納入
+#simExtRemoteApiStart(19999)
+ 
+vrep.simxFinish(-1)
+ 
+clientID = vrep.simxStart('127.0.0.1', 19997, True, True, 5000, 5)
+ 
+if clientID!= -1:
+    print("Connected to remote server")
+else:
+    print('Connection not successful')
+    sys.exit('Could not connect')
+ 
+errorCode,Revolute_joint_handle=vrep.simxGetObjectHandle(clientID,'Revolute_joint',vrep.simx_opmode_oneshot_wait)
+ 
+if errorCode == -1:
+    print('Can not find left or right motor')
+    sys.exit()
+ 
+deg = math.pi/180
+ 
+#errorCode=vrep.simxSetJointTargetVelocity(clientID,Revolute_joint_handle,2, vrep.simx_opmode_oneshot_wait)
+ 
+def setJointPosition(incAngle, steps):
+    for i  in range(steps):
+        errorCode=vrep.simxSetJointPosition(clientID, Revolute_joint_handle, i*incAngle*deg, vrep.simx_opmode_oneshot_wait)
+ 
+# 每步 10 度, 轉兩圈
+setJointPosition(10, 72)
+# 每步 1 度, 轉兩圈
+#setJointPosition(1, 720)
+# 每步 0.1  度, 轉720 步
+#setJointPosition(0.1, 720)
+ 
+'''
+三軸同動時
+simxPauseCommunication(clientID,1);
+simxSetJointPosition(clientID,joint1Handle,joint1Value,simx_opmode_oneshot);
+simxSetJointPosition(clientID,joint2Handle,joint2Value,simx_opmode_oneshot);
+simxSetJointPosition(clientID,joint3Handle,joint3Value,simx_opmode_oneshot);
+simxPauseCommunication(clientID,0);
+'''</pre>
+<p>Fourbar linkage velocity control:</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import vrep
+import sys
+# child threaded script: 
+# 內建使用 port 19997 若要加入其他 port, 在  serve 端程式納入
+#simExtRemoteApiStart(19999)
+ 
+vrep.simxFinish(-1)
+ 
+clientID = vrep.simxStart('127.0.0.1', 19997, True, True, 5000, 5)
+ 
+if clientID!= -1:
+    print("Connected to remote server")
+else:
+    print('Connection not successful')
+    sys.exit('Could not connect')
+ 
+errorCode,Revolute_joint_handle=vrep.simxGetObjectHandle(clientID,'Revolute_joint',vrep.simx_opmode_oneshot_wait)
+ 
+if errorCode == -1:
+    print('Can not find left or right motor')
+    sys.exit()
+ 
+errorCode=vrep.simxSetJointTargetVelocity(clientID,Revolute_joint_handle,2, vrep.simx_opmode_oneshot_wait)
+ 
+while True:
+    choice = input("(e to exit, p to pause and enter to exec)&gt;")
+    if choice == "e":
+        print("exiting")
+        vrep.simxStopSimulation(clientID, vrep.simx_opmode_oneshot_wait)
+        break
+    elif choice == "p":
+        vrep.simxPauseSimulation(clientID, vrep.simx_opmode_oneshot_wait)
+    else:
+        vrep.simxStartSimulation(clientID, vrep.simx_opmode_oneshot_wait)</pre>
+<p>Fourbar velocity control:</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import vrep, math
+import sys
+# child threaded script: 
+#simExtRemoteApiStart(19999)
+ 
+vrep.simxFinish(-1)
+ 
+clientID = vrep.simxStart('127.0.0.1', 19997, True, True, 5000, 5)
+ 
+if clientID!= -1:
+    print("Connected to remote server")
+else:
+    print('Connection not successful')
+    sys.exit('Could not connect')
+ 
+errorCode,Revolute_joint_handle=vrep.simxGetObjectHandle(clientID,'Revolute_joint',vrep.simx_opmode_oneshot_wait)
+ 
+deg = math.pi/180
+ 
+if errorCode == -1:
+    print('Can not find left or right motor')
+    sys.exit()
+ 
+#errorCode=vrep.simxSetJointTargetVelocity(clientID,Revolute_joint_handle,2, vrep.simx_opmode_oneshot_wait)
+ 
+def setJointPosition(incAngle, steps):
+    for i  in range(steps):
+        errorCode=vrep.simxSetJointPosition(clientID, Revolute_joint_handle, i*incAngle*deg, vrep.simx_opmode_oneshot_wait)
+ 
+# 每步 10 度, 轉兩圈
+setJointPosition(10,72)</pre>
+<p>Programmatically start and end simulation:</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import vrep, math
+import sys
+# child threaded script: 
+#simExtRemoteApiStart(19999)
+ 
+vrep.simxFinish(-1)
+ 
+clientID = vrep.simxStart('127.0.0.1', 19997, True, True, 5000, 5)
+#啟動模擬
+vrep.simxStartSimulation(clientID, vrep.simx_opmode_oneshot)
+ 
+if clientID!= -1:
+    print("Connected to remote server")
+else:
+    print('Connection not successful')
+    sys.exit('Could not connect')
+ 
+errorCode,Revolute_joint_handle=vrep.simxGetObjectHandle(clientID,'Revolute_joint',vrep.simx_opmode_oneshot_wait)
+ 
+deg = math.pi/180
+ 
+if errorCode == -1:
+    print('Can not find left or right motor')
+    sys.exit()
+ 
+#errorCode=vrep.simxSetJointTargetVelocity(clientID,Revolute_joint_handle,2, vrep.simx_opmode_oneshot_wait)
+ 
+def setJointPosition(incAngle, steps):
+    for i  in range(steps):
+        errorCode=vrep.simxSetJointPosition(clientID, Revolute_joint_handle, i*incAngle*deg, vrep.simx_opmode_oneshot_wait)
+    #終止模擬
+    vrep.simxStopSimulation(clientID, vrep.simx_opmode_oneshot_wait)
+ 
+# 每步 10 度, 轉兩圈
+setJointPosition(10, 72)</pre>
+<p></p>
+<p></p><br />CoppeliaSim << <a href='CoppeliaSim.html'>Previous</a> <a href='xml.html'>Next</a> >> xml</div>
         
     <!-- footer -->
       <div class="container">

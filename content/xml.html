@@ -2,7 +2,7 @@
         <head>
         <title>demo on stud</title>
         <meta charset="utf-8">
-<meta property="head" content="H2">
+<meta property="head" content="H3">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
@@ -141,12 +141,29 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">Solvespace << <a href='Solvespace.html'>Previous</a> <a href='Onshape Drill Press.html'>Next</a> >> Onshape Drill Press<br /><h1>Onshape</h1>
-<p><a href="https://www.onshape.com/en/education/">https://www.onshape.com/en/education/</a></p>
-<p><a href="https://learn.onshape.com/catalog?labels=%5B%22Self-Paced%20Courses%22%5D&amp;values=%5B%22All%22%5D">self-path learning </a></p>
-<p><a href="https://cad.onshape.com/documents/349085d7029902d4ce9e141d/w/2f10eab3484f8addb1157a25/e/e29b5743830bcea674ae2bcd?renderMode=0&amp;uiState=63524dc50594ef47ab72b47f">Drill Press 鑽床</a></p>
-<p><iframe height="600" src="https://configurator.cae.tech/" width="800"></iframe></p>
-<br />Solvespace << <a href='Solvespace.html'>Previous</a> <a href='Onshape Drill Press.html'>Next</a> >> Onshape Drill Press</div>
+    <div id="tipue_search_content">remote API << <a href='remote API.html'>Previous</a> <a href='Projects.html'>Next</a> >> Projects<br /><h1>xml</h1>
+<p><a href="https://forum.coppeliarobotics.com/viewtopic.php?t=9240">https://forum.coppeliarobotics.com/viewtopic.php?t=9240#</a> </p>
+<p>simAddOnXML format loader.lua</p>
+<pre class="brush:lua;auto-links:false;toolbar:false" contenteditable="false">function sysCall_info()
+    return {autoStart=false}
+end
+
+function sysCall_init()
+    local file=sim.fileDialog(sim.filedlg_type_load,"XML Format","","","Coppelia XML format","simscene.xml")
+    if file then
+        sim.loadScene(file.."@keepCurrent")
+    end
+    return {cmd='cleanup'}
+end</pre>
+<p>4.3.0 rev12</p>
+<p>XML mesh</p>
+<p>&lt;sceneObject&gt;<br/>    &lt;shape&gt;<br/>     &lt;common&gt;</p>
+<p>        &lt;meshproxy&gt;</p>
+<p>            &lt;mesh&gt;</p>
+<p>            &lt;/mesh&gt;</p>
+<p>        &lt;/meshproxy&gt;</p>
+<p>    &lt;/common&gt;<br/>    &lt;/shape&gt;<br/>&lt;/sceneObject&gt;</p>
+<p></p><br />remote API << <a href='remote API.html'>Previous</a> <a href='Projects.html'>Next</a> >> Projects</div>
         
     <!-- footer -->
       <div class="container">

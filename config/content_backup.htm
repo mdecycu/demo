@@ -6,7 +6,8 @@
 <p>靜態網站: <a href="https://mde.tw/demo/">https://mde.tw/demo/</a></p>
 <p>倉儲: <a href="https://github.com/mdecycu/demo">https://github.com/mdecycu/demo</a></p>
 <p>公佈欄網站: <a href="https://mde.tw/wcms">https://mde.tw/wcms</a></p>
-<p></p><h2>手機使用問題</h2>
+<p></p>
+<h2>手機使用問題</h2>
 <p>新頁面很難輸入新的標題</p>
 <p>是否新增指令按鈕, 在頁面頭或尾端加入 h1, h2 或 h3 標題, 選擇後跳出表單, 讓使用者輸入頁面標題與 level</p>
 <h4>語音輸入</h4>
@@ -15,7 +16,8 @@
 <p>一方面可以當作備忘錄來使用</p>
 <p>再者可以把一些即時想到的事項</p>
 <p>或者是未來即將處理的網站改版提醒放在這裡</p>
-<p>頁面編輯之後，可以轉為靜態網頁，然後使用 acp 按鈕直接將改版內容提交到 GitHub Pages</p><h2>w5</h2>
+<p>頁面編輯之後，可以轉為靜態網頁，然後使用 acp 按鈕直接將改版內容提交到 GitHub Pages</p>
+<h2>w5</h2>
 <p>Under Windows:</p>
 <ol>
 <li data-aria-level="1" data-aria-posinset="1"><span data-contrast="auto"><span>所謂 Secure Shell 就是利用</span></span><a href="https://zh.m.wikipedia.org/zh-tw/%E5%85%AC%E5%BC%80%E5%AF%86%E9%92%A5%E5%8A%A0%E5%AF%86"><span data-contrast="auto"><span>公開金鑰加密</span></span></a><span data-contrast="auto"><span>, 在傳輸指令的過程對內容加密, 以保障資訊不被第三方取得, 當使用者在近端執行個人倉儲的動態網站後進行編輯改版, 並將動態網站轉為靜態網站, 希望將新的靜態網站內容送到 Github Pages  中的過程, 可以透過 SSH 協定建立一對數位鑰匙, 其公開鑰匙登錄到 Github SSH 設定區, 而私人鑰匙則放在近端電腦或隨身碟中, 當推送資料時只有與帳號下公鑰配對的私鑰擁有者, 有權限更改倉儲內容, 以下為在 Windows 操作系統採 SSH 對 Github 倉儲進行改版的設定過程.</span></span><span> </span></li>
@@ -91,7 +93,8 @@ ProxyCommand /usr/bin/ncat --proxy p42.cycu.org:3128 --proxy-type http %h %p</pr
 <p>stud.cycu.org 目前是透過不同的 port 讓多用戶能在同一台電腦伺服器上運行動態網站, 而 Replit 或其他商用雲端系統的做法則是加入 dns 的動態設定, 讓每一位用戶可以各自擁有獨一的 domain name, 然後經由此一 domain name 啟用動態網站.</p>
 <p>實際的可行作法是讓 demo 用戶在 stud.cycu.org 主機上擁有 demo.stud.cycu.org 或 demo.cycu.org 網域名稱的使用權, 然後當使用者在其帳號下的倉儲執行某一特定的主倉儲動態網站時, 以 demo.cycu.org 啟動, 若執行其帳號下的另一個名稱為 wcms 的倉儲動態網站時, 則以 wcms.demo.cycu.org 啟動, 然後依此類推.</p>
 <p>目前 cadlab 總共管理 mde.nfu.edu.tw 與 eng.nfu.edu.tw 等兩個網域的 dns servers, 因此就網路技術層面而言, 上述建構如 Replit 般的網際應用程式服務是可行的. 較為簡單的做法是直接在 dns server 上建立此一服務.</p>
-<p>若要跨 server 建立上述服務, 則 server 間仍需透過類似 Websocket 程式變數的派送, 並在使用者建立帳號後, 便直接在 dns 伺服器上登錄其使用權, 且在同一台電腦的 IPv6 address 上利用 CNAME 分辨各用戶所屬的 domain, 然後在後續伺服器設定時採用.</p><h3>手機專用</h3>
+<p>若要跨 server 建立上述服務, 則 server 間仍需透過類似 Websocket 程式變數的派送, 並在使用者建立帳號後, 便直接在 dns 伺服器上登錄其使用權, 且在同一台電腦的 IPv6 address 上利用 CNAME 分辨各用戶所屬的 domain, 然後在後續伺服器設定時採用.</p>
+<h3>手機專用</h3>
 <p>為了讓手機上的照片或語音輸入能夠使用順暢，上傳的照片要能讓使用者更改檔名，並且讓使用者選擇處理相片大小或進行相關編輯。</p>
 <p>Reference:</p>
 <p style="padding-left: 30px;"><a href="https://github.com/nhn/tui.image-editor">https://github.com/nhn/tui.image-editor</a></p>
@@ -511,11 +514,13 @@ reader.readAsBinaryString(chunk);
 
 })(jQuery);
 </pre>
-<p></p><h3>Nginx</h3>
+<p></p>
+<h3>Nginx</h3>
 <p>目前的 stud 伺服器採用 ports 讓多用戶可以在同一台主機上執行動態 cmsimde 網站. 另一種配置方法, 就如同 Github Pages 與 Replit 的作法, 透過 DNS 的配置, 為每一位用戶建立一個獨特的 domain name.</p>
 <p>假如要讓 stud 伺服器能為每位用戶建立一個獨特的 domain name. 在 DNS 的架構下, 可以讓同一個 IPv6 address 透過多個 CNAME 別名的方式達成. 而在同一台主機中伺服多個 domain name 網站的方法, 則可以使用 Nginx 中的 virtual hosts (在一台伺服器中建立多個不同符號名稱的網站) 設定達成. 也就是各網站都透過同一個 443 埠號, 為每一個網站建立 server 設定, 並讓 server_name 分別對應至各用戶的網站 domain name. 然後利用 Nginx server 中的 proxy_pass 指向近端的 python3 server.py 所啟動的 localhost 網站內容即可.</p>
 <p>至於各別名的 https 網站數位簽章, 則可以利用 Let's Encrypt 的設定達成, 只是一次要在同一台伺服器共享超過兩百個 domain names, 必須透過實作才知道是否可行.</p>
-<p>此外, 由於配置過程中若採 interactive 模式必須要動態讓 Python 程式在 DNS 伺服器中以管理者執行 script. 或許可以試試採用 subprocess.check_call(['sudo', 'your_dns_modification_script']) 方式執行.</p><h2>TCExam</h2>
+<p>此外, 由於配置過程中若採 interactive 模式必須要動態讓 Python 程式在 DNS 伺服器中以管理者執行 script. 或許可以試試採用 subprocess.check_call(['sudo', 'your_dns_modification_script']) 方式執行.</p>
+<h2>TCExam</h2>
 <p>53 機器, 外部 pj2022 內部 tcexam</p>
 <p>啟動流程:</p>
 <p>進入 C:\tcexam\pgsql 執行 start.bat 啟動資料庫伺服器</p>
@@ -550,7 +555,7 @@ reader.readAsBinaryString(chunk);
 <div class="warning">6.
 <div class="error" style="padding-left: 30px;">ERROR: [2] pg_query(): Query failed: ERROR: invalid input syntax for type boolean: "" LINE 2: answer_enabled=\'\', ^ | LINE: 83 | FILE: C:\tcexam\tcexam\shared\code\tce_db_dal_postgresql.php</div>
 <div class="warning" style="padding-left: 30px;">ATTENTION: [8192] pg_last_error(): Automatic fetching of PostgreSQL connection is deprecated | LINE: 69 | FILE: C:\tcexam\tcexam\shared\code\tce_db_dal_postgresql.php</div>
-<div class="error" style="padding-left: 30px;">ERROR: ERROR: invalid input syntax for type boolean: "" LINE 2: answer_enabled=\'\', </div>
+<div class="error" style="padding-left: 30px;">ERROR: ERROR: invalid input syntax for type boolean: "" LINE 2: answer_enabled=\'\',</div>
 <div class="error" style="padding-left: 30px;"></div>
 <div class="error">7.</div>
 <div class="error" style="padding-left: 30px;">ATTENTION: [8192] stripos(): Passing null to parameter #1 ($haystack) of type string is deprecated | LINE: 333 | FILE: C:\tcexam\tcexam\shared\code\tce_functions_test_stats.php</div>
@@ -561,7 +566,8 @@ reader.readAsBinaryString(chunk);
 <div class="error" style="padding-left: 30px;">Ref: <a href="https://php.watch/versions/8.1/internal-func-non-nullable-null-deprecation">https://php.watch/versions/8.1/internal-func-non-nullable-null-deprecation</a></div>
 </div>
 <div class="warning"></div>
-<div class="warning"></div><h2>vscode</h2>
+<div class="warning"></div>
+<h2>vscode</h2>
 <p><a href="https://code.visualstudio.com/docs/editor/vscode-web#_opening-a-project">https://code.visualstudio.com/docs/editor/vscode-web#_opening-a-project</a></p>
 <h2>Windows</h2>
 <p><a href="https://zhuanlan.zhihu.com/p/549971797">如何查找 Windows PC 的序列号 - 知乎 (zhihu.com)</a></p>
@@ -592,19 +598,23 @@ reader.readAsBinaryString(chunk);
 <p>設定方法是：進入設定 - 相機 - 格式，將高效率改為最相容。</p>
 <p><img alt="" height="225" src="/images/image.jpg" width="300"/></p>
 <p>下一張照片則是由手機取畫面後轉入：</p>
-<p><img alt="" height="534" src="/images/A04E0941-5835-4CAF-B9FA-DBF235FF6401.png" width="300"/></p><h2>Constancy</h2>
+<p><img alt="" height="534" src="/images/A04E0941-5835-4CAF-B9FA-DBF235FF6401.png" width="300"/></p>
+<h2>Constancy</h2>
 <div style="text-align: right;">When chance itself can give no more, 'Tis easy to be true.</div>
 <div style="text-align: right;">-- <a href="https://en.wikipedia.org/wiki/Sir_Charles_Sedley,_5th_Baronet">Charles Sedley</a></div>
 <p><img alt="" class="add_border" height="520" src="/images/Reasons_for_constancy.png" width="600"/></p>
-<p>From <a href="https://papuraunewydd.llyfrgell.cymru/view/3395232/3395234">January 9, 1852</a> <a href="https://newspapers.library.wales/browse/3390638">Monmouthshire Merlin Weekly</a></p><h1>Servers</h1>
+<p>From <a href="https://papuraunewydd.llyfrgell.cymru/view/3395232/3395234">January 9, 1852</a> <a href="https://newspapers.library.wales/browse/3390638">Monmouthshire Merlin Weekly</a></p>
+<h1>Servers</h1>
 <p>VBoxHeadless -s is the same as -startvm and --startvm</p>
 <p>4 更新為 22.04 之後運作正常，資料已備份。</p>
 <p>229 Ubuntu 22.04 stud</p>
 <hr/>
 <p>stud 8000 : demo</p>
 <p>stud 8800 : mde.tw</p>
-<p>stud 8900 : cmsimde_site</p><h1>cp2022</h1>
-<p><a href="https://github.com/odenipinedo/Python/blob/master/datacamp/introduction%20to%20Python.ipynb">https://github.com/odenipinedo/Python/blob/master/datacamp/introduction%20to%20Python.ipynb</a> </p><h2>CP抽點程式</h2>
+<p>stud 8900 : cmsimde_site</p>
+<h1>cp2022</h1>
+<p><a href="https://github.com/odenipinedo/Python/blob/master/datacamp/introduction%20to%20Python.ipynb">https://github.com/odenipinedo/Python/blob/master/datacamp/introduction%20to%20Python.ipynb</a></p>
+<h2>CP抽點程式</h2>
 <p>Python dictionary 資料結構: <a href="https://docs.python.org/3/tutorial/datastructures.html#dictionaries">https://docs.python.org/3/tutorial/datastructures.html#dictionaries</a></p>
 <p>2022 Fall 課程代號:1a 為 0747, 1b 為 0761, 2a 為 0773, 2b 為 0786</p>
 <p style="padding-left: 30px;">每一學期各系所開始的相同課程都使用不同課程代號的程式設計, 並非是很好的資料結構設計, 因為使用者若要列出某科系所開設的課程歷史資料時, 都需要使用不同課程代號執行查詢.</p>
@@ -639,7 +649,8 @@ random.shuffle(stud)
 num = 5
 # 利用 for 重複迴圈與 range() 變數, 列印出 (利用 print() 函式) 已經隨機排列次序的 stud 數列的最前面 num 個學號值
 for i in range(num):
-    print(stud[i])</pre><h2>CP 靜態網頁連結</h2>
+    print(stud[i])</pre>
+<h2>CP 靜態網頁連結</h2>
 <p><a href="https://mde.tw/demo/content/Brython.html?c=1a&amp;src=https://gist.githubusercontent.com/mdecycu/2c6323eff49b496d1bafd210f3ec9707/raw/dc9d2548d95523db9aa1b32d75ae61b3fff32853/cp2022_w6b_gen_pages_link.py">1a靜態網頁連結執行</a> (<a href="https://mde.tw/demo/content/Brython.html?c=1a&amp;num=5&amp;src=https://gist.githubusercontent.com/mdecycu/2c6323eff49b496d1bafd210f3ec9707/raw/2004c0db568b5b5b8c81bf498d05bf1cafebdf44/cp2022_w6b_gen_pages_link.py">抽五名</a>)</p>
 <p><a href="https://mde.tw/demo/content/Brython.html?c=1b&amp;src=https://gist.githubusercontent.com/mdecycu/2c6323eff49b496d1bafd210f3ec9707/raw/dc9d2548d95523db9aa1b32d75ae61b3fff32853/cp2022_w6b_gen_pages_link.py">1b靜態網頁連結執行</a> (<a href="https://mde.tw/demo/content/Brython.html?c=1b&amp;num=5&amp;src=https://gist.githubusercontent.com/mdecycu/2c6323eff49b496d1bafd210f3ec9707/raw/2004c0db568b5b5b8c81bf498d05bf1cafebdf44/cp2022_w6b_gen_pages_link.py">抽五名</a>)</p>
 <p><a href="https://mde.tw/demo/content/Brython.html?c=2a&amp;src=https://gist.githubusercontent.com/mdecycu/2c6323eff49b496d1bafd210f3ec9707/raw/2004c0db568b5b5b8c81bf498d05bf1cafebdf44/cad2022_gen_link.py">2a靜態網頁連結執行</a> (<a href="https://mde.tw/demo/content/Brython.html?c=2a&amp;num=5&amp;src=https://gist.githubusercontent.com/mdecycu/2c6323eff49b496d1bafd210f3ec9707/raw/2004c0db568b5b5b8c81bf498d05bf1cafebdf44/cad2022_gen_link.py">抽五名</a>)</p>
@@ -707,8 +718,11 @@ for i in data:
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">a = "1"
 for i in range(3, 10, 2):
     a = a + ", " + str(i)
-print(a)</pre><h2>Control</h2>
-<p><a href="https://lcapy.readthedocs.io/en/latest/">https://lcapy.readthedocs.io/en/latest/</a></p><h2>Brython</h2>
+print(a)</pre>
+<h2>Control</h2>
+<p><a href="https://lcapy.readthedocs.io/en/latest/">https://lcapy.readthedocs.io/en/latest/</a></p>
+<h2>Brython</h2>
+<p><a href="https://www.zditect.com/main-advanced/python/brython-python-in-browser.html">https://www.zditect.com/main-advanced/python/brython-python-in-browser.html</a></p>
 <p><a href="https://zhuanlan.zhihu.com/p/459819939">【python】Brython：浏览器中的Python-第一篇 - 知乎 (zhihu.com)</a></p>
 <p><a href="https://www.geeksforgeeks.org/introduction-to-brython/">Introduction to Brython - GeeksforGeeks</a></p>
 <p><a href="https://www.it145.com/9/102373.html">【python】Brython：瀏覽器中的Python-第二篇 - IT145.com</a></p>
@@ -972,9 +986,10 @@ doc["threejsblock"].bind("click", threejsblock.do)
 <!-- editor2 結束 --><hr/>
 <p>
 <script src="https://unpkg.com/three@0.144.0/build/three.js" type="text/javascript"></script>
-</p><h1>cad2022</h1>
+</p>
+<h1>cad2022</h1>
 <p><a href="https://en.tcheb.ru/">https://en.tcheb.ru/</a> Mechanism</p>
-<p style="padding-left: 30px;"><a href="https://en.tcheb.ru/plantigrade-machine/">https://en.tcheb.ru/plantigrade-machine/</a> </p>
+<p style="padding-left: 30px;"><a href="https://en.tcheb.ru/plantigrade-machine/">https://en.tcheb.ru/plantigrade-machine/</a></p>
 <p><a href="https://nfuedu.sharepoint.com/:b:/s/cad2022/Ecl97yDSrdtMm1OjyA74X-UBXe5zuGKhAEgJuCeDp2iqaA?e=6n2ZWs">What is new in NX8.5.pdf</a> 能找到甚麼有用的資訊.</p>
 <p><a href="https://www.nist.gov/services-resources/software/step-file-analyzer-and-viewer">STEP File Analyzer and Viewer | NIST</a> </p>
 <p><a href="https://pages.nist.gov/CAD-PMI-Testing/step-file-viewer.html">https://pages.nist.gov/CAD-PMI-Testing/step-file-viewer.html</a></p>
@@ -990,9 +1005,11 @@ doc["threejsblock"].bind("click", threejsblock.do)
 <p>利用 <a href="https://www.coppeliarobotics.com/">CoppeliaSim</a> 執行機電控制系統設計與模擬</p>
 <p>利用 stud.cycu.org 動態網站整理上述工具實習流程與結果, 並同步內容至個人的 Github Pages 網站.</p>
 <p>相關設計程式包含 server 端的 Python 與 browser 端的 brython, 其間透過 websocket 傳送設計變數.</p>
-<p></p><h2>w8</h2>
+<p></p>
+<h2>w8</h2>
 <p>將隨身碟中的 <a href="https://github.com/solvespace/solvespace/releases/download/v3.1/solvespace.exe">Solvespace 3.1</a>, <a href="https://nfuedu.sharepoint.com/:u:/s/cad2022/EclS-NMhqJ9JvCa-pIQ_jMsBOLhmGLdxH5xv7JH8CHQMug?e=SMFg8L">NX2027 lite</a> 與瀏覽器中的 <a href="https://onshape.com/">Onshape</a> 同時開啟.</p>
-<p><img alt="" height="538" src="/images/w8_onshape_solvespace_nx_drill_press.png" width="600"/></p><h2>stud server</h2>
+<p><img alt="" height="538" src="/images/w8_onshape_solvespace_nx_drill_press.png" width="600"/></p>
+<h2>stud server</h2>
 <h4>ps command</h4>
 <p>ps axo pid,comm,user|grep "python3"</p>
 <p>before w8:</p>
@@ -1001,8 +1018,9 @@ doc["threejsblock"].bind("click", threejsblock.do)
 <p><a href="https://unix.stackexchange.com/questions/486945/restrict-local-port-access-to-a-specific-user">https://unix.stackexchange.com/questions/486945/restrict-local-port-access-to-a-specific-user</a></p>
 <p>ip6tables -I OUTPUT -o lo -p tcp --dport 5000 --match owner --uid-owner 1000 -j DROP</p>
 <p><a href="https://github.com/hkbakke/fwgen">https://github.com/hkbakke/fwgen</a></p>
-<p><a href="https://unix.stackexchange.com/questions/94357/find-out-current-working-directory-of-a-running-process">https://unix.stackexchange.com/questions/94357/find-out-current-working-directory-of-a-running-process</a> </p>
-<p>pwdx &lt;PID&gt; to get process working directory</p><h3>cadw7</h3>
+<p><a href="https://unix.stackexchange.com/questions/94357/find-out-current-working-directory-of-a-running-process">https://unix.stackexchange.com/questions/94357/find-out-current-working-directory-of-a-running-process</a></p>
+<p>pwdx &lt;PID&gt; to get process working directory</p>
+<h3>cadw7</h3>
 <p>stage1</p>
 <p>152815 python3 cad41023240<br/> 189883 python3 demo<br/> 208291 python3 cad41023210<br/> 219678 python3 cad41023247<br/> 223605 python3 cad41023216<br/> 256296 python3 cad41023124<br/> 257116 python3 cad41023118<br/> 257188 python3 cad41023119</p>
 <p>stage2</p>
@@ -1059,9 +1077,23 @@ server = WebsocketServer(host='127.0.0.1', port=13254, loglevel=logging.INFO)
 server.set_fn_new_client(new_client)
 server.run_forever()</pre>
 <p></p>
-<h2>STEP</h2>
+<h2>File format</h2>
+<h3>STEP</h3>
 <p>The standard STEP AP242 (ISO 10303-242) “Managed model based 3D engineering" is the merging of  2 ISO standards:<br/><br/>- Aerospace's STEP AP203 "Configuration controlled 3D design",<br/>- and Automotive's STEP AP214 "Core data for automotive mechanical design processes.</p>
+<h3>STL</h3>
+<p><a href="https://www.adobe.com/creativecloud/file-types/image/vector/stl-file.html">https://www.adobe.com/creativecloud/file-types/image/vector/stl-file.html</a></p>
+<p><a href="https://en.wikipedia.org/wiki/STL_(file_format)">https://en.wikipedia.org/wiki/STL_(file_format)</a></p>
+<p><a href="https://github.com/omrips/viewstl">https://github.com/omrips/viewstl</a></p>
+<p><a href="https://github.com/topics/stl-viewer?l=javascript">https://github.com/topics/stl-viewer?l=javascript</a></p>
+<p><a href="https://github.com/kaitlynhova/Three.js-STL-Viewer">https://github.com/kaitlynhova/Three.js-STL-Viewer</a></p>
+<p>CoppeliaSim 場景中 mesh 標註下的 STL 檔案格式:</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">&lt;vertices&gt;-0.004635 0.044802 -0.249992 -0.005164 0.006398 -0.249999 -0.013524 0.042962 -0.249993 0.004635 0.044802 -0.249992 0.013708 0.042903 -0.249993 0.022032 0.039279 -0.249993 0.029182 0.034297 -0.249994 0.034929 0.028415 -0.249995 -0.021544 0.039549 -0.249993 -0.029183 -0.034214 -0.250005 0.006868 -0.010323 -0.250001 -0.022032 -0.039196 -0.250006 0.044760 0.004677 -0.249999 0.042921 0.013567 -0.249997 0.044762 -0.004593 -0.250001 0.042861 -0.013667 -0.250003 0.039238 -0.021989 -0.250003 0.034255 -0.029140 -0.250005 0.028373 -0.034887 -0.250005 0.021544 -0.039467 -0.250006 0.013523 -0.042877 -0.250007 0.004635 -0.044720 -0.250007 -0.004636 -0.044720 -0.250007 -0.013710 -0.042819 -0.250007 -0.034929 -0.028331 -0.250005 -0.039508 -0.021501 -0.250003 -0.042920 -0.013481 -0.250003 -0.044762 -0.004593 -0.250001 -0.044761 0.004677 -0.249999 -0.042861 0.013751 -0.249997 -0.039237 0.022074 -0.249996 -0.034254 0.029225 -0.249995 -0.028373 0.034969 -0.249994 0.039508 0.021586 -0.249996 0.013524 -0.042961 0.249993 0.004635 -0.044803 0.249993 0.039508 0.021503 0.250004 0.042921 0.013483 0.250003 0.034255 -0.029223 0.249995 0.039238 -0.022072 0.249997 0.034929 0.028332 0.250005 0.028373 -0.034970 0.249995 -0.004636 -0.044801 0.249993 -0.013709 -0.042902 0.249993 -0.022032 -0.039280 0.249994 0.021544 -0.039549 0.249994 -0.029182 -0.034297 0.249995 -0.034928 -0.028414 0.249995 -0.044761 0.004594 0.250001 -0.044761 -0.004676 0.250000 -0.021544 0.039467 0.250006 0.004635 0.044719 0.250008 -0.004635 0.044719 0.250008 0.013708 0.042819 0.250008 -0.013524 0.042878 0.250008 0.022032 0.039196 0.250006 0.029182 0.034213 0.250006 -0.042861 0.013668 0.250003 -0.028373 0.034886 0.250006 0.044762 -0.004677 0.250000 0.044760 0.004594 0.250001 0.042862 -0.013750 0.249998 -0.039508 -0.021585 0.249997 -0.006356 -0.005204 0.250000 -0.042919 -0.013565 0.249998 0.008847 0.008697 0.250002 -0.034254 0.029141 0.250005 -0.039237 0.021991 0.250004&lt;/vertices&gt;
+&lt;indices&gt;0 1 2 3 1 0 4 1 3 5 1 4 6 1 5 7 1 6 2 1 8 9 10 11 12 10 13 14 10 12 15 10 14 16 10 15 17 10 16 18 10 17 19 10 18 20 10 19 21 10 20 22 10 21 23 10 22 11 10 23 24 10 9 24 1 7 25 1 24 26 1 25 27 1 26 28 1 27 29 1 28 30 1 29 31 1 30 32 1 31 8 1 32 13 10 33 34 35 20 36 37 33 38 16 39 17 16 38 7 36 33 40 36 7 41 17 38 18 17 41 42 21 35 22 21 42 43 22 42 23 22 43 20 35 21 33 37 13 44 23 43 11 23 44 19 34 20 45 34 19 46 11 44 9 11 46 18 45 19 41 45 18 47 9 46 24 9 47 48 27 49 28 27 48 32 50 8 51 0 52 3 0 51 53 3 51 4 3 53 2 52 0 54 52 2 55 4 53 5 4 55 8 54 2 50 54 8 56 5 55 6 5 56 57 28 48 58 50 32 40 6 56 7 6 40 59 12 60 14 12 59 61 14 59 15 14 61 13 60 12 37 60 13 39 15 61 16 15 39 62 63 64 51 65 53 52 65 51 54 65 52 50 65 54 58 65 50 58 63 41 66 63 58 67 63 66 57 63 67 48 63 57 49 63 48 64 63 49 53 65 55 47 63 62 46 63 47 44 63 46 43 63 44 42 63 43 35 63 42 34 63 35 45 63 34 41 63 45 7 33 24 33 10 24 32 31 58 29 28 57 26 49 27 64 49 26 67 29 57 30 29 67 25 64 26 62 64 25 66 30 67 31 30 66 24 62 25 47 62 24 58 31 66 41 38 58 38 65 58 39 65 38 61 65 39 59 65 61 60 65 59 37 65 60 36 65 37 40 65 36 56 65 40 55 65 56&lt;/indices&gt;
+</pre>
+<p></p><h3>DAE</h3>
+<p><a href="https://docs.fileformat.com/3d/dae/">DAE - Digital Asset Exchange File Format</a></p>
 <h2>Solvespace</h2>
+<p><a href="/downloads/goal_keeper_fosball_solvespace.7z">goal_keeper_fosball_solvespace.7z</a> (w11 solvespace and CoppeliaSim v4.4.0rev0)</p>
 <p><a href="https://github.com/solvespace/solvespace/milestone/4">https://github.com/solvespace/solvespace/milestone/4</a></p>
 <p><a href="https://www.inapps.net/how-solvespace-is-retooling-its-3d-cad-open-source-community-inapps-2022/">https://www.inapps.net/how-solvespace-is-retooling-its-3d-cad-open-source-community-inapps-2022/</a></p>
 <p><a href="https://github.com/KmolYuan/solvespace">https://github.com/KmolYuan/solvespace</a></p>
@@ -1072,20 +1104,21 @@ server.run_forever()</pre>
 <p>而且必須 rename Y:\msys64_20210419\mingw64\bin\sh.exe 與 Y:\portablegit_2.31.1\bin\sh.exe 換成其他名稱.</p>
 <p>git clone --recurse-submodules https://github.com/solvespace/solvespace.git<br/>cd solvespace<br/>mkdir build<br/>cd build<br/>cmake .. -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=Release<br/>make<br/><br/>need libwinpthread-1.dll to execute solvespace.exe</p>
 <p>Reference:</p>
-<p><a href="https://www.researchgate.net/profile/Zackary-Stull/publication/311764735_Evaluation_and_Adaptation_of_Open-Source_Development_Tools_for_Mechatronic_Systems/links/58594d9908aeabd9a58b4488/Evaluation-and-Adaptation-of-Open-Source-Development-Tools-for-Mechatronic-Systems.pdf?origin=publication_detail">https://www.researchgate.net/profile/Zackary-Stull/publication/311764735_Evaluation_and_Adaptation_of_Open-Source_Development_Tools_for_Mechatronic_Systems/links/58594d9908aeabd9a58b4488/Evaluation-and-Adaptation-of-Open-Source-Development-Tools-for-Mechatronic-Systems.pdf?origin=publication_detail</a></p>
-<h2>Onshape</h2>
+<p><a href="https://www.researchgate.net/profile/Zackary-Stull/publication/311764735_Evaluation_and_Adaptation_of_Open-Source_Development_Tools_for_Mechatronic_Systems/links/58594d9908aeabd9a58b4488/Evaluation-and-Adaptation-of-Open-Source-Development-Tools-for-Mechatronic-Systems.pdf?origin=publication_detail">https://www.researchgate.net/profile/Zackary-Stull/publication/311764735_Evaluation_and_Adaptation_of_Open-Source_Development_Tools_for_Mechatronic_Systems/links/58594d9908aeabd9a58b4488/Evaluation-and-Adaptation-of-Open-Source-Development-Tools-for-Mechatronic-Systems.pdf?origin=publication_detail</a></p><h2>Onshape</h2>
 <p><a href="https://www.onshape.com/en/education/">https://www.onshape.com/en/education/</a></p>
 <p><a href="https://learn.onshape.com/catalog?labels=%5B%22Self-Paced%20Courses%22%5D&amp;values=%5B%22All%22%5D">self-path learning </a></p>
 <p><a href="https://cad.onshape.com/documents/349085d7029902d4ce9e141d/w/2f10eab3484f8addb1157a25/e/e29b5743830bcea674ae2bcd?renderMode=0&amp;uiState=63524dc50594ef47ab72b47f">Drill Press 鑽床</a></p>
-<p><iframe height="600" src="https://configurator.cae.tech/" width="800"></iframe></p><h3>Onshape Drill Press</h3>
+<p><iframe height="600" src="https://configurator.cae.tech/" width="800"></iframe></p>
+<h3>Onshape Drill Press</h3>
 <p><a href="https://cad.onshape.com/help/Content/translation.htm">https://cad.onshape.com/help/Content/translation.htm</a></p>
 <p>What Imventor do to convert step into parametric part:</p>
 <p style="padding-left: 30px;"><a href="https://knowledge.autodesk.com/support/inventor/getting-started/caas/simplecontent/content/inventor-step-file-to-parametric-model.html">https://knowledge.autodesk.com/support/inventor/getting-started/caas/simplecontent/content/inventor-step-file-to-parametric-model.html</a></p>
 <p style="padding-left: 30px;"><a href="https://itsacadworld.blogspot.com/2019/09/inventor-from-step-file-to-parametric.html">https://itsacadworld.blogspot.com/2019/09/inventor-from-step-file-to-parametric.html</a></p>
 <h3>Edu resource</h3>
-<p><a href="https://learn.onshape.com/courses/teaching-a-class-in-onshape">https://learn.onshape.com/courses/teaching-a-class-in-onshape</a> </p>
-<p><a href="https://learn.onshape.com/learning-paths/introduction-to-cad">https://learn.onshape.com/learning-paths/introduction-to-cad</a> </p>
-<p><a href="https://learn.onshape.com/catalog?query=Educator%20Resources">Educator Resources</a></p><h2>NX</h2>
+<p><a href="https://learn.onshape.com/courses/teaching-a-class-in-onshape">https://learn.onshape.com/courses/teaching-a-class-in-onshape</a></p>
+<p><a href="https://learn.onshape.com/learning-paths/introduction-to-cad">https://learn.onshape.com/learning-paths/introduction-to-cad</a></p>
+<p><a href="https://learn.onshape.com/catalog?query=Educator%20Resources">Educator Resources</a></p>
+<h2>NX</h2>
 <p><a href="https://www.youtube.com/channel/UChYht2a_KxGdqqJBQ00m4lA/videos">NX tutorial</a></p>
 <p><a href="https://nxjournaling.com/content/converting-bodies-parts">converting bodies to parts | NX Journaling</a></p>
 <p>Onshape: <a href="https://cadlab.mde.tw/post/onshape-featurescript-spur-gear-ling-jian.html">https://cadlab.mde.tw/post/onshape-featurescript-spur-gear-ling-jian.html</a></p>
@@ -1109,7 +1142,8 @@ set UGII_PYTHON_DLL=python38.dll
 set UGII_PYTHON_LIBRARY_DIR=%cd%\nxbin\python
 set UGII_PYTHONPATH=%cd%\nxbin\python;%cd%\nxbin\python\Python38.zip;%cd%\design_tools\checkmate\python;%cd%\automated_testing\python</pre>
 <p>與官方 Product Excellence Program 有關的設定存檔:</p>
-<p style="padding-left: 30px;">Product Excellence Program -&gt; set UGII_LOCAL_USER_DEFAULTS=%cd%\temp\NX_user.dpv</p><h3>NXOpen</h3>
+<p style="padding-left: 30px;">Product Excellence Program -&gt; set UGII_LOCAL_USER_DEFAULTS=%cd%\temp\NX_user.dpv</p>
+<h3>NXOpen</h3>
 <p>Set Journal language:</p>
 <p>File - Utilities - Customer Defaults - User Interface - Journal 選擇 Python 作為 Journal language 後, 重新啟動 NX.</p>
 <p>有關 Journal language 設定將存入</p>
@@ -1188,12 +1222,14 @@ def main():
 
 if __name__ == "__main__":
     main()</pre>
-<p></p><h3>Export img</h3>
+<p></p>
+<h3>Export img</h3>
 <p><a href="https://docs.plm.automation.siemens.com/data_services/resources/nx/10/nx_api/en_US/custom/nxopen_python_ref/NXOpen.UF.Disp.BatchShade.html?highlight=disp.batchshade#NXOpen.UF.Disp.BatchShade">BatchShade()</a></p>
 <p style="padding-left: 30px;"><a href="https://community.sw.siemens.com/s/question/0D54O00006X0yc3SAB/are-you-unicode-paths-supported-in-export-image-file">ex</a></p>
 <p><a href="https://docs.plm.automation.siemens.com/data_services/resources/nx/10/nx_api/en_US/custom/nxopen_python_ref/NXOpen.UF.Disp.BatchShadeOptions.html?highlight=disp.batchshade#NXOpen.UF.Disp.BatchShadeOptions">BatchShadeOptions()</a></p>
 <p><a href="https://www.nxjournaling.com/content/exporting-jpeg-without-interactive-session">https://www.nxjournaling.com/content/exporting-jpeg-without-interactive-session</a></p>
-<p><a href="https://docs.plm.automation.siemens.com/data_services/resources/nx/10/nx_api/en_US/custom/ugopen_doc/uf_disp/uf_disp_types.html#UF_DISP_shade_method_e">https://docs.plm.automation.siemens.com/data_services/resources/nx/10/nx_api/en_US/custom/ugopen_doc/uf_disp/uf_disp_types.html#UF_DISP_shade_method_e</a></p><h3>NX Drill Press</h3>
+<p><a href="https://docs.plm.automation.siemens.com/data_services/resources/nx/10/nx_api/en_US/custom/ugopen_doc/uf_disp/uf_disp_types.html#UF_DISP_shade_method_e">https://docs.plm.automation.siemens.com/data_services/resources/nx/10/nx_api/en_US/custom/ugopen_doc/uf_disp/uf_disp_types.html#UF_DISP_shade_method_e</a></p>
+<h3>NX Drill Press</h3>
 <p><a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=8076193">Implementation of recognition algorithm with NXOpen API in Siemens NX</a> (2017)</p>
 <p><a href="https://pdf.sciencedirectassets.com/306234/1-s2.0-S2351978920X00151/1-s2.0-S2351978920319247/main.pdf?X-Amz-Security-Token=IQoJb3JpZ2luX2VjECkaCXVzLWVhc3QtMSJGMEQCIFH315Qdec7j4wpPuU6SaCislMPBLir12O%2FmYHtm3Y7sAiBB3y1oDZ7n2laTMhfr4Y%2Bp%2Fba0R2mEIxsezzLDye0WnSrMBAgSEAUaDDA1OTAwMzU0Njg2NSIM56rdvYT90bUiMhuqKqkEpR5C%2Fw8ZwvpMr%2FcsRueioSuK3xygenOWLkiZT578RXcwVGFUvpcaZliD%2BrO2BcquXcQWQoQvg8p7L3ryttPmOICEZBEZWi%2BhuQNaBxi3p6oqLBVUGYV0MyO%2FFzq%2Bo%2BpRi94v7uEMCboqCWloVPliJVuEE%2BPphwCig8JgiQjMW8M6tw8dKFdg9BjtEJKXDq5TZt653IyB4zyMYbgzSIjmJscEU2f5aJ1U5I%2B8Dqi75OX8If115r8qG%2FrLRP5AqkuEy6lhs5ZRRiRy9IryfczkXD6Rj34ZITvd%2F0xj6fkMw9EVPueBdJyOyLC2Hem0J%2FV%2F8HGO2oQkwDoy%2B%2BXGLh08Mmu%2BDkQKj6r8bt9Z3fBYGYBg7%2FP00OiKLXZtlbig5McfrTBHAKyEG4VNmMxXmH%2BB%2BxRWgDOq5dzh%2FvMKFV4MLudjW5reUEInN15DH%2FtRRFoqTkWWFQY9VpCpzi7Cah8HdKcGhl88tsco%2BJHdobNhitpuu5j%2BiOSwQDE6ZZGRzhRamVu6CqeA7lR17OkIJ5CRS49MWB9iU0T4x5r%2FBvp3NKo92NsBB1m4ZxrxCPTigqAfXYxTBJK3LHNjm99MOUCluf7UWq9yoeKZ7F2eZNPSa%2BhOWiGAlA%2BuMGsFUx4vnElKa1EHixH65oHMfwY4tZOvNkoXB1BJnJCbB1IXu1HrWZXCjuf5FnwjTqeieMWtOEcz4PvfQ%2FS3mEDQdjyyaM5ZWQkWm7hukYDUzDDThemaBjqqAZDIEmpPxM%2BhcXC0ENvkFBypqwJWF2E2fZkGOqjbj%2F5A5YPbwmP%2FLxlXCdL4obgO4QCNLm1NbHAwJiXkh1ZNJi%2BlTmmE8It3Vq3AcXS68ch1mmW399zHohLyRf8krVXakhPcY%2FFH1QUD83zOnToZDNcMapZk8ge0CaKXmpwIRSPBLAsKstqgNIePeyFJ8ktMq4Kq00U%2B2lpZFT4nk8D2LIfB3Id8Pim3OQHz&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Date=20221027T092810Z&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Expires=300&amp;X-Amz-Credential=ASIAQ3PHCVTYX2T3KX6I%2F20221027%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Signature=26a21edf5c01ce6191feb5b76bfe39726e4e387d4412af946a9fdf36c2dc8cd6&amp;hash=f483b415ae2e64f9211e0b7a7552fd70e7dcc57ea61f013894876f5f54b98e28&amp;host=68042c943591013ac2b2430a89b270f6af2c76d8dfd086a07176afe7c76c2c61&amp;pii=S2351978920319247&amp;tid=spdf-41af57d8-d0fd-433d-ba4a-ef7240b14045&amp;sid=72d997746acea64db248a7d5e62c58169abegxrqa&amp;type=client&amp;ua=4d545207545253515058&amp;rr=760a666758fcf23c">Automatic weld path definition in CAD</a> (2020)</p>
 <p><a href="https://www.diva-portal.org/smash/get/diva2:849129/FULLTEXT01.pdf">Multidisciplinary analysis of jet engine components - Development of methods and tools for design automatisation in a multidisciplinary context</a> (2015) - <a href="https://ju.se/en/about-us/school-of-engineering.html">School of Engineering</a></p>
@@ -1203,26 +1239,162 @@ if __name__ == "__main__":
 <p><a href="https://docs.specflow.org/projects/specflow/en/latest/Bindings/Step-Argument-Conversions.html">https://docs.specflow.org/projects/specflow/en/latest/Bindings/Step-Argument-Conversions.html</a></p>
 <p><a href="https://all3dp.com/2/step-to-stl-how-to-convert-step-files-to-stl/">https://all3dp.com/2/step-to-stl-how-to-convert-step-files-to-stl/</a></p>
 <p><a href="https://www.fastradius.com/resources/everything-you-need-to-know-about-step-files/">https://www.fastradius.com/resources/everything-you-need-to-know-about-step-files/</a></p>
-<p><a href="https://www.nxjournaling.com/content/how-read-measures-part-nxopen">https://www.nxjournaling.com/content/how-read-measures-part-nxopen</a></p><h2>STL</h2>
-<p><a href="https://www.adobe.com/creativecloud/file-types/image/vector/stl-file.html">https://www.adobe.com/creativecloud/file-types/image/vector/stl-file.html</a></p>
-<p><a href="https://en.wikipedia.org/wiki/STL_(file_format)">https://en.wikipedia.org/wiki/STL_(file_format)</a></p>
-<p><a href="https://github.com/omrips/viewstl">https://github.com/omrips/viewstl</a></p>
-<p><a href="https://github.com/topics/stl-viewer?l=javascript">https://github.com/topics/stl-viewer?l=javascript</a></p>
-<p><a href="https://github.com/kaitlynhova/Three.js-STL-Viewer">https://github.com/kaitlynhova/Three.js-STL-Viewer</a></p>
-<p></p>
+<p><a href="https://www.nxjournaling.com/content/how-read-measures-part-nxopen">https://www.nxjournaling.com/content/how-read-measures-part-nxopen</a></p>
 <h2>CoppeliaSim</h2>
 <p>Opencv 與 Scenes</p>
 <p><a href="http://mod.cycu.org">http://mod.cycu.org</a> has coppeliaSim on Ubuntu desktop</p>
-<p><a href="https://github.com/ljmanso/coppeliasim_pythonic_api">GitHub - ljmanso/coppeliasim_pythonic_api</a></p><h1>Projects</h1>
+<p><a href="https://github.com/ljmanso/coppeliasim_pythonic_api">GitHub - ljmanso/coppeliasim_pythonic_api</a></p>
+<h3>remote API</h3>
+<p>one link change velocity:</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import vrep
+import sys
+# child threaded script: 
+# 內建使用 port 19997 若要加入其他 port, 在  serve 端程式納入
+#simExtRemoteApiStart(19999)
+ 
+vrep.simxFinish(-1)
+ 
+clientID = vrep.simxStart('127.0.0.1', 19997, True, True, 5000, 5)
+ 
+if clientID!= -1:
+    print("Connected to remote server")
+else:
+    print('Connection not successful')
+    sys.exit('Could not connect')
+ 
+errorCode,Revolute_joint_handle=vrep.simxGetObjectHandle(clientID,'Revolute_joint',vrep.simx_opmode_oneshot_wait)
+ 
+if errorCode == -1:
+    print('Can not find left or right motor')
+    sys.exit()
+ 
+errorCode=vrep.simxSetJointTargetVelocity(clientID,Revolute_joint_handle,2, vrep.simx_opmode_oneshot_wait)
+ 
+while True:
+    choice = input("(e to exit, p to pause and enter to exec)&gt;")
+    if choice == "e":
+        print("exiting")
+        vrep.simxStopSimulation(clientID, vrep.simx_opmode_oneshot_wait)
+        break
+    elif choice == "p":
+        vrep.simxPauseSimulation(clientID, vrep.simx_opmode_oneshot_wait)
+    else:
+        vrep.simxStartSimulation(clientID, vrep.simx_opmode_oneshot_wait)</pre>
+<p>Position control</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import vrep
+import sys, math
+# child threaded script: 
+# 內建使用 port 19997 若要加入其他 port, 在  serve 端程式納入
+#simExtRemoteApiStart(19999)
+ 
+vrep.simxFinish(-1)
+ 
+clientID = vrep.simxStart('127.0.0.1', 19997, True, True, 5000, 5)
+ 
+if clientID!= -1:
+    print("Connected to remote server")
+else:
+    print('Connection not successful')
+    sys.exit('Could not connect')
+ 
+errorCode,Revolute_joint_handle=vrep.simxGetObjectHandle(clientID,'Revolute_joint',vrep.simx_opmode_oneshot_wait)
+ 
+if errorCode == -1:
+    print('Can not find left or right motor')
+    sys.exit()
+ 
+deg = math.pi/180
+ 
+#errorCode=vrep.simxSetJointTargetVelocity(clientID,Revolute_joint_handle,2, vrep.simx_opmode_oneshot_wait)
+ 
+def setJointPosition(incAngle, steps):
+    for i  in range(steps):
+        errorCode=vrep.simxSetJointPosition(clientID, Revolute_joint_handle, i*incAngle*deg, vrep.simx_opmode_oneshot_wait)
+ 
+# 每步 10 度, 轉兩圈
+setJointPosition(10, 72)
+# 每步 1 度, 轉兩圈
+#setJointPosition(1, 720)
+# 每步 0.1  度, 轉720 步
+#setJointPosition(0.1, 720)
+ 
+'''
+三軸同動時
+simxPauseCommunication(clientID,1);
+simxSetJointPosition(clientID,joint1Handle,joint1Value,simx_opmode_oneshot);
+simxSetJointPosition(clientID,joint2Handle,joint2Value,simx_opmode_oneshot);
+simxSetJointPosition(clientID,joint3Handle,joint3Value,simx_opmode_oneshot);
+simxPauseCommunication(clientID,0);
+'''</pre>
+<p>Fourbar linkage velocity control:</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import vrep
+import sys
+# child threaded script: 
+# 內建使用 port 19997 若要加入其他 port, 在  serve 端程式納入
+#simExtRemoteApiStart(19999)
+ 
+vrep.simxFinish(-1)
+ 
+clientID = vrep.simxStart('127.0.0.1', 19997, True, True, 5000, 5)
+ 
+if clientID!= -1:
+    print("Connected to remote server")
+else:
+    print('Connection not successful')
+    sys.exit('Could not connect')
+ 
+errorCode,Revolute_joint_handle=vrep.simxGetObjectHandle(clientID,'Revolute_joint',vrep.simx_opmode_oneshot_wait)
+ 
+if errorCode == -1:
+    print('Can not find left or right motor')
+    sys.exit()
+ 
+errorCode=vrep.simxSetJointTargetVelocity(clientID,Revolute_joint_handle,2, vrep.simx_opmode_oneshot_wait)
+ 
+while True:
+    choice = input("(e to exit, p to pause and enter to exec)&gt;")
+    if choice == "e":
+        print("exiting")
+        vrep.simxStopSimulation(clientID, vrep.simx_opmode_oneshot_wait)
+        break
+    elif choice == "p":
+        vrep.simxPauseSimulation(clientID, vrep.simx_opmode_oneshot_wait)
+    else:
+        vrep.simxStartSimulation(clientID, vrep.simx_opmode_oneshot_wait)</pre>
+<p></p><h3>xml</h3>
+<p><a href="https://forum.coppeliarobotics.com/viewtopic.php?t=9240">https://forum.coppeliarobotics.com/viewtopic.php?t=9240#</a> </p>
+<p>simAddOnXML format loader.lua</p>
+<pre class="brush:lua;auto-links:false;toolbar:false" contenteditable="false">function sysCall_info()
+    return {autoStart=false}
+end
+
+function sysCall_init()
+    local file=sim.fileDialog(sim.filedlg_type_load,"XML Format","","","Coppelia XML format","simscene.xml")
+    if file then
+        sim.loadScene(file.."@keepCurrent")
+    end
+    return {cmd='cleanup'}
+end</pre>
+<p>4.3.0 rev12</p>
+<p>XML mesh</p>
+<p>&lt;sceneObject&gt;<br/>    &lt;shape&gt;<br/>     &lt;common&gt;</p>
+<p>        &lt;meshproxy&gt;</p>
+<p>            &lt;mesh&gt;</p>
+<p>            &lt;/mesh&gt;</p>
+<p>        &lt;/meshproxy&gt;</p>
+<p>    &lt;/common&gt;<br/>    &lt;/shape&gt;<br/>&lt;/sceneObject&gt;</p>
+<p></p><h1>Projects</h1>
 <p>Rotary Potentiometer:</p>
 <p style="padding-left: 30px;"><a href="https://shop.cpu.com.tw/cPath/405">https://shop.cpu.com.tw/cPath/405</a></p>
-<p style="padding-left: 30px;"><a href="https://forum.arduino.cc/t/rotary-potentiometer/634703">https://forum.arduino.cc/t/rotary-potentiometer/634703</a> </p>
-<p style="padding-left: 30px;"><a href="https://www.youtube.com/watch?v=V1txmR8GXzE">https://www.youtube.com/watch?v=V1txmR8GXzE</a> </p>
+<p style="padding-left: 30px;"><a href="https://forum.arduino.cc/t/rotary-potentiometer/634703">https://forum.arduino.cc/t/rotary-potentiometer/634703</a></p>
+<p style="padding-left: 30px;"><a href="https://www.youtube.com/watch?v=V1txmR8GXzE">https://www.youtube.com/watch?v=V1txmR8GXzE</a></p>
 <p>Motion converting:</p>
-<p style="padding-left: 30px;"><a href="https://byjus.com/question-answer/how-do-you-convert-rotational-to-translational-motion/">https://byjus.com/question-answer/how-do-you-convert-rotational-to-translational-motion/</a> </p>
-<p style="padding-left: 30px;"><a href="https://en.tcheb.ru/rotation-into-translation-transformer/">https://en.tcheb.ru/rotation-into-translation-transformer/</a> </p><h1>Ext</h1>
+<p style="padding-left: 30px;"><a href="https://byjus.com/question-answer/how-do-you-convert-rotational-to-translational-motion/">https://byjus.com/question-answer/how-do-you-convert-rotational-to-translational-motion/</a></p>
+<p style="padding-left: 30px;"><a href="https://en.tcheb.ru/rotation-into-translation-transformer/">https://en.tcheb.ru/rotation-into-translation-transformer/</a></p>
+<h1>Ext</h1>
 <p>這裡主要是放入一些延伸內容</p>
-<p>包括電腦輔助設計與計算機程式</p><h2>Fusion 360</h2>
+<p>包括電腦輔助設計與計算機程式</p>
+<h2>Fusion 360</h2>
 <p>除了 <a href="https://onshape.com">https://onshape.com</a>  還有 Fusion 360 也提供免費教育版:</p>
 <p><a href="https://www.autodesk.com/education/edu-software/overview">https://www.autodesk.com/education/edu-software/overview</a></p>
 <h2>Control</h2>
