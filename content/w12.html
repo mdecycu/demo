@@ -141,14 +141,38 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">cmsimde << <a href='cmsimde.html'>Previous</a> <a href='CMS 改版.html'>Next</a> >> CMS 改版<br /><h1>手機專用</h1>
-<p>為了讓手機上的照片或語音輸入能夠使用順暢，上傳的照片要能讓使用者更改檔名，並且讓使用者選擇處理相片大小或進行相關編輯。</p>
-<p>Reference:</p>
-<p style="padding-left: 30px;"><a href="https://github.com/nhn/tui.image-editor">https://github.com/nhn/tui.image-editor</a></p>
-<p style="padding-left: 30px;"><a href="https://github.com/viliusle/miniPaint">https://github.com/viliusle/miniPaint</a></p>
-<p>另外一項可能的功能是，當使用者在編輯模式下，可直接選擇將拍攝的照片插入頁面中。</p>
-<p>並且針對特定頁面中使用者已經輸入的照片檔案，選擇送至伺服器進行影像辨識，並將結果自動嵌入頁面。</p>
-<br />cmsimde << <a href='cmsimde.html'>Previous</a> <a href='CMS 改版.html'>Next</a> >> CMS 改版</div>
+    <div id="tipue_search_content">HW << <a href='HW.html'>Previous</a> <a href='Control-1.html'>Next</a> >> Control-1<br /><h1>w12</h1>
+<!-- 
+在動態網站頁面中啟用 Brython 執行環境的用法, 請注意動態網站執行所在路徑
+-->
+<script src="./../cmsimde/static/brython.js"></script>
+<script src="./../cmsimde/static/brython_stdlib.js"></script>
+<!-- 啟動 Brython -->
+<p>
+<script>
+window.onload=function(){
+brython({debug:1, pythonpath:['./../cmsimde/static/','/downloads/py/']});
+}
+</script>
+<!-- 以下事先在頁面中加入 id="brython_div" 的 div 標註
+之後可利用 Brython 的 document 模組與此 html 標註對應
+--></p>
+<div id="brython_div"></div>
+<p>
+<script type="text/python">
+from browser import html, document
+# Brython 的 input() 可以接受輸入提示字串, 跳出瀏覽器輸入表單後, 將輸入內容以字串取回
+user_input_temp = input("請輸入攝氏溫度值:")
+# 接著列出 user_input_temp 變數的資料型別
+# 但是在頁面中 Brython 的 print() 將會顯示在 log 而非頁面
+print(type(user_input_temp))
+# 這裡定義一個 brython_div 變數, 透過 document[] 與頁面中 id="brython_div" 的位置對應
+brython_div = document["brython_div"]
+# 看能不能直接將變數值字串列在標註 id 為 "brython_div" 的頁面位置
+brython_div <= user_input_temp
+# 之後若要列出 html, 則需要透過 Brython 的 html 模組
+</script>
+</p><br />HW << <a href='HW.html'>Previous</a> <a href='Control-1.html'>Next</a> >> Control-1</div>
         
     <!-- footer -->
       <div class="container">
