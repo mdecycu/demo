@@ -572,6 +572,9 @@ reader.readAsBinaryString(chunk);
 <h2>Windows</h2>
 <p><a href="https://zhuanlan.zhihu.com/p/549971797">如何查找 Windows PC 的序列号 - 知乎 (zhihu.com)</a></p>
 <h1>News</h1>
+<p><a href="https://builtin.com/artificial-intelligence/use-ai-fix-broken-code">https://builtin.com/artificial-intelligence/use-ai-fix-broken-code</a> </p>
+<p style="padding-left: 30px;"><a href="https://www.testim.io/blog/what-is-a-linter-heres-a-definition-and-quick-start-guide/">What Is a Linter? Here's a Definition and Quick-Start Guide (testim.io)</a></p>
+<p><a href="https://builtin.com/artificial-intelligence/human-consequences-automation">Why Automation Won’t Replace Humans | Built In</a></p>
 <p><a href="https://youtu.be/zU1ahmjyFOc">web Sammir 2022 opening night</a></p>
 <p style="padding-left: 30px;"><a href="https://youtu.be/i4mCREzVah8">Day one</a></p>
 <p style="padding-left: 30px;"><a href="https://youtu.be/D5p2gt7htDM">Day three</a></p>
@@ -611,7 +614,15 @@ reader.readAsBinaryString(chunk);
 <p>stud 8000 : demo</p>
 <p>stud 8800 : mde.tw</p>
 <p>stud 8900 : cmsimde_site</p>
-<h1>cp2022</h1>
+<h2>OpenSSH</h2>
+<p>Windows OpenSSH server:</p>
+<p style="padding-left: 30px;">OpenSSH is a connectivity tool for remote sign-in that uses the SSH protocol. It encrypts all traffic between client and server to eliminate eavesdropping, connection hijacking, and other attacks.</p>
+<p style="padding-left: 30px;">An OpenSSH-compatible client can be used to connect to Windows Server and Windows client devices.</p>
+<p style="padding-left: 30px;"><span>OpenSSH has configuration files for both server and client settings. OpenSSH is open-source and is added to Windows Server and Windows Client operating systems, starting with Windows Server 2019 and Windows 10 (build 1809). As a result, open-source documentation for OpenSSH configuration files isn't repeated here. Client configuration files and can be found on the </span><a data-linktype="external" href="https://man.openbsd.org/ssh_config">ssh_config manual page</a><span><span> </span>and for OpenSSH Server configuration files can be found on the<span> </span></span><a data-linktype="external" href="https://man.openbsd.org/sshd_config">sshd_config manual page</a><span>.</span></p>
+<p style="padding-left: 30px;"><a href="https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_keymanagement">Key-based authentication in OpenSSH for Windows | Microsoft Learn</a></p>
+<p style="padding-left: 30px;"><a href="https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_server_configuration?source=recommendations">OpenSSH Server configuration for Windows | Microsoft Learn</a></p>
+<p style="padding-left: 30px;"><a href="https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_overview?source=recommendations">OpenSSH for Windows overview | Microsoft Learn</a></p>
+<p style="padding-left: 30px;"><a href="https://learn.microsoft.com/en-us/windows/terminal/tutorials/ssh?source=recommendations">Windows Terminal SSH | Microsoft Learn</a></p><h1>cp2022</h1>
 <p><a href="https://github.com/odenipinedo/Python/blob/master/datacamp/introduction%20to%20Python.ipynb">https://github.com/odenipinedo/Python/blob/master/datacamp/introduction%20to%20Python.ipynb</a></p>
 <h2>CP抽點程式</h2>
 <p>Python dictionary 資料結構: <a href="https://docs.python.org/3/tutorial/datastructures.html#dictionaries">https://docs.python.org/3/tutorial/datastructures.html#dictionaries</a></p>
@@ -719,8 +730,57 @@ for i in range(3, 10, 2):
     a = a + ", " + str(i)
 print(a)</pre>
 <h3>w12</h3>
+<p>以下為本頁面的主要超文件檔案:</p>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">&lt;h3&gt;w12&lt;/h3&gt;
+&lt;!-- 
+在動態網站頁面中啟用 Brython 執行環境的用法, 請注意動態網站執行所在路徑
+--&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;!-- 這個標註在 html 為註解
+以下導入 Brython 以 Javascript 編寫的解譯器, 一旦導入頁面, 並且啟動, 就可以在頁面中利用
+&lt;script type="text/python"&gt;&lt;/script&gt; 標註編寫 Brython 程式
+Brython 是能在瀏覽器中執行的 Python, 並不是所有 CPython 的程式庫都包含在 Brython 中, 
+但 Brython 可以擷取所有 Javascript 編寫的程式庫, 因此在網際前端仍具有一定的優勢.
+--&gt;
+&lt;script src="/static/brython.js"&gt;&lt;/script&gt;
+&lt;script src="/static/brython_stdlib.js"&gt;&lt;/script&gt;
+&lt;!-- 啟動 Brython --&gt;
+&lt;p&gt;
+&lt;script&gt;// &lt;![CDATA[
+window.onload=function(){
+brython({debug:1, pythonpath:['/static/','/downloads/py/']});
+}
+// ]]&gt;&lt;/script&gt;
+&lt;!-- 以下事先在頁面中加入 id="brython_div" 的 div 標註
+之後可利用 Brython 的 document 模組與此 html 標註對應
+--&gt;&lt;/p&gt;
+&lt;div id="brython_div"&gt;&lt;/div&gt;
+&lt;p&gt;
+&lt;script type="text/python"&gt;// &lt;![CDATA[
+from browser import html, document
+# Brython 的 input() 可以接受輸入提示字串, 跳出瀏覽器輸入表單後, 將輸入內容以字串取回
+user_input_temp = input("請輸入攝氏溫度值:")
+
+# 接著列出 user_input_temp 變數的資料型別
+# 但是在頁面中 Brython 的 print() 將會顯示在 log 而非頁面
+print(type(user_input_temp))
+# 這裡定義一個 brython_div 變數, 透過 document[] 與頁面中 id="brython_div" 的位置對應
+brython_div = document["brython_div"]
+# 看能不能直接將變數值字串列在標註 id 為 "brython_div" 的頁面位置
+brython_div &lt;= user_input_temp
+# 之後若要列出 html, 則需要透過 Brython 的 html 模組
+// ]]&gt;&lt;/script&gt;
+&lt;/p&gt;</pre>
+<p></p>
 <!-- 
 在動態網站頁面中啟用 Brython 執行環境的用法, 請注意動態網站執行所在路徑
+-->
+<p></p>
+<!-- 這個標註在 html 為註解
+以下導入 Brython 以 Javascript 編寫的解譯器, 一旦導入頁面, 並且啟動, 就可以在頁面中利用
+<script type="text/python"></script> 標註編寫 Brython 程式
+Brython 是能在瀏覽器中執行的 Python, 並不是所有 CPython 的程式庫都包含在 Brython 中, 
+但 Brython 可以擷取所有 Javascript 編寫的程式庫, 因此在網際前端仍具有一定的優勢.
 -->
 <script src="/static/brython.js"></script>
 <script src="/static/brython_stdlib.js"></script>
@@ -750,8 +810,7 @@ brython_div = document["brython_div"]
 brython_div <= user_input_temp
 # 之後若要列出 html, 則需要透過 Brython 的 html 模組
 </script>
-</p>
-<h3>w12-1</h3>
+</p><h3>w12-1</h3>
 <!-- 
 在動態網站頁面中啟用 Brython 執行環境的用法, 請注意動態網站執行所在路徑
 -->
@@ -1256,7 +1315,535 @@ server.run_forever()</pre>
 <p>Reference:</p>
 <p><a href="https://www.researchgate.net/profile/Zackary-Stull/publication/311764735_Evaluation_and_Adaptation_of_Open-Source_Development_Tools_for_Mechatronic_Systems/links/58594d9908aeabd9a58b4488/Evaluation-and-Adaptation-of-Open-Source-Development-Tools-for-Mechatronic-Systems.pdf?origin=publication_detail">https://www.researchgate.net/profile/Zackary-Stull/publication/311764735_Evaluation_and_Adaptation_of_Open-Source_Development_Tools_for_Mechatronic_Systems/links/58594d9908aeabd9a58b4488/Evaluation-and-Adaptation-of-Open-Source-Development-Tools-for-Mechatronic-Systems.pdf?origin=publication_detail</a></p>
 <h3>w12-solvespace</h3>
-<p><a href="https://m-labs.hk/software/solvespace/">SolveSpace | M-Labs</a> </p><h2>Onshape</h2>
+<p>研究如何將 <a href="https://m-labs.hk/software/solvespace/">SolveSpace | M-Labs</a> 中的零組件 stl 導入模式放入 CMSiMDE</p>
+<p><a href="http://hammerjs.github.io/">Hammer.JS - Hammer.js (hammerjs.github.io)</a> 為 Touch Gesture library</p>
+<p><a href="https://m-labs.hk/js/three-r76.js">https://m-labs.hk/js/three-r76.js</a> 是 Three.js library</p>
+<p><a href="https://m-labs.hk/js/SolveSpaceControls.js">https://m-labs.hk/js/SolveSpaceControls.js</a> 則是 Solvespace 零件控制 library</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio">Window.devicePixelRatio - Web APIs | MDN (mozilla.org)</a> </p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call">Function.prototype.call() - JavaScript | MDN (mozilla.org)</a> </p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">window.devicePixelRatio = window.devicePixelRatio || 1;
+
+SolvespaceCamera = function(renderWidth, renderHeight, scale, up, right, offset) {
+    THREE.Camera.call(this);
+
+    this.type = 'SolvespaceCamera';
+
+    this.renderWidth = renderWidth;
+    this.renderHeight = renderHeight;
+    this.zoomScale = scale; /* Avoid namespace collision w/ THREE.Object.scale */
+    this.up = up;
+    this.right = right;
+    this.offset = offset;
+    this.depthBias = 0;
+
+    this.updateProjectionMatrix();
+};
+
+SolvespaceCamera.prototype = Object.create(THREE.Camera.prototype);
+SolvespaceCamera.prototype.constructor = SolvespaceCamera;
+SolvespaceCamera.prototype.updateProjectionMatrix = function() {
+    var temp = new THREE.Matrix4();
+    var offset = new THREE.Matrix4().makeTranslation(this.offset.x, this.offset.y, this.offset.z);
+    // Convert to right handed- do up cross right instead.
+    var n = new THREE.Vector3().crossVectors(this.up, this.right);
+    var rotate = new THREE.Matrix4().makeBasis(this.right, this.up, n);
+    rotate.transpose();
+    /* FIXME: At some point we ended up using row-major.
+       THREE.js wants column major. Scale/depth correct unaffected b/c diagonal
+       matrices remain the same when transposed. makeTranslation also makes
+       a column-major matrix. */
+
+    /* TODO: If we want perspective, we need an additional matrix
+       here which will modify w for perspective divide. */
+    var scale = new THREE.Matrix4().makeScale(2 * this.zoomScale / this.renderWidth,
+        2 * this.zoomScale / this.renderHeight, this.zoomScale / 30000.0);
+
+    temp.multiply(scale);
+    temp.multiply(rotate);
+    temp.multiply(offset);
+
+    this.projectionMatrix.copy(temp);
+};
+
+SolvespaceCamera.prototype.NormalizeProjectionVectors = function() {
+    /* After rotating, up and right may no longer be orthogonal.
+    However, their cross product will produce the correct
+    rotated plane, and we can recover an orthogonal basis. */
+    var n = new THREE.Vector3().crossVectors(this.right, this.up);
+    this.up = new THREE.Vector3().crossVectors(n, this.right);
+    this.right.normalize();
+    this.up.normalize();
+};
+
+SolvespaceCamera.prototype.rotate = function(right, up) {
+    var oldRight = new THREE.Vector3().copy(this.right).normalize();
+    var oldUp = new THREE.Vector3().copy(this.up).normalize();
+    this.up.applyAxisAngle(oldRight, up);
+    this.right.applyAxisAngle(oldUp, right);
+    this.NormalizeProjectionVectors();
+}
+
+SolvespaceCamera.prototype.offsetProj = function(right, up) {
+    var shift = new THREE.Vector3(right * this.right.x + up * this.up.x,
+        right * this.right.y + up * this.up.y,
+        right * this.right.z + up * this.up.z);
+    this.offset.add(shift);
+}
+
+/* Calculate the offset in terms of up and right projection vectors
+that will preserve the world coordinates of the current mouse position after
+the zoom. */
+SolvespaceCamera.prototype.zoomTo = function(x, y, delta) {
+    // Get offset components in world coordinates, in terms of up/right.
+    var projOffsetX = this.offset.dot(this.right);
+    var projOffsetY = this.offset.dot(this.up);
+
+    /* Remove offset before scaling so, that mouse position changes
+    proportionally to the model and independent of current offset. */
+    var centerRightI = x/this.zoomScale - projOffsetX;
+    var centerUpI = y/this.zoomScale - projOffsetY;
+    var zoomFactor;
+
+    /* Zoom 20% every 100 delta. */
+    if(delta &lt; 0) {
+        zoomFactor = (-delta * 0.002 + 1);
+    }
+    else if(delta &gt; 0) {
+        zoomFactor = (delta * (-1.0/600.0) + 1)
+    }
+    else {
+        return;
+    }
+
+    this.zoomScale = this.zoomScale * zoomFactor;
+    var centerRightF = x/this.zoomScale - projOffsetX;
+    var centerUpF = y/this.zoomScale - projOffsetY;
+
+    this.offset.addScaledVector(this.right, centerRightF - centerRightI);
+    this.offset.addScaledVector(this.up, centerUpF - centerUpI);
+}
+
+
+SolvespaceControls = function(object, domElement) {
+    var _this = this;
+    this.object = object;
+    this.domElement = ( domElement !== undefined ) ? domElement : document;
+
+    var threePan = new Hammer.Pan({event : 'threepan', pointers : 3, enable : false});
+    var panAfterTap = new Hammer.Pan({event : 'panaftertap', enable : false});
+
+    this.touchControls = new Hammer.Manager(domElement, {
+        recognizers: [
+            [Hammer.Pinch, { enable: true }],
+            [Hammer.Pan],
+            [Hammer.Tap],
+        ]
+    });
+
+    this.touchControls.add(threePan);
+    this.touchControls.add(panAfterTap);
+
+    var changeEvent = {
+        type: 'change'
+    };
+    var startEvent = {
+        type: 'start'
+    };
+    var endEvent = {
+        type: 'end'
+    };
+
+    var _changed = false;
+    var _mouseMoved = false;
+    //var _touchPoints = new Array();
+    var _offsetPrev = new THREE.Vector2(0, 0);
+    var _offsetCur = new THREE.Vector2(0, 0);
+    var _rotatePrev = new THREE.Vector2(0, 0);
+    var _rotateCur = new THREE.Vector2(0, 0);
+
+    // Used during touch events.
+    var _rotateOrig = new THREE.Vector2(0, 0);
+    var _offsetOrig = new THREE.Vector2(0, 0);
+    var _prevScale = 1.0;
+
+    this.handleEvent = function(event) {
+        if (typeof this[event.type] == 'function') {
+            this[event.type](event);
+        }
+    }
+
+    function mousedown(event) {
+        event.preventDefault();
+        event.stopPropagation();
+
+        switch (event.button) {
+            case 0:
+                _rotateCur.set(event.screenX/window.devicePixelRatio, event.screenY/window.devicePixelRatio);
+                _rotatePrev.copy(_rotateCur);
+                document.addEventListener('mousemove', mousemove, false);
+                document.addEventListener('mouseup', mouseup, false);
+                break;
+            case 2:
+                _offsetCur.set(event.screenX/window.devicePixelRatio, event.screenY/window.devicePixelRatio);
+                _offsetPrev.copy(_offsetCur);
+                document.addEventListener('mousemove', mousemove, false);
+                document.addEventListener('mouseup', mouseup, false);
+                break;
+            default:
+                break;
+        }
+    }
+
+    function wheel( event ) {
+        event.preventDefault();
+        /* FIXME: Width and height might not be supported universally, but
+        can be calculated? */
+        var box = _this.domElement.getBoundingClientRect();
+        object.zoomTo(event.clientX - box.width/2 - box.left,
+             -(event.clientY - box.height/2 - box.top), event.deltaY);
+        _changed = true;
+    }
+
+    function mousemove(event) {
+        switch (event.button) {
+            case 0:
+                _rotateCur.set(event.screenX/window.devicePixelRatio, event.screenY/window.devicePixelRatio);
+                var diff = new THREE.Vector2().subVectors(_rotateCur, _rotatePrev)
+                    .multiplyScalar(1 / object.zoomScale);
+                object.rotate(-0.3 * Math.PI / 180 * diff.x * object.zoomScale,
+                     -0.3 * Math.PI / 180 * diff.y * object.zoomScale);
+                _changed = true;
+                _rotatePrev.copy(_rotateCur);
+                break;
+            case 2:
+                _mouseMoved = true;
+                _offsetCur.set(event.screenX/window.devicePixelRatio, event.screenY/window.devicePixelRatio);
+                var diff = new THREE.Vector2().subVectors(_offsetCur, _offsetPrev)
+                    .multiplyScalar(1 / object.zoomScale);
+                object.offsetProj(diff.x, -diff.y);
+                _changed = true;
+                _offsetPrev.copy(_offsetCur)
+                break;
+        }
+    }
+
+
+    function mouseup(event) {
+        /* TODO: Opera mouse gestures will intercept this event, making it
+        possible to have multiple mousedown events consecutively without
+        a corresponding mouseup (so multiple viewports can be rotated/panned
+        simultaneously). Disable mouse gestures for now. */
+        event.preventDefault();
+        event.stopPropagation();
+
+        document.removeEventListener('mousemove', mousemove);
+        document.removeEventListener('mouseup', mouseup);
+
+        _this.dispatchEvent(endEvent);
+    }
+
+    function pan(event) {
+        /* neWcur - prev does not necessarily equal (cur + diff) - prev.
+        Floating point is not associative. */
+        touchDiff = new THREE.Vector2(event.deltaX, event.deltaY);
+        _rotateCur.addVectors(_rotateOrig, touchDiff);
+        incDiff = new THREE.Vector2().subVectors(_rotateCur, _rotatePrev)
+            .multiplyScalar(1 / object.zoomScale);
+        object.rotate(-0.3 * Math.PI / 180 * incDiff.x * object.zoomScale,
+             -0.3 * Math.PI / 180 * incDiff.y * object.zoomScale);
+        _changed = true;
+        _rotatePrev.copy(_rotateCur);
+    }
+
+    function panstart(event) {
+        /* TODO: Dynamically enable pan function? */
+        _rotateOrig.copy(_rotateCur);
+    }
+
+    function pinchstart(event) {
+        _prevScale = event.scale;
+    }
+
+    function pinch(event) {
+        /* FIXME: Width and height might not be supported universally, but
+        can be calculated? */
+        var box = _this.domElement.getBoundingClientRect();
+
+        /* 16.6... pixels chosen heuristically... matches my touchpad. */
+        if (event.scale &lt; _prevScale) {
+            object.zoomTo(event.center.x - box.width/2 - box.left,
+                 -(event.center.y - box.height/2 - box.top), 100/6.0);
+            _changed = true;
+        } else if (event.scale &gt; _prevScale) {
+            object.zoomTo(event.center.x - box.width/2 - box.left,
+                 -(event.center.y - box.height/2 - box.top), -100/6.0);
+            _changed = true;
+        }
+
+        _prevScale = event.scale;
+    }
+
+    /* A tap will enable panning/disable rotate. */
+    function tap(event) {
+        panAfterTap.set({enable : true});
+        _this.touchControls.get('pan').set({enable : false});
+    }
+
+    function panaftertap(event) {
+        touchDiff = new THREE.Vector2(event.deltaX, event.deltaY);
+        _offsetCur.addVectors(_offsetOrig, touchDiff);
+        incDiff = new THREE.Vector2().subVectors(_offsetCur, _offsetPrev)
+            .multiplyScalar(1 / object.zoomScale);
+        object.offsetProj(incDiff.x, -incDiff.y);
+        _changed = true;
+        _offsetPrev.copy(_offsetCur);
+    }
+
+    function panaftertapstart(event) {
+        _offsetOrig.copy(_offsetCur);
+    }
+
+    function panaftertapend(event) {
+        panAfterTap.set({enable : false});
+        _this.touchControls.get('pan').set({enable : true});
+    }
+
+    function contextmenu(event) {
+        event.preventDefault();
+    }
+
+    this.update = function() {
+        if (_changed) {
+            _this.dispatchEvent(changeEvent);
+            _changed = false;
+        }
+    }
+
+    this.domElement.addEventListener('mousedown', mousedown, false);
+    this.domElement.addEventListener('wheel', wheel, false);
+    this.domElement.addEventListener('contextmenu', contextmenu, false);
+
+    /* Hammer.on wraps addEventListener */
+    // Rotate
+    this.touchControls.on('pan', pan);
+    this.touchControls.on('panstart', panstart);
+
+    // Zoom
+    this.touchControls.on('pinch', pinch);
+    this.touchControls.on('pinchstart', pinchstart);
+
+    //Pan
+    this.touchControls.on('tap', tap);
+    this.touchControls.on('panaftertapstart', panaftertapstart);
+    this.touchControls.on('panaftertap', panaftertap);
+    this.touchControls.on('panaftertapend', panaftertapend);
+}
+
+SolvespaceControls.prototype = Object.create(THREE.EventDispatcher.prototype);
+SolvespaceControls.prototype.constructor = SolvespaceControls;
+
+
+solvespace = function(obj, params) {
+    var scene, edgeScene, camera, edgeCamera, renderer;
+    var geometry, controls, material, mesh, edges;
+    var width, height, scale, offset;
+    var directionalLightArray = [];
+
+    if (typeof params === "undefined" || !("width" in params)) {
+        width = window.innerWidth;
+    } else {
+        width = params.width;
+    }
+
+    if (typeof params === "undefined" || !("height" in params)) {
+        height = window.innerHeight;
+    } else {
+        height = params.height;
+    }
+
+    if (typeof params === "undefined" || !("scale" in params)) {
+        scale = 5;
+    } else {
+        scale = params.scale;
+    }
+
+    if (typeof params === "undefined" || !("offset" in params)) {
+        offset = new THREE.Vector3(0, 0, 0);
+    } else {
+        offset = params.offset;
+    }
+
+    width *= window.devicePixelRatio;
+    height *= window.devicePixelRatio;
+
+    domElement = init();
+    render();
+    return domElement;
+
+
+    function init() {
+        scene = new THREE.Scene();
+        edgeScene = new THREE.Scene();
+
+        camera = new SolvespaceCamera(width/window.devicePixelRatio,
+            height/window.devicePixelRatio, scale, new THREE.Vector3(0, 1, 0),
+            new THREE.Vector3(0.5, 0, -0.5).normalize(), offset);
+
+        mesh = createMesh(obj);
+        scene.add(mesh);
+        edges = createEdges(obj);
+        edgeScene.add(edges);
+
+        for (var i = 0; i &lt; obj.lights.d.length; i++) {
+            var lightColor = new THREE.Color(obj.lights.d[i].intensity,
+                obj.lights.d[i].intensity, obj.lights.d[i].intensity);
+            var directionalLight = new THREE.DirectionalLight(lightColor, 1);
+            directionalLight.position.set(obj.lights.d[i].direction[0],
+                obj.lights.d[i].direction[1], obj.lights.d[i].direction[2]);
+            directionalLightArray.push(directionalLight);
+            scene.add(directionalLight);
+        }
+
+        var lightColor = new THREE.Color(obj.lights.a, obj.lights.a, obj.lights.a);
+        var ambientLight = new THREE.AmbientLight(lightColor.getHex());
+        scene.add(ambientLight);
+
+        renderer = new THREE.WebGLRenderer({ antialias: true});
+        renderer.setSize(width, height);
+        renderer.autoClear = false;
+        renderer.domElement.style = "width:"+width/window.devicePixelRatio+"px;height:"+height/window.devicePixelRatio+"px;";
+
+        controls = new SolvespaceControls(camera, renderer.domElement);
+        controls.addEventListener("change", render);
+        controls.addEventListener("change", lightUpdate);
+
+        animate();
+        return renderer.domElement;
+    }
+
+    function animate() {
+        requestAnimationFrame(animate);
+        controls.update();
+    }
+
+    function render() {
+        var context = renderer.getContext();
+        camera.updateProjectionMatrix();
+        renderer.clear();
+
+        context.depthRange(0.1, 1);
+        renderer.render(scene, camera);
+
+        context.depthRange(0.1-(2/60000.0), 1-(2/60000.0));
+        renderer.render(edgeScene, camera);
+    }
+
+    function lightUpdate() {
+        var changeBasis = new THREE.Matrix4();
+
+        // The original light positions were in camera space.
+        // Project them into standard space using camera's basis
+        // vectors (up, target, and their cross product).
+        n = new THREE.Vector3().crossVectors(camera.up, camera.right);
+        changeBasis.makeBasis(camera.right, camera.up, n);
+
+        for (var i = 0; i &lt; 2; i++) {
+            var newLightPos = changeBasis.applyToVector3Array(
+                [obj.lights.d[i].direction[0], obj.lights.d[i].direction[1],
+                    obj.lights.d[i].direction[2]]);
+            directionalLightArray[i].position.set(newLightPos[0],
+                newLightPos[1], newLightPos[2]);
+        }
+    }
+
+    function createMesh(meshObj) {
+        var geometry = new THREE.Geometry();
+        var materialIndex = 0;
+        var materialList = [];
+        var opacitiesSeen = {};
+
+        for (var i = 0; i &lt; meshObj.points.length; i++) {
+            geometry.vertices.push(new THREE.Vector3(meshObj.points[i][0],
+                meshObj.points[i][1], meshObj.points[i][2]));
+        }
+
+        for (var i = 0; i &lt; meshObj.faces.length; i++) {
+            var currOpacity = ((meshObj.colors[i] &amp; 0xFF000000) &gt;&gt;&gt; 24) / 255.0;
+            if (opacitiesSeen[currOpacity] === undefined) {
+                opacitiesSeen[currOpacity] = materialIndex;
+                materialIndex++;
+                materialList.push(new THREE.MeshLambertMaterial({
+                    vertexColors: THREE.FaceColors,
+                    opacity: currOpacity,
+                    transparent: true,
+                    side: THREE.DoubleSide
+                }));
+            }
+
+            geometry.faces.push(new THREE.Face3(meshObj.faces[i][0],
+                meshObj.faces[i][1], meshObj.faces[i][2],
+                [new THREE.Vector3(meshObj.normals[i][0][0],
+                    meshObj.normals[i][0][1], meshObj.normals[i][0][2]),
+                 new THREE.Vector3(meshObj.normals[i][1][0],
+                    meshObj.normals[i][1][1], meshObj.normals[i][1][2]),
+                 new THREE.Vector3(meshObj.normals[i][2][0],
+                    meshObj.normals[i][2][1], meshObj.normals[i][2][2])],
+                new THREE.Color(meshObj.colors[i] &amp; 0x00FFFFFF),
+                opacitiesSeen[currOpacity]));
+        }
+
+        geometry.computeBoundingSphere();
+        return new THREE.Mesh(geometry, new THREE.MultiMaterial(materialList));
+    }
+
+    function createEdges(meshObj) {
+        var geometry = new THREE.Geometry();
+        var material = new THREE.LineBasicMaterial();
+
+        for (var i = 0; i &lt; meshObj.edges.length; i++) {
+            geometry.vertices.push(new THREE.Vector3(meshObj.edges[i][0][0],
+                    meshObj.edges[i][0][1], meshObj.edges[i][0][2]),
+                new THREE.Vector3(meshObj.edges[i][1][0],
+                    meshObj.edges[i][1][1], meshObj.edges[i][1][2]));
+        }
+
+        geometry.computeBoundingSphere();
+        return new THREE.LineSegments(geometry, material);
+    }
+};
+
+
+function findBootstrapEnvironment() {
+    let envs = ['xs', 'sm', 'md', 'lg', 'xl'];
+
+    let el = document.createElement('div');
+    document.body.appendChild(el);
+
+    let curEnv = envs.shift();
+
+    for (let env of envs.reverse()) {
+      el.classList.add(`d-${env}-none`);
+
+      if (window.getComputedStyle(el).display === 'none') {
+        curEnv = env;
+        break;
+      }
+    }
+
+    document.body.removeChild(el);
+    return curEnv;
+}
+
+function load_treejs_model(model_id, model_solvespace, model_param) {
+    let node = document.getElementById(model_id);
+    node.parentNode.replaceChild(
+        solvespace(model_solvespace, model_param),
+        node
+    );
+}
+
+var bootstrap_env = findBootstrapEnvironment();</pre>
+<p></p><h2>Onshape</h2>
 <p><a href="https://www.onshape.com/en/education/">https://www.onshape.com/en/education/</a></p>
 <p><a href="https://learn.onshape.com/catalog?labels=%5B%22Self-Paced%20Courses%22%5D&amp;values=%5B%22All%22%5D">self-path learning </a></p>
 <p><a href="https://cad.onshape.com/documents/349085d7029902d4ce9e141d/w/2f10eab3484f8addb1157a25/e/e29b5743830bcea674ae2bcd?renderMode=0&amp;uiState=63524dc50594ef47ab72b47f">Drill Press 鑽床</a></p>
