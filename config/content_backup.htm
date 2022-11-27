@@ -570,8 +570,15 @@ reader.readAsBinaryString(chunk);
 <h2>vscode</h2>
 <p><a href="https://code.visualstudio.com/docs/editor/vscode-web#_opening-a-project">https://code.visualstudio.com/docs/editor/vscode-web#_opening-a-project</a></p>
 <h2>Windows</h2>
+<p><a href="https://www.softwaretestinghelp.com/windows-10-startup-folder/">Windows 10 啟動目錄</a>:</p>
+<p style="padding-left: 30px;">C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp</p>
 <p><a href="https://zhuanlan.zhihu.com/p/549971797">如何查找 Windows PC 的序列号 - 知乎 (zhihu.com)</a></p>
-<h1>News</h1>
+<p><a href="https://software.nfu.edu.tw/KMS/windows_kms.bat">https://software.nfu.edu.tw/KMS/windows_kms.bat</a></p>
+<p><a href="https://software.nfu.edu.tw/KMS/Office_2016_KMS.bat">https://software.nfu.edu.tw/KMS/Office_2016_KMS.bat</a></p>
+<p><a href="https://www.computerhope.com/issues/ch000322.htm">https://www.computerhope.com/issues/ch000322.htm</a> (batch for Win 10 startup)</p>
+<p>OpenSSH:</p>
+<p style="padding-left: 30px;">C:\WINDOWS\System32\OpenSSH\sshd.exe</p>
+<p style="padding-left: 30px;">設定檔案位置: C:\ProgramData\ssh\sshd_config</p><h1>News</h1>
 <p><a href="https://builtin.com/artificial-intelligence/use-ai-fix-broken-code">https://builtin.com/artificial-intelligence/use-ai-fix-broken-code</a> </p>
 <p style="padding-left: 30px;"><a href="https://www.testim.io/blog/what-is-a-linter-heres-a-definition-and-quick-start-guide/">What Is a Linter? Here's a Definition and Quick-Start Guide (testim.io)</a></p>
 <p><a href="https://builtin.com/artificial-intelligence/human-consequences-automation">Why Automation Won’t Replace Humans | Built In</a></p>
@@ -622,7 +629,10 @@ reader.readAsBinaryString(chunk);
 <p style="padding-left: 30px;"><a href="https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_keymanagement">Key-based authentication in OpenSSH for Windows | Microsoft Learn</a></p>
 <p style="padding-left: 30px;"><a href="https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_server_configuration?source=recommendations">OpenSSH Server configuration for Windows | Microsoft Learn</a></p>
 <p style="padding-left: 30px;"><a href="https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_overview?source=recommendations">OpenSSH for Windows overview | Microsoft Learn</a></p>
-<p style="padding-left: 30px;"><a href="https://learn.microsoft.com/en-us/windows/terminal/tutorials/ssh?source=recommendations">Windows Terminal SSH | Microsoft Learn</a></p><h1>cp2022</h1>
+<p style="padding-left: 30px;"><a href="https://learn.microsoft.com/en-us/windows/terminal/tutorials/ssh?source=recommendations">Windows Terminal SSH | Microsoft Learn</a></p>
+<h3>ncat</h3>
+<p>ssh git@github.com -o "ProxyCommand C:\Users\pj2022\ncat\ncat --verbose --proxy-type http --proxy p42.cycu.org:3128 %h %p" -v</p>
+<p>必須使用 https://nmap.org/dist/nmap-7.92-setup.exe</p><h1>cp2022</h1>
 <p><a href="https://github.com/odenipinedo/Python/blob/master/datacamp/introduction%20to%20Python.ipynb">https://github.com/odenipinedo/Python/blob/master/datacamp/introduction%20to%20Python.ipynb</a></p>
 <h2>CP抽點程式</h2>
 <p>Python dictionary 資料結構: <a href="https://docs.python.org/3/tutorial/datastructures.html#dictionaries">https://docs.python.org/3/tutorial/datastructures.html#dictionaries</a></p>
@@ -731,6 +741,7 @@ for i in range(3, 10, 2):
 print(a)</pre>
 <h3>w12</h3>
 <p>以下為本頁面的主要超文件檔案:</p>
+<p>因為頁面中的 Brython 程式段直接執行時, 利用 input() 跳出表單要求使用者輸入所要進行轉換的溫度值, 很顯然, 這樣的程式處理方式並不友善, 因此使用者連結到這一個網頁時, 可能只是希望看一下網頁內容, 或許不是要執行攝氏與華氏的溫度轉換程式.</p>
 <pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">&lt;h3&gt;w12&lt;/h3&gt;
 &lt;!-- 
 在動態網站頁面中啟用 Brython 執行環境的用法, 請注意動態網站執行所在路徑
@@ -927,7 +938,8 @@ def index():
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8080, debug=True)
 -->
-<h2>Control</h2>
+<p></p>
+<h3>w13</h3><h2>Control</h2>
 <p><a href="https://lcapy.readthedocs.io/en/latest/">https://lcapy.readthedocs.io/en/latest/</a></p>
 <h2>Brython</h2>
 <p><a href="https://www.zditect.com/main-advanced/python/brython-python-in-browser.html">https://www.zditect.com/main-advanced/python/brython-python-in-browser.html</a></p>
@@ -2382,7 +2394,8 @@ if res==vrep.simx_return_ok:
     print (retStrings)
     print (retBuffer)</pre>
 </div>
-<h3>以 remote API 取 camera 影像</h3>
+<h3>zeromq</h3>
+<p><a href="https://www.coppeliarobotics.com/helpFiles/en/zmqRemoteApiOverview.htm">https://www.coppeliarobotics.com/helpFiles/en/zmqRemoteApiOverview.htm</a> </p><h3>以 remote API 取 camera 影像</h3>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from PIL import Image
 import array
  
