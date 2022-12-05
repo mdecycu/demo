@@ -141,13 +141,27 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">NXOpen << <a href='NXOpen.html'>Previous</a> <a href='NX Drill Press.html'>Next</a> >> NX Drill Press<br /><h1>Export img</h1>
-<p><a href="https://docs.plm.automation.siemens.com/data_services/resources/nx/10/nx_api/en_US/custom/nxopen_python_ref/NXOpen.UF.Disp.BatchShade.html?highlight=disp.batchshade#NXOpen.UF.Disp.BatchShade">BatchShade()</a></p>
-<p style="padding-left: 30px;"><a href="https://community.sw.siemens.com/s/question/0D54O00006X0yc3SAB/are-you-unicode-paths-supported-in-export-image-file">ex</a></p>
-<p><a href="https://docs.plm.automation.siemens.com/data_services/resources/nx/10/nx_api/en_US/custom/nxopen_python_ref/NXOpen.UF.Disp.BatchShadeOptions.html?highlight=disp.batchshade#NXOpen.UF.Disp.BatchShadeOptions">BatchShadeOptions()</a></p>
-<p><a href="https://www.nxjournaling.com/content/exporting-jpeg-without-interactive-session">https://www.nxjournaling.com/content/exporting-jpeg-without-interactive-session</a></p>
-<p><a href="https://docs.plm.automation.siemens.com/data_services/resources/nx/10/nx_api/en_US/custom/ugopen_doc/uf_disp/uf_disp_types.html#UF_DISP_shade_method_e">https://docs.plm.automation.siemens.com/data_services/resources/nx/10/nx_api/en_US/custom/ugopen_doc/uf_disp/uf_disp_types.html#UF_DISP_shade_method_e</a></p>
-<br />NXOpen << <a href='NXOpen.html'>Previous</a> <a href='NX Drill Press.html'>Next</a> >> NX Drill Press</div>
+    <div id="tipue_search_content">Brython << <a href='Brython.html'>Previous</a> <a href='cad2022.html'>Next</a> >> cad2022<br /><h1>examples</h1>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import browser
+browser.alert("機械設計")</pre>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from browser import window
+window.alert("機械設計")</pre>
+<p></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import re
+'''
+normalize_us_phone() 去除非數字與大寫或小寫字母的字串，而 is_valid_us_phone() 則檢查是否正好是十位數的字母
+'''
+def normalize_us_phone(phone: str) -&gt; str:
+    """Extract numbers and digits from a given phone number"""
+    return re.sub(r"[^\da-zA-z]", "", phone)
+
+def is_valid_us_phone(phone: str) -&gt; bool:
+    """Validate 10-digit phone number"""
+    normalized_number = normalize_us_phone(phone)
+    return re.match(r"^\d{10}$", normalized_number) is not None
+    
+print(is_valid_us_phone("1234567899"))</pre>
+<p></p><br />Brython << <a href='Brython.html'>Previous</a> <a href='cad2022.html'>Next</a> >> cad2022</div>
         
     <!-- footer -->
       <div class="container">

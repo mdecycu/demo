@@ -1242,7 +1242,27 @@ doc["threejsblock"].bind("click", threejsblock.do)
 <p>
 <script src="https://unpkg.com/three@0.144.0/build/three.js" type="text/javascript"></script>
 </p>
-<h1>cad2022</h1>
+<h3>examples</h3>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import browser
+browser.alert("機械設計")</pre>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from browser import window
+window.alert("機械設計")</pre>
+<p></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import re
+'''
+normalize_us_phone() 去除非數字與大寫或小寫字母的字串，而 is_valid_us_phone() 則檢查是否正好是十位數的字母
+'''
+def normalize_us_phone(phone: str) -&gt; str:
+    """Extract numbers and digits from a given phone number"""
+    return re.sub(r"[^\da-zA-z]", "", phone)
+
+def is_valid_us_phone(phone: str) -&gt; bool:
+    """Validate 10-digit phone number"""
+    normalized_number = normalize_us_phone(phone)
+    return re.match(r"^\d{10}$", normalized_number) is not None
+    
+print(is_valid_us_phone("1234567899"))</pre>
+<p></p><h1>cad2022</h1>
 <p><a href="https://en.tcheb.ru/">https://en.tcheb.ru/</a> Mechanism</p>
 <p style="padding-left: 30px;"><a href="https://en.tcheb.ru/plantigrade-machine/">https://en.tcheb.ru/plantigrade-machine/</a></p>
 <p><a href="https://nfuedu.sharepoint.com/:b:/s/cad2022/Ecl97yDSrdtMm1OjyA74X-UBXe5zuGKhAEgJuCeDp2iqaA?e=6n2ZWs">What is new in NX8.5.pdf</a> 能找到甚麼有用的資訊.</p>
@@ -1260,8 +1280,7 @@ doc["threejsblock"].bind("click", threejsblock.do)
 <p>利用 <a href="https://www.coppeliarobotics.com/">CoppeliaSim</a> 執行機電控制系統設計與模擬</p>
 <p>利用 stud.cycu.org 動態網站整理上述工具實習流程與結果, 並同步內容至個人的 Github Pages 網站.</p>
 <p>相關設計程式包含 server 端的 Python 與 browser 端的 brython, 其間透過 websocket 傳送設計變數.</p>
-<p></p>
-<h2>w8</h2>
+<p></p><h2>w8</h2>
 <p>將隨身碟中的 <a href="https://github.com/solvespace/solvespace/releases/download/v3.1/solvespace.exe">Solvespace 3.1</a>, <a href="https://nfuedu.sharepoint.com/:u:/s/cad2022/EclS-NMhqJ9JvCa-pIQ_jMsBOLhmGLdxH5xv7JH8CHQMug?e=SMFg8L">NX2027 lite</a> 與瀏覽器中的 <a href="https://onshape.com/">Onshape</a> 同時開啟.</p>
 <p><img alt="" height="538" src="/images/w8_onshape_solvespace_nx_drill_press.png" width="600"/></p>
 <h2>stud server</h2>
@@ -2035,9 +2054,12 @@ if __name__ == "__main__":
 <p><a href="https://www.nxjournaling.com/content/how-read-measures-part-nxopen">https://www.nxjournaling.com/content/how-read-measures-part-nxopen</a></p>
 <h2>Gear</h2>
 <p><a href="https://github.com/coursemdetw/2014cda/wiki/Gear-Width-design-1">https://github.com/coursemdetw/2014cda/wiki/Gear-Width-design-1</a></p>
-<p><a href="https://github.com/coursemdetw/2014cda/wiki/Gear-Width-design-2">https://github.com/coursemdetw/2014cda/wiki/Gear-Width-design-2</a> </p>
-<p><a href="https://github.com/coursemdetw/2014cda/wiki/Pybean-0.2.1">https://github.com/coursemdetw/2014cda/wiki/Pybean-0.2.1</a> </p>
-<p><a href="https://github.com/chiamingyen/mdeCourse/">https://github.com/chiamingyen/mdeCourse/</a> </p><h2>CoppeliaSim</h2>
+<p><a href="https://github.com/coursemdetw/2014cda/wiki/Gear-Width-design-2">https://github.com/coursemdetw/2014cda/wiki/Gear-Width-design-2</a></p>
+<p><a href="https://github.com/coursemdetw/2014cda/wiki/Pybean-0.2.1">https://github.com/coursemdetw/2014cda/wiki/Pybean-0.2.1</a></p>
+<p><a href="https://github.com/chiamingyen/mdeCourse/">https://github.com/chiamingyen/mdeCourse/</a></p>
+<p><a href="https://github.com/2014c2g23/2015cda">https://github.com/2014c2g23/2015cda</a></p>
+<p><a href="https://github.com/mdekmol">https://github.com/mdekmol</a> </p>
+<p>'''<br/>lewis.db 中有兩個資料表, steel 與 lewis<br/> CREATE TABLE steel ( <br/>    serialno      INTEGER,<br/>    unsno         TEXT,<br/>    aisino        TEXT,<br/>    treatment     TEXT,<br/>    yield_str     INTEGER,<br/>    tensile_str   INTEGER,<br/>    stretch_ratio INTEGER,<br/>    sectional_shr INTEGER,<br/>    brinell       INTEGER <br/>);<br/>CREATE TABLE lewis ( <br/>    serialno INTEGER PRIMARY KEY<br/>                     NOT NULL,<br/>    gearno   INTEGER,<br/>    type1    NUMERIC,<br/>    type4    NUMERIC,<br/>    type3    NUMERIC,<br/>    type2    NUMERIC <br/>);<br/>'''</p><h2>CoppeliaSim</h2>
 <p>Opencv 與 Scenes</p>
 <p><a href="http://mod.cycu.org">http://mod.cycu.org</a> has coppeliaSim on Ubuntu desktop</p>
 <p><a href="https://github.com/ljmanso/coppeliasim_pythonic_api">GitHub - ljmanso/coppeliasim_pythonic_api</a></p><h3>remote API</h3>
