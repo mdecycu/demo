@@ -1128,7 +1128,7 @@ brython({debug:1, pythonpath:['/static/','./../downloads/py/']});
 }
 </script>
 <!-- 直接將 button 以 html 建立 -->
-<p><button id="get_cname">取 cname</button></p>
+<p><button id="get_cname">取 cname,url</button></p>
 <div id="brython_div"></div>
 <script type="text/python">
 # 導入 ast 模組是希望利用其 literal_eval() 將 dict 格式的字串轉為 dict 資料型別
@@ -1178,42 +1178,22 @@ class quiz:
         # 取得各學員的考試成績 quiz_dict 後, 將資料傳回
         return quiz_dict
 
-cname = "1b"
-
 @bind(document["get_cname"], 'click')
 def get_cname(env):
-    #global cname
-    cname = input("請輸入 cname, 例如:1a")
-    brython_div <= cname
+    user_input = input("請輸入 cname,url")
+    cname_url =  user_input.split(",")
+    cname = cname_url[0]
+    url = cname_url[1]
+    data = quiz(cname, url)
+    stud = data.get_stud()
+    score = data.get_score()
+    brython_div = document["brython_div"]
+    brython_div <= len(stud)
+    brython_div <= html.BR()
+    brython_div <= score
 
+# use new bind decorator
 #document["get_cname"].bind("click", get_cname)
-brython_div = document["brython_div"]
-
-
-'''
-
-try:
-    url = document.query["url"]
-except:
-    url = "https://gist.githubusercontent.com/mdecycu/9df4b372ac1b7386cf259ced15f1a2b2/raw/a6825f13b1bb0b61e09e74dd117729eefe1d947f/20221110_cp1b_w10_quiz.json"
-
-
-try:
-    cname =document.query["cname"]
-except:
-    cname = "1b"
-
-
-brython_div = document["brython_div"]
-
-cpb_w14 = quiz(cname, url)
-cp_stud = cpb_w14.get_stud()
-cp_score = cpb_w14.get_score()
-#print(cp_stud, cp_score)
-brython_div <= cp_stud
-brython_div <= html.BR()
-brython_div <= cp_score
-'''
 </script><h3>w14-2</h3>
 <!-- 
 在動態網站頁面中啟用 Brython 執行環境的用法, 請注意動態網站執行所在路徑
