@@ -2,7 +2,7 @@
         <head>
         <title>demo on stud</title>
         <meta charset="utf-8">
-<meta property="head" content="H2">
+<meta property="head" content="H3">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
@@ -141,273 +141,104 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">w14-2 << <a href='w14-2.html'>Previous</a> <a href='examples.html'>Next</a> >> examples<br /><h1>Brython</h1>
-<p><a href="https://www.zditect.com/main-advanced/python/brython-python-in-browser.html">https://www.zditect.com/main-advanced/python/brython-python-in-browser.html</a></p>
-<p><a href="https://zhuanlan.zhihu.com/p/459819939">【python】Brython：浏览器中的Python-第一篇 - 知乎 (zhihu.com)</a></p>
-<p><a href="https://www.geeksforgeeks.org/introduction-to-brython/">Introduction to Brython - GeeksforGeeks</a></p>
-<p><a href="https://www.it145.com/9/102373.html">【python】Brython：瀏覽器中的Python-第二篇 - IT145.com</a></p>
-<p><a href="https://www.it145.com/9/102415.html">【python】Brython：瀏覽器中的Python-第四篇 - IT145.com</a></p>
-<p><a href="https://www.it145.com/9/102475.html">【python】Brython：瀏覽器中的Python-第六篇 - IT145.com</a></p>
-<p><a href="https://www.it145.com/9/102567.html">【python】Brython：瀏覽器中的Python-第七篇 - IT145.com</a></p>
-<p><a href="https://www.it145.com/9/102581.html">【python】Brython：瀏覽器中的Python-第八篇 - IT145.com</a></p>
-<p><a href="https://www.it145.com/9/102659.html">【python】Brython：瀏覽器中的Python-第十篇 - IT145.com</a></p>
-<p><a href="https://www.it145.com/9/102658.html">【python】Brython：瀏覽器中的Python-最終篇 - IT145.com</a></p>
-<p>Pyscript?:</p>
-<p style="padding-left: 30px;"><a href="https://www.jhanley.com/blog/pyscript-javascript-and-python-interoperability/">https://www.jhanley.com/blog/pyscript-javascript-and-python-interoperability/</a>　</p>
-<p style="padding-left: 30px;"><a href="https://realpython.com/pyscript-python-in-browser/">https://realpython.com/pyscript-python-in-browser/</a></p>
-<p>學習 Brython 程式語言</p>
-<p>執行 Three.js 相關 Brython 程式, 需要將 <a href="./../downloads/py/pyweb3d.py">pyweb3d.py</a> 放入 downloads/py 目錄中ㄡ</p>
-<p><a href="https://mde.tw/content/Python.html">https://mde.tw/content/Python.html</a></p>
-<p>從 1 累加到 100:</p>
-<p><button id="add1to100">1 add to 100</button></p>
-<p>將 iterable 與 iterator <a href="https://home.gamer.com.tw/creationDetail.php?sn=4337438">相關說明</a>, 利用 Brython 與 Ace Editor 整理在這個頁面.</p>
-<!-- 導入 brython 程式庫 -->
-<p>
+    <div id="tipue_search_content">w14 << <a href='w14.html'>Previous</a> <a href='w14-2.html'>Next</a> >> w14-2<br /><h1>w14-1</h1>
+<!-- 納入 Brython 環境 -->
 <script src="./../cmsimde/static/brython.js"></script>
 <script src="./../cmsimde/static/brython_stdlib.js"></script>
-</p>
-<!-- 啟動 Brython -->
-<p>
+<!-- startup Brython -->
 <script>
 window.onload=function(){
 brython({debug:1, pythonpath:['./../cmsimde/static/','./../downloads/py/']});
 }
 </script>
-</p>
-<p><!-- 導入 FileSaver 與 filereader --></p>
-<p>
-<script src="./../cmsimde/static/ace/FileSaver.min.js" type="text/javascript"></script>
-<script src="./../cmsimde/static/ace/filereader.js" type="text/javascript"></script>
-</p>
-<p><!-- 導入 ace --></p>
-<p>
-<script src="./../cmsimde/static/ace/ace.js" type="text/javascript"></script>
-<script src="./../cmsimde/static/ace/ext-language_tools.js" type="text/javascript"></script>
-<script src="./../cmsimde/static/ace/mode-python3.js" type="text/javascript"></script>
-<script src="./../cmsimde/static/ace/snippets/python.js" type="text/javascript"></script>
-</p>
-<p><!-- 導入 gearUtils-0.9.js Cango 齒輪繪圖程式庫 -->
-<script src="./../cmsimde/static/Cango-24v03-min.js"></script>
-<script src="./../cmsimde/static/gearUtils-09.js"></script>
-<script src="./../cmsimde/static/SVGpathUtils-6v03-min.js"></script>
-<script src="./../cmsimde/static/sylvester.js"></script>
-<script src="./../cmsimde/static/PrairieDraw.js"></script>
-</p>
-<p><!-- 請注意, 這裡使用 Javascript 將 localStorage["kw_py_src1"] 中存在近端瀏覽器的程式碼, 由使用者決定存檔名稱--></p>
-<p>
-<script type="text/javascript">
-function doSave(storage_id, filename){
-    var blob = new Blob([localStorage[storage_id]], {type: "text/plain;charset=utf-8"});
-    filename = document.getElementById(filename).value
-    saveAs(blob, filename+".py");
-}
-</script>
-</p>
-<p>
-<script type="text/python3">
-from browser import document as doc
-import ace
-# 清除畫布
-def clear_bd1(ev):
-    bd = doc["brython_div1"]
-    bd.clear()
-Ace1 = ace.Editor(editor_id="kw_editor1", console_id="kw_console1", container_id="kw__container1", storage_id="kw_py_src1" )
-# 從 gist 取出程式碼後, 放入 editor 作為 default 程式
-def run1():
-    # 利用 get 取下 src 變數值
-    try:
-        url = doc.query["src"]
-    except:
-        url = "https://gist.githubusercontent.com/mdecourse/0229a8a017091476a79700b8a190f185/raw/c3a6deaf717f8f2739a4b1392a5ab10936e9693a/from_1_add_to_10_1.py"
-    prog = open(url).read()
+<!-- 直接將 button 以 html 建立 -->
+<p><button id="get_cname">取 cname</button></p>
+<div id="brython_div"></div>
+<script type="text/python">
+# 導入 ast 模組是希望利用其 literal_eval() 將 dict 格式的字串轉為 dict 資料型別
+# 以利隨後的取值運算
+import ast
+from browser import document, html, bind
 
-    # 將程式載入編輯區
-    Ace1.editor.setValue(prog)
-    Ace1.editor.scrollToRow(0)
-    Ace1.editor.gotoLine(0)
-    # 直接執行程式
-    #ns = {'__name__':'__main__'}
-    #exec(prog, ns)
-    # 按下 run 按鈕
-    Ace1.run()
-
-# 執行程式, 顯示輸出結果與清除輸出結果及對應按鈕綁定
-doc['kw_run1'].bind('click', Ace1.run)
-doc['kw_show_console1'].bind('click', Ace1.show_console)
-doc['kw_clear_console1'].bind('click', Ace1.clear_console)
-doc['clear_bd1'].bind('click', clear_bd1)
-# 呼叫函式執行
-run1()
-</script>
-</p>
-<p><!-- add 1 to 100 開始 -->
-<script type="text/python3">
-from browser import document as doc
-import ace
-
-# 清除畫布
-def clear_bd1(ev):
-    bd = doc["brython_div1"]
-    bd.clear()
-
-# 利用 ace 中的 Editor 建立 Ace2 物件, 其中的輸入變數分別對應到頁面中的編輯區物件
-Ace2 = ace.Editor(editor_id="kw_editor1", console_id="kw_console1", container_id="kw__container1", storage_id="kw_py_src1" )
-
-add1to100_url = "https://gist.githubusercontent.com/mdecourse/0229a8a017091476a79700b8a190f185/raw/c48e37714f055c3a0027cbfef59e442a6ef659b9/from_1_add_to_100_1.py"
-
-# 從 gist 取得程式碼
-add_src = open(add1to100_url).read()
-def add(ev):
-    Ace2.editor.setValue(add_src)
-    Ace2.editor.scrollToRow(0)
-    Ace2.editor.gotoLine(0)
-    Ace2.run()
-
-# id 為 "add1to100" 的按鈕點按時, 執行 add 方法
-doc["add1to100"].bind('click', add)
-</script>
-</p>
-<p><!-- add 1 to 100 結束--></p>
-<!-- editor1 開始 -->
-<p><!-- 用來顯示程式碼的 editor 區域 --></p>
-<div id="kw_editor1" style="width: 600px; height: 300px;"></div>
-<p><!-- 以下的表單與按鈕與前面的 Javascript doSave 函式以及 FileSaver.min.js 互相配合 --></p>
-<p><!-- 存擋表單開始 --></p>
-<form><label>Filename: <input id="kw_filename" placeholder="input file name" type="text"/>.py</label> <input onclick="doSave('kw_py_src1', 'kw_filename1');" type="submit" value="Save"/></form>
-<p><!-- 存擋表單結束 --></p>
-<p></p>
-<p><!-- 執行與清除按鈕開始 --></p>
-<p><button id="kw_run1">Run</button> <button id="kw_show_console1">Output</button> <button id="kw_clear_console1">清除輸出區</button><button id="clear_bd1">清除繪圖區</button><button onclick="window.location.reload()">Reload</button></p>
-<p><!-- 執行與清除按鈕結束 --></p>
-<p></p>
-<p><!-- 程式執行 ouput 區 --></p>
-<div style="width: 100%; height: 100%;"><textarea autocomplete="off" id="kw_console1"></textarea></div>
-<p><!-- Brython 程式執行的結果, 都以 brython_div1 作為切入位置 --></p>
-<div id="brython_div1"></div>
-<!-- editor1 結束 --><hr/><!-- ########################################## -->
-<p>從 1 累加到 100 part2:</p>
-<p><button id="add1to100part2">1 add to 100</button><button id="cango_three_gears">cango_three_gears</button><button id="bsnake">BSnake</button><button id="aitetris">AI Tetris</button><button id="threejsblock">Rotating Block</button></p>
-<p><!-- 請注意, 這裡使用 Javascript 將 localStorage["kw_py_src2"] 中存在近端瀏覽器的程式碼, 由使用者決定存檔名稱--></p>
-<p>
-<script type="text/python3">
-from browser import document as doc
-import ace
-# 清除畫布
-def clear_bd2(ev):
-    bd = doc["brython_div2"]
-    bd.clear()
-Ace3 = ace.Editor(editor_id="kw_editor2", console_id="kw_console2", container_id="kw__container2", storage_id="kw_py_src2" )
-# 從 gist 取出程式碼後, 放入 editor 作為 default 程式
-def run2():
-    # 利用 get 取下 src 變數值
-    try:
-        url = doc.query["src2"]
-    except:
-        url = "https://gist.githubusercontent.com/mdecourse/0229a8a017091476a79700b8a190f185/raw/c3a6deaf717f8f2739a4b1392a5ab10936e9693a/from_1_add_to_10_1.py"
-    prog = open(url).read()
-
-    # 將程式載入編輯區
-    Ace3.editor.setValue(prog)
-    Ace3.editor.scrollToRow(0)
-    Ace3.editor.gotoLine(0)
-    # 直接執行程式
-    #ns = {'__name__':'__main__'}
-    #exec(prog, ns)
-    # 按下 run 按鈕
-    Ace3.run()
-
-# 執行程式, 顯示輸出結果與清除輸出結果及對應按鈕綁定
-doc['kw_run2'].bind('click', Ace3.run)
-doc['kw_show_console2'].bind('click', Ace3.show_console)
-doc['kw_clear_console2'].bind('click', Ace3.clear_console)
-doc['clear_bd2'].bind('click', clear_bd2)
-# 呼叫函式執行
-run2()
-</script>
-</p>
-<p><!-- add 1 to 100 part2 開始 -->
-<script type="text/python3">
-from browser import document as doc
-import ace
-
-# 清除畫布
-def clear_bd2(ev):
-    bd = doc["brython_div2"]
-    bd.clear()
-
-# 利用 ace 中的 Editor 建立 Ace2 物件, 其中的輸入變數分別對應到頁面中的編輯區物件
-Ace4 = ace.Editor(editor_id="kw_editor2", console_id="kw_console2", container_id="kw__container2", storage_id="kw_py_src2" )
-
-# 透過 Ace4 以類別建立一個通用的 button2, 可以在多個案例中將 gist 程導入編輯區
-
-class button2:
-    def __init__(self, url):
+class quiz:
+    def __init__(self, cname, url):
+        self.cname = cname
         self.url = url
 
-    # 記得加入 event 輸入變數
-    def do(self,ev):
-        Ace4.editor.setValue(open(self.url).read())
-        Ace4.editor.scrollToRow(0)
-        Ace4.editor.gotoLine(0)
-        Ace4.run()
+    # 定義一個函式, 以班級代號字串作為輸入, 可以傳回各班修課學員的學號數列
+    def get_stud(self):
+        # 將課程的班級代號字串作為 dict 的 key, 而 2022 fall 的課程代號作為對應值
+        # 使用者可以利用班級代號從 courses dict 取出課程代號
+        courses = {"1a": "0747", "1b": "0761", "2a": "0773", "2b": "0786"}
+        # 利用 c_name 從 courses 得到該學期的課程代號
+        c = courses[self.cname]
+        # 利用課程代號從學校教務主機取的該班修課人員名單
+        curl = "https://nfu.cycu.org/?semester=1111&courseno=" + c + "&column=True"
+        # 讀出各修課人員資料後, 以跳行符號切割, 得到的 data 為數列
+        data = open(curl).read().split("\n")
+        # 因為最後一筆資料為空字串, 因此利用數列運算將其去除
+        stud = data[:-1]
+        # get_stud() 函式最後將對應班級的修課人員學號以數列格式傳回
+        return stud
+        
+    def get_score(self):
+        # 利用 open() 與 read() 讀取考試結果 JSON 檔案
+        json_data = open(self.url).read()
+        # 利用 ast.literal_eval() 將字串 dict, 轉為程式可用的 dict 資料型別
+        big_dict = ast.literal_eval(json_data)
+        # 從 big_dict 中, 取出 body 中的 testuser 欄位資料
+        data = big_dict["body"]["testuser"]
+        # 定義一個空 dict 資料變數, 隨後利用迴圈逐一將學號作為 key, 考試成績為 valude
+        # 組成 quiz_dict 的資料內容, 以便之後可以用學號當作輸入, 取得該員考試成績
+        quiz_dict = {}
+        for i in data:
+            # data 資料中的 user_name 為考試學員的帳號, 也就是學號
+            stud_id = data[i]["user_name"]
+            # data 資料中的 total_score 欄位為考試成績
+            # 因為考試成績為字串, 先轉為浮點數後, 再轉為整數
+            stud_score = int(float(data[i]["total_score"]))
+            # 逐一以學號為 key, 考試成績為對應 value, 將資料放入 quiz_dict
+            quiz_dict[stud_id] = stud_score
+        # 取得各學員的考試成績 quiz_dict 後, 將資料傳回
+        return quiz_dict
 
-add1to100_url = "https://gist.githubusercontent.com/mdecourse/0229a8a017091476a79700b8a190f185/raw/c48e37714f055c3a0027cbfef59e442a6ef659b9/from_1_add_to_100_1.py"
+cname = "1b"
 
-# 從 gist 取得程式碼
-add_src = open(add1to100_url).read()
-def add2(ev):
-    Ace4.editor.setValue(add_src)
-    Ace4.editor.scrollToRow(0)
-    Ace4.editor.gotoLine(0)
-    Ace4.run()
+@bind(document["get_cname"], 'click')
+def get_cname(env):
+    #global cname
+    cname = input("請輸入 cname, 例如:1a")
+    brython_div <= cname
 
-# id 為 "add1to100part2" 的按鈕點按時, 執行 add 方法
-doc["add1to100part2"].bind('click', add2)
-# 以下為運用 button2 class 的通用 gist 程式導入區
-################################## cango_three_gears start
-cango_three_gears_url = "https://gist.githubusercontent.com/mdecycu/d9082d678096bd58378d6afe2c7fa05d/raw/f7a85d737d6723d5e34c526d5daee990ed92c32b/cango_three_gears_brython_div2.py"
-cango_three_gears = button2(cango_three_gears_url)
-doc["cango_three_gears"].bind("click", cango_three_gears.do)
-################################## cango_three_gears end
-################################## bsnake start
-bsnake_url = "https://gist.githubusercontent.com/mdecycu/d9082d678096bd58378d6afe2c7fa05d/raw/f7a85d737d6723d5e34c526d5daee990ed92c32b/kmol_snakey.py"
-bsnake = button2(bsnake_url)
-doc["bsnake"].bind("click", bsnake.do)
-################################## bsnake end
-################################## aitetris start
-aitetris_url = "https://gist.githubusercontent.com/mdecycu/d9082d678096bd58378d6afe2c7fa05d/raw/f7a85d737d6723d5e34c526d5daee990ed92c32b/pygame_to_brython_tetris_ai.py"
-aitetris = button2(aitetris_url)
-doc["aitetris"].bind("click", aitetris.do)
-################################## aitetris end
-################################## threejsblock start
-threejsblock_url = "https://gist.githubusercontent.com/mdecycu/2c6323eff49b496d1bafd210f3ec9707/raw/df37802f9e8a386b6424f7945af622b1cd0a9ca5/threejs_rotating_block.py"
-threejsblock = button2(threejsblock_url)
-doc["threejsblock"].bind("click", threejsblock.do)
-################################## threejsblock end
-</script>
-</p>
-<p><!-- add 1 to 100 part2 結束--></p>
-<!-- editor2 開始 -->
-<p><!-- 用來顯示程式碼的 editor 區域 --></p>
-<div id="kw_editor2" style="width: 600px; height: 300px;"></div>
-<p><!-- 以下的表單與按鈕與前面的 Javascript doSave 函式以及 FileSaver.min.js 互相配合 --></p>
-<p><!-- 存擋表單開始 --></p>
-<form><label>Filename: <input id="kw_filename2" placeholder="input file name" type="text"/>.py</label> <input onclick="doSave('kw_py_src2', 'kw_filename2');" type="submit" value="Save"/></form>
-<p><!-- 存擋表單結束 --></p>
-<p></p>
-<p><!-- 執行與清除按鈕開始 --></p>
-<p><button id="kw_run2">Run</button> <button id="kw_show_console2">Output</button> <button id="kw_clear_console2">清除輸出區</button><button id="clear_bd2">清除繪圖區</button><button onclick="window.location.reload()">Reload</button></p>
-<p><!-- 執行與清除按鈕結束 --></p>
-<p></p>
-<p><!-- 程式執行 ouput 區 --></p>
-<div style="width: 100%; height: 100%;"><textarea autocomplete="off" id="kw_console2"></textarea></div>
-<p><!-- Brython 程式執行的結果, 都以 brython_div1 作為切入位置 --></p>
-<div id="brython_div2"></div>
-<!-- editor2 結束 --><hr/>
-<p>
-<script src="https://unpkg.com/three@0.144.0/build/three.js" type="text/javascript"></script>
-</p>
-<br />w14-2 << <a href='w14-2.html'>Previous</a> <a href='examples.html'>Next</a> >> examples</div>
+#document["get_cname"].bind("click", get_cname)
+brython_div = document["brython_div"]
+
+
+'''
+
+try:
+    url = document.query["url"]
+except:
+    url = "https://gist.githubusercontent.com/mdecycu/9df4b372ac1b7386cf259ced15f1a2b2/raw/a6825f13b1bb0b61e09e74dd117729eefe1d947f/20221110_cp1b_w10_quiz.json"
+
+
+try:
+    cname =document.query["cname"]
+except:
+    cname = "1b"
+
+
+brython_div = document["brython_div"]
+
+cpb_w14 = quiz(cname, url)
+cp_stud = cpb_w14.get_stud()
+cp_score = cpb_w14.get_score()
+#print(cp_stud, cp_score)
+brython_div <= cp_stud
+brython_div <= html.BR()
+brython_div <= cp_score
+'''
+</script><br />w14 << <a href='w14.html'>Previous</a> <a href='w14-2.html'>Next</a> >> w14-2</div>
         
     <!-- footer -->
       <div class="container">
