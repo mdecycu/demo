@@ -1127,6 +1127,7 @@ window.onload=function(){
 brython({debug:1, pythonpath:['/static/','./../downloads/py/']});
 }
 </script>
+<p>這個程式可以讓使用者輸入班級代號以及考試 json 檔案的連結 (以逗點隔開前後不要有空白), 直接列出考試結果, 平均分數與缺考人員名單.</p>
 <!-- 直接將 button 以 html 建立 -->
 <p><button id="get_cname">取 cname,url</button></p>
 <div id="brython_div"></div>
@@ -1178,6 +1179,24 @@ class quiz:
         # 取得各學員的考試成績 quiz_dict 後, 將資料傳回
         return quiz_dict
 
+# stud 為 list, score 則為 dict, 可以透過 ast.literal_eval() 轉為 Python 資料
+def gen_result(stud, score):
+    #stud_list = ast.literal_eval(stud)
+    #score_dict = ast.literal_eval(score)
+    brython_div = document["brython_div"]
+    '''
+    for i in stud:
+        brython_div <= i + ":"
+        try:
+            s = score["i"]
+        except:
+            s = "缺考"
+        brython_div <= s
+        brython_div <= html.BR()
+    '''
+    brython_div <= str(type(stud))
+        
+
 @bind(document["get_cname"], 'click')
 def get_cname(env):
     user_input = input("請輸入 cname,url")
@@ -1187,10 +1206,14 @@ def get_cname(env):
     data = quiz(cname, url)
     stud = data.get_stud()
     score = data.get_score()
+    # 以 stud, score 為輸入, 列出展示用的超文件結果
+    gen_result(stud, score)
+    '''
     brython_div = document["brython_div"]
     brython_div <= len(stud)
     brython_div <= html.BR()
     brython_div <= score
+    '''
 
 # use new bind decorator
 #document["get_cname"].bind("click", get_cname)
@@ -2973,7 +2996,13 @@ end</pre>
 <p><a href="https://www.amazon.com/-/zh_TW/ELEGOO-37-%E5%82%B3%E6%84%9F%E5%99%A8%E5%A5%97%E7%B5%84-%E9%81%A9%E7%94%A8%E6%96%BC-Arduino/dp/B01MG49ZQ5/ref=sr_1_11?crid=P9OCOR1S17SC&amp;keywords=accelerator%2Barduino&amp;qid=1669942348&amp;sprefix=accelerator%2Barduino%2B%2Caps%2C282&amp;sr=8-11&amp;th=1">sensors</a></p>
 <p><a href="https://www.amazon.com/-/zh_TW/Studio-Arduino-SAMD21n-%E5%85%B7%E6%9C%89%E8%B1%90%E5%AF%8C%E7%9A%84%E7%A9%BF%E6%88%B4%E5%BC%8F%E8%A3%9D%E7%BD%AE%E4%BB%8B%E9%9D%A2-Micro%E7%9A%84%E5%B0%88%E6%A1%88%E8%80%8C%E8%A8%AD%E8%A8%88%E3%80%82/dp/B08745JBRP/ref=sr_1_3?crid=P9OCOR1S17SC&amp;keywords=accelerator%2Barduino&amp;qid=1669942348&amp;sprefix=accelerator%2Barduino%2B%2Caps%2C282&amp;sr=8-3&amp;th=1">micro arduino</a></p>
 <p><a href="https://www.amazon.com/-/zh_TW/AstroAI-%E6%95%B8%E4%BD%8D%E7%AE%9D%E4%BD%8D%E8%A8%88%E8%90%AC%E7%94%A8%E8%A1%A8-4000-%E5%80%8B%E8%87%AA%E5%8B%95%E6%B8%AC%E8%B7%9D%E6%94%BE%E5%A4%A7%E5%99%A8%E9%9B%BB%E5%A3%93%E6%B8%AC%E8%A9%A6%E5%84%80-%E9%9B%BB%E5%A3%93%E5%92%8C%E9%9B%BB%E6%B5%81%E3%80%81%E9%9B%BB%E9%98%BB%E3%80%81%E9%9B%BB%E5%AE%B9%E3%80%81%E9%A0%BB%E7%8E%87%E3%80%81%E9%80%A3%E7%BA%8C%E6%80%A7%E3%80%81%E5%AF%A6%E7%B7%9A%E6%B8%AC%E8%A9%A6%E3%80%81NCV/dp/B08MTCMWLB/ref=d_pd_di_sccai_cn_sccl_3_2/133-9461380-2868811?pd_rd_w=Gd12S&amp;content-id=amzn1.sym.e13de93e-5518-4644-8e6b-4ee5f2e0b062&amp;pf_rd_p=e13de93e-5518-4644-8e6b-4ee5f2e0b062&amp;pf_rd_r=VEY5GDQW6KABQTGSAJF9&amp;pd_rd_wg=xX8wo&amp;pd_rd_r=95fd09d5-4fc7-4520-9f86-e98cc8a40f76&amp;pd_rd_i=B08MTCMWLB&amp;psc=1#customerReviews">multimeter</a></p>
-<h1>Ext</h1>
+<p>Foosball in WebGL: <a href="https://github.com/amingholami/WebGL-Foosball">https://github.com/amingholami/WebGL-Foosball</a></p>
+<p><a href="https://www.computervision.zone/courses/pong-game-using-hand-gestures/">https://www.computervision.zone/courses/pong-game-using-hand-gestures/</a> </p>
+<p><a href="https://github.com/lzane/Fingers-Detection-using-OpenCV-and-Python">https://github.com/lzane/Fingers-Detection-using-OpenCV-and-Python</a> </p>
+<p><a href="https://userpages.umbc.edu/~nroy/courses/shhasp18/papers/Did%20You%20Take%20a%20Break%20Today%20Detecting%20Playing%20Foosball%20Using%20Your%20Smartwatch.pdf">https://userpages.umbc.edu/~nroy/courses/shhasp18/papers/Did%20You%20Take%20a%20Break%20Today%20Detecting%20Playing%20Foosball%20Using%20Your%20Smartwatch.pdf</a> </p>
+<p><a href="https://www.irjmets.com/uploadedfiles/paper//issue_7_july_2022/27817/final/fin_irjmets1657266623.pdf">https://www.irjmets.com/uploadedfiles/paper//issue_7_july_2022/27817/final/fin_irjmets1657266623.pdf</a> </p>
+<p><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8321080/pdf/jimaging-06-00073.pdf">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8321080/pdf/jimaging-06-00073.pdf</a></p>
+<p><a href="https://www.mdpi.com/2079-9292/9/12/1986/htm">https://www.mdpi.com/2079-9292/9/12/1986/htm</a> </p><h1>Ext</h1>
 <p>這裡主要是放入一些延伸內容</p>
 <p>包括電腦輔助設計與計算機程式</p>
 <h2>Fusion 360</h2>

@@ -152,6 +152,7 @@ window.onload=function(){
 brython({debug:1, pythonpath:['./../cmsimde/static/','./../downloads/py/']});
 }
 </script>
+<p>這個程式可以讓使用者輸入班級代號以及考試 json 檔案的連結 (以逗點隔開前後不要有空白), 直接列出考試結果, 平均分數與缺考人員名單.</p>
 <!-- 直接將 button 以 html 建立 -->
 <p><button id="get_cname">取 cname,url</button></p>
 <div id="brython_div"></div>
@@ -203,6 +204,24 @@ class quiz:
         # 取得各學員的考試成績 quiz_dict 後, 將資料傳回
         return quiz_dict
 
+# stud 為 list, score 則為 dict, 可以透過 ast.literal_eval() 轉為 Python 資料
+def gen_result(stud, score):
+    #stud_list = ast.literal_eval(stud)
+    #score_dict = ast.literal_eval(score)
+    brython_div = document["brython_div"]
+    '''
+    for i in stud:
+        brython_div <= i + ":"
+        try:
+            s = score["i"]
+        except:
+            s = "缺考"
+        brython_div <= s
+        brython_div <= html.BR()
+    '''
+    brython_div <= str(type(stud))
+        
+
 @bind(document["get_cname"], 'click')
 def get_cname(env):
     user_input = input("請輸入 cname,url")
@@ -212,10 +231,14 @@ def get_cname(env):
     data = quiz(cname, url)
     stud = data.get_stud()
     score = data.get_score()
+    # 以 stud, score 為輸入, 列出展示用的超文件結果
+    gen_result(stud, score)
+    '''
     brython_div = document["brython_div"]
     brython_div <= len(stud)
     brython_div <= html.BR()
     brython_div <= score
+    '''
 
 # use new bind decorator
 #document["get_cname"].bind("click", get_cname)
