@@ -2,7 +2,7 @@
         <head>
         <title>demo on stud</title>
         <meta charset="utf-8">
-<meta property="head" content="H1">
+<meta property="head" content="H2">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
@@ -141,17 +141,34 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content"> <a href='手機使用問題.html'>Next</a> >> 手機使用問題<br /><h1>About</h1>
-<p><a href="./../downloads/windows_kms_ipv6.7z">windows_kms_ipv6.7z</a> (已經可以在純 IPv6 環境下執行 Windows 10 認證)</p>
-<div style="text-align: right;">When chance itself can give no more, 'Tis easy to be true.</div>
-<div style="text-align: right;">-- <a href="https://en.wikipedia.org/wiki/Sir_Charles_Sedley,_5th_Baronet">Charles Sedley</a></div>
-<p>在 2022 Fall 的課程中, 採近全雲端的機械產品設計, 可以透過瀏覽器直接利用 stud 伺服器與 Onshape 執行程式編寫、內容管理與零組件設計繪圖, 唯獨機電模擬目前仍無法全部在瀏覽器中運行, 但至少已經可以透過 Three.js 與 Websocket 的整合, 讓 CoppeliaSim 的模擬場景在瀏覽器中呈現. 另外一個趨勢是, 除了電腦必須讓手機與平板在機械設計流程中扮演更重要的角色. 網站的內容維護與觀看更需考慮在電腦、手機與平板都能平順進行.</p>
-<p>至於近端的機械產品設計流程則可以採 Solvespace 與 NX 完成零組件設計繪圖, 並以可攜程式環境編寫 server 端的應用程式, 用來控制零組件參數或進行機電模擬系統的控制等. 而 cmsimde 在近端也可以如遠端操作進行動態與靜態網頁的維護與展示.</p>
-<p>靜態網站: <a href="https://mde.tw/demo/">https://mde.tw/demo/</a></p>
-<p>倉儲: <a href="https://github.com/mdecycu/demo">https://github.com/mdecycu/demo</a></p>
-<p>公佈欄網站: <a href="https://mde.tw/wcms">https://mde.tw/wcms</a></p>
-<p></p>
-<br /> <a href='手機使用問題.html'>Next</a> >> 手機使用問題</div>
+    <div id="tipue_search_content">Servers << <a href='Servers.html'>Previous</a> <a href='OpenSSH.html'>Next</a> >> OpenSSH<br /><h1>Ubuntu</h1>
+<p>Under Windows use powershell list nssm services:</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">Get-WmiObject win32_service | ?{$_.PathName -like '*nssm*'} | select Name, DisplayName, State, PathName</pre>
+<p>處理 209:</p>
+<p>下載 Ubuntu 22.04.1.iso 1.3 GB</p>
+<p>mod.cycu 為 22.04 Desktop</p>
+<p>將 4 從 86 轉到 209 - Done</p>
+<hr/>
+<p>sudo apt update</p>
+<p>sudo apt upgrade</p>
+<p>sudo apt autoremove</p>
+<p>sudo apt install net-tools</p>
+<p>sudo reboot</p>
+<p>sudo apt install squid</p>
+<hr/>
+<p>sudo adduser username</p>
+<p>sudo usermod -aG sudo username</p>
+<hr/>
+<p>proxy server 4 ufw setup (allow 192.168.1.1 and IPv6 group to port 22, allow all to 3128)</p>
+<p>sudo -s</p>
+<p>ufw status</p>
+<p>ufw allow from 192.168.1.1</p>
+<p>ufw allow from 2001:288:xxxx:17::/32 to any port 22</p>
+<p>ufw deny 22</p>
+<p>ufw allow 3128</p>
+<p>ufw enable</p>
+<hr/>
+<p></p><br />Servers << <a href='Servers.html'>Previous</a> <a href='OpenSSH.html'>Next</a> >> OpenSSH</div>
         
     <!-- footer -->
       <div class="container">
