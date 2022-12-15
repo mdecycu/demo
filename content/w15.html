@@ -2,7 +2,7 @@
         <head>
         <title>demo on stud</title>
         <meta charset="utf-8">
-<meta property="head" content="H3">
+<meta property="head" content="H2">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
@@ -141,30 +141,71 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">Execute Complex Commands << <a href='Execute Complex Commands.html'>Previous</a> <a href='Projects.html'>Next</a> >> Projects<br /><h1>xml</h1>
-<p><a href="https://forum.coppeliarobotics.com/viewtopic.php?t=9240">https://forum.coppeliarobotics.com/viewtopic.php?t=9240#</a> </p>
-<p>simAddOnXML format loader.lua</p>
-<pre class="brush:lua;auto-links:false;toolbar:false" contenteditable="false">function sysCall_info()
-    return {autoStart=false}
-end
-
-function sysCall_init()
-    local file=sim.fileDialog(sim.filedlg_type_load,"XML Format","","","Coppelia XML format","simscene.xml")
-    if file then
-        sim.loadScene(file.."@keepCurrent")
-    end
-    return {cmd='cleanup'}
-end</pre>
-<p>4.3.0 rev12</p>
-<p>XML mesh</p>
-<p>&lt;sceneObject&gt;<br/>    &lt;shape&gt;<br/>     &lt;common&gt;</p>
-<p>        &lt;meshproxy&gt;</p>
-<p>            &lt;mesh&gt;</p>
-<p>            &lt;/mesh&gt;</p>
-<p>        &lt;/meshproxy&gt;</p>
-<p>    &lt;/common&gt;<br/>    &lt;/shape&gt;<br/>&lt;/sceneObject&gt;</p>
+    <div id="tipue_search_content">w14-2 << <a href='w14-2.html'>Previous</a> <a href='OOP.html'>Next</a> >> OOP<br /><h1>w15</h1>
+<p>維護 <a href="https://github.com/mdecp2022">https://github.com/mdecp2022</a> 帳號下的個人倉儲方法</p>
+<table border="1" style="width: 457.95px;">
+<tbody>
+<tr style="height: 47px;">
+<td style="width: 78px; height: 47px;">維護方法</td>
+<td style="width: 78px; height: 47px;">認證方式</td>
+<td style="width: 78px; height: 47px;">方便性</td>
+<td style="width: 78px; height: 47px;">注意事項</td>
+<td style="width: 107.95px; height: 47px;">操作流程</td>
+</tr>
+<tr style="height: 74.4px;">
+<td style="width: 78px; height: 74.4px;">Replit</td>
+<td style="width: 78px; height: 74.4px;">
+<p>登入認證</p>
+<p>Token</p>
+</td>
+<td style="width: 78px; height: 74.4px;">必須隨時上網</td>
+<td style="width: 78px; height: 74.4px;">更新前儘量利用 git pull 與 github 倉儲保持同步</td>
+<td style="width: 107.95px; height: 74.4px;">
+<p>1. 登入 Replit</p>
+<p>2. Import from github</p>
+<p>3. git submodule update --init</p>
+<p>4. flask flask_cors bs4 lxml pelican markdown pyopenssl</p>
+<p>5. 以 main.py 啟動後維護</p>
+<p>6. 資料同步至 github.com 或以 token 執行 acp</p>
+</td>
+</tr>
+<tr style="height: 88px;">
+<td style="width: 78px; height: 88px;">stud.cycu.org</td>
+<td style="width: 78px; height: 88px;">
+<p>SSH</p>
+<p>Token</p>
+</td>
+<td style="width: 78px; height: 88px;">必須隨時上網</td>
+<td style="width: 78px; height: 88px;">更新前儘量利用 git pull 與 github 倉儲保持同步</td>
+<td style="width: 107.95px; height: 88px;">
+<p>1. 登入 stud.cycu.org</p>
+<p>2. 建立 SSH 認證</p>
+<p>3. git config 設定</p>
+<p>4. 確定 server.py 已經導向所分配的 9xxx 埠號</p>
+<p>5. python3 server.py 啟動後進行內容維護</p>
+<p>6. 將動態內容轉為靜態後, 直接在線上 acp</p>
 <p></p>
-<br />Execute Complex Commands << <a href='Execute Complex Commands.html'>Previous</a> <a href='Projects.html'>Next</a> >> Projects</div>
+</td>
+</tr>
+<tr style="height: 78px;">
+<td style="width: 78px; height: 78px;">localhost</td>
+<td style="width: 78px; height: 78px;">
+<p>SSH </p>
+<p>Token</p>
+</td>
+<td style="width: 78px; height: 78px;">只有在 push 時需要上網</td>
+<td style="width: 78px; height: 78px;">更新前儘量利用 git pull 與 github 倉儲保持同步</td>
+<td style="width: 107.95px; height: 78px;">
+<p>1. 決定要採用 SSH 或 https 維護倉儲</p>
+<p>2. git clone --recurse --submodules 取下倉儲</p>
+<p>3. 以 cms 開啟動態網站</p>
+<p>4. 維護網站內容後轉靜態.</p>
+<p>5. 在近端以 acp 將改版內容提交推向 github</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p></p><br />w14-2 << <a href='w14-2.html'>Previous</a> <a href='OOP.html'>Next</a> >> OOP</div>
         
     <!-- footer -->
       <div class="container">
