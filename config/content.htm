@@ -668,8 +668,20 @@ pause</pre>
 <p>ufw allow from 2001:288:xxxx:17::/32 to any port 22</p>
 <p>ufw deny 22</p>
 <p>ufw allow 3128</p>
+<p>if dns server:</p>
+<p style="padding-left: 30px;">ufw allow 53</p>
 <p>ufw enable</p>
 <hr/>
+<p>sudo install bind9</p>
+<p>sudo systemctl reload bind9</p>
+<p>db.17</p>
+<p>db.local</p>
+<p>db.mde</p>
+<p>exam: 10ff:1:0:1</p>
+<p>stud: 10ff:0:1:5</p>
+<p>nx: 10ff::109</p>
+<p>add server3 as proxy and dns of mde</p>
+<p></p>
 <p></p><h2>OpenSSH</h2>
 <p>Windows OpenSSH server:</p>
 <p style="padding-left: 30px;">OpenSSH is a connectivity tool for remote sign-in that uses the SSH protocol. It encrypts all traffic between client and server to eliminate eavesdropping, connection hijacking, and other attacks.</p>
@@ -1281,7 +1293,82 @@ def get_input(env):
 # 讓使用者 click 後會經由瀏覽器中的 event 通知執行 get_input 函式
 document["btn1"].bind('click', get_input)
 </script>
-</p><h2>Brython</h2>
+</p>
+<h2>OOP</h2>
+<p>物件導向範例, <a href="https://mde.tw/demo/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/9df4b372ac1b7386cf259ced15f1a2b2/raw/767c617f853955a5def92cfb2926a064646e84c2/quiz_class_inheritant.py">執行下列程式</a>.</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># 導入 ast 模組是希望利用其 literal_eval() 將 dict 格式的字串轉為 dict 資料型別
+# 以利隨後的取值運算
+import ast
+from browser import document
+
+class quiz:
+    def __init__(self, cname, url):
+        self.cname = cname
+        self.url = url
+
+    # 定義一個函式, 以班級代號字串作為輸入, 可以傳回各班修課學員的學號數列
+    def get_stud(self):
+        # 將課程的班級代號字串作為 dict 的 key, 而 2022 fall 的課程代號作為對應值
+        # 使用者可以利用班級代號從 courses dict 取出課程代號
+        courses = {"1a": "0747", "1b": "0761", "2a": "0773", "2b": "0786"}
+        # 利用 c_name 從 courses 得到該學期的課程代號
+        c = courses[self.cname]
+        # 利用課程代號從學校教務主機取的該班修課人員名單
+        curl = "https://nfu.cycu.org/?semester=1111&amp;courseno=" + c + "&amp;column=True"
+        # 讀出各修課人員資料後, 以跳行符號切割, 得到的 data 為數列
+        data = open(curl).read().split("\n")
+        # 因為最後一筆資料為空字串, 因此利用數列運算將其去除
+        stud = data[:-1]
+        # get_stud() 函式最後將對應班級的修課人員學號以數列格式傳回
+        return stud
+        
+    def get_score(self):
+        # 利用 open() 與 read() 讀取考試結果 JSON 檔案
+        json_data = open(self.url).read()
+        # 利用 ast.literal_eval() 將字串 dict, 轉為程式可用的 dict 資料型別
+        big_dict = ast.literal_eval(json_data)
+        # 從 big_dict 中, 取出 body 中的 testuser 欄位資料
+        data = big_dict["body"]["testuser"]
+        # 定義一個空 dict 資料變數, 隨後利用迴圈逐一將學號作為 key, 考試成績為 valude
+        # 組成 quiz_dict 的資料內容, 以便之後可以用學號當作輸入, 取得該員考試成績
+        quiz_dict = {}
+        for i in data:
+            # data 資料中的 user_name 為考試學員的帳號, 也就是學號
+            stud_id = data[i]["user_name"]
+            # data 資料中的 total_score 欄位為考試成績
+            # 因為考試成績為字串, 先轉為浮點數後, 再轉為整數
+            stud_score = int(float(data[i]["total_score"]))
+            # 逐一以學號為 key, 考試成績為對應 value, 將資料放入 quiz_dict
+            quiz_dict[stud_id] = stud_score
+        # 取得各學員的考試成績 quiz_dict 後, 將資料傳回
+        return quiz_dict
+
+class stud(quiz):
+    def __init__(self, cname, url, github_url):
+        #super(stud, self).__init__(cname, url)
+        super().__init__(cname, url)
+        self.github_url = github_url
+
+    
+try:
+    url = document.query["url"]
+except:
+    url = "https://gist.githubusercontent.com/mdecycu/9df4b372ac1b7386cf259ced15f1a2b2/raw/a6825f13b1bb0b61e09e74dd117729eefe1d947f/20221110_cp1b_w10_quiz.json"
+
+try:
+    cname =document.query["cname"]
+except:
+    cname = "1b"
+
+github_url = ""
+cpb_w14 = stud(cname, url, github_url)
+cp_stud = cpb_w14.get_stud()
+print(cp_stud)
+'''
+cp_score = cpb_w14.get_score()
+print(cp_stud, cp_score)
+'''</pre>
+<p></p><h2>Brython</h2>
 <p><a href="https://www.zditect.com/main-advanced/python/brython-python-in-browser.html">https://www.zditect.com/main-advanced/python/brython-python-in-browser.html</a></p>
 <p><a href="https://zhuanlan.zhihu.com/p/459819939">【python】Brython：浏览器中的Python-第一篇 - 知乎 (zhihu.com)</a></p>
 <p><a href="https://www.geeksforgeeks.org/introduction-to-brython/">Introduction to Brython - GeeksforGeeks</a></p>
@@ -2376,7 +2463,7 @@ if __name__ == "__main__":
 <p>Opencv 與 Scenes</p>
 <p><a href="http://mod.cycu.org">http://mod.cycu.org</a> has coppeliaSim on Ubuntu desktop</p>
 <p><a href="https://github.com/ljmanso/coppeliasim_pythonic_api">GitHub - ljmanso/coppeliasim_pythonic_api</a></p>
-<h3>remote API</h3>
+<p><a href="https://github.com/mdecadp2018">https://github.com/mdecadp2018</a> </p><h3>remote API</h3>
 <p><a href="http://project.mde.tw/blog/40323250ri-zhi-v-rep-gong-neng-chi-xu-geng-xin-zhong.html">參考資料</a></p>
 <p>one link change velocity:</p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import vrep
@@ -3028,10 +3115,14 @@ end</pre>
 <p><a href="https://userpages.umbc.edu/~nroy/courses/shhasp18/papers/Did%20You%20Take%20a%20Break%20Today%20Detecting%20Playing%20Foosball%20Using%20Your%20Smartwatch.pdf">https://userpages.umbc.edu/~nroy/courses/shhasp18/papers/Did%20You%20Take%20a%20Break%20Today%20Detecting%20Playing%20Foosball%20Using%20Your%20Smartwatch.pdf</a> </p>
 <p><a href="https://www.irjmets.com/uploadedfiles/paper//issue_7_july_2022/27817/final/fin_irjmets1657266623.pdf">https://www.irjmets.com/uploadedfiles/paper//issue_7_july_2022/27817/final/fin_irjmets1657266623.pdf</a> </p>
 <p><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8321080/pdf/jimaging-06-00073.pdf">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8321080/pdf/jimaging-06-00073.pdf</a></p>
-<p><a href="https://www.mdpi.com/2079-9292/9/12/1986/htm">https://www.mdpi.com/2079-9292/9/12/1986/htm</a> </p><h1>Ext</h1>
+<p><a href="https://www.mdpi.com/2079-9292/9/12/1986/htm">https://www.mdpi.com/2079-9292/9/12/1986/htm</a> </p><h2>Ardunio</h2>
+<p><a href="https://docs.wokwi.com/?utm_source=wokwi">Welcome to Wokwi! | Wokwi Docs</a> </p>
+<p><a href="https://wokwi.com/projects/340367397829476948">可變電阻與伺服馬達</a></p>
+<p>PICSimLab:</p>
+<p style="padding-left: 30px;"><a href="https://lcgamboa.github.io/picsimlab_docs/0.8.12/index.html">https://lcgamboa.github.io/picsimlab_docs/0.8.12/index.html</a> </p>
+<p style="padding-left: 30px;"></p><h1>Ext</h1>
 <p>這裡主要是放入一些延伸內容</p>
-<p>包括電腦輔助設計與計算機程式</p>
-<h2>Fusion 360</h2>
+<p>包括電腦輔助設計與計算機程式</p><h2>Fusion 360</h2>
 <p>除了 <a href="https://onshape.com">https://onshape.com</a>  還有 Fusion 360 也提供免費教育版:</p>
 <p><a href="https://www.autodesk.com/education/edu-software/overview">https://www.autodesk.com/education/edu-software/overview</a></p>
 <h2>Control</h2>

@@ -2,6 +2,7 @@
         <head>
         <title>demo on stud</title>
         <meta charset="utf-8">
+<meta property="head" content="H2">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
@@ -94,6 +95,7 @@ img.add_border {
 </head>
 <body>
 <div class='container'><nav>
+        
     <div class="site-wrap">
 
     <div class="site-mobile-menu">
@@ -139,4 +141,128 @@ img.add_border {
           </div>
           
         </header>
-    </nav><section><h1>Site Map</h1><div id="tipue_search_content"></div><ul><li><a href='About.html'>About</a><ul><li><a href='手機使用問題.html'>手機使用問題</a><li><a href='w5.html'>w5</a><li><a href='cmsimde.html'>cmsimde</a><ul><li><a href='手機專用.html'>手機專用</a><li><a href='CMS 改版.html'>CMS 改版</a><li><a href='upload.html'>upload</a><li><a href='Nginx.html'>Nginx</a></li></ul><li><a href='TCExam.html'>TCExam</a><ul><li><a href='bugs.html'>bugs</a></li></ul><li><a href='vscode.html'>vscode</a><li><a href='Flask.html'>Flask</a><li><a href='Windows.html'>Windows</a></li></ul><li><a href='News.html'>News</a><ul><li><a href='Constancy.html'>Constancy</a></li></ul><li><a href='Servers.html'>Servers</a><ul><li><a href='Ubuntu.html'>Ubuntu</a><li><a href='OpenSSH.html'>OpenSSH</a><ul><li><a href='ncat.html'>ncat</a></li></li></ul></ul><li><a href='cp2022.html'>cp2022</a><ul><li><a href='CP抽點程式.html'>CP抽點程式</a><li><a href='CP 靜態網頁連結.html'>CP 靜態網頁連結</a><li><a href='HW.html'>HW</a><ul><li><a href='w12.html'>w12</a><li><a href='w12-1.html'>w12-1</a><li><a href='w12-2.html'>w12-2</a><li><a href='w13.html'>w13</a><li><a href='w14.html'>w14</a><li><a href='w14-1.html'>w14-1</a><li><a href='w14-2.html'>w14-2</a></li></ul><li><a href='OOP.html'>OOP</a><li><a href='Brython.html'>Brython</a><ul><li><a href='examples.html'>examples</a></li></li></ul></ul><li><a href='cad2022.html'>cad2022</a><ul><li><a href='w8.html'>w8</a><li><a href='stud server.html'>stud server</a><ul><li><a href='cadw7.html'>cadw7</a><li><a href='websocket.html'>websocket</a></li></ul><li><a href='File format.html'>File format</a><ul><li><a href='STEP.html'>STEP</a><li><a href='STL.html'>STL</a><li><a href='DAE.html'>DAE</a></li></ul><li><a href='Solvespace.html'>Solvespace</a><ul><li><a href='w12-solvespace.html'>w12-solvespace</a></li></ul><li><a href='Onshape.html'>Onshape</a><ul><li><a href='Onshape Drill Press.html'>Onshape Drill Press</a><li><a href='Edu resource.html'>Edu resource</a></li></ul><li><a href='NX.html'>NX</a><ul><li><a href='NX start.html'>NX start</a><li><a href='NXOpen.html'>NXOpen</a><li><a href='Export img.html'>Export img</a><li><a href='NX Drill Press.html'>NX Drill Press</a></li></ul><li><a href='Gear.html'>Gear</a><li><a href='CoppeliaSim.html'>CoppeliaSim</a><ul><li><a href='remote API.html'>remote API</a><li><a href='zeromq.html'>zeromq</a><li><a href='以 remote API 取 camera 影像.html'>以 remote API 取 camera 影像</a><li><a href='Execute Complex Commands.html'>Execute Complex Commands</a><li><a href='xml.html'>xml</a></li></li></ul></ul><li><a href='Projects.html'>Projects</a><ul><li><a href='Ardunio.html'>Ardunio</a></li></ul><li><a href='Ext.html'>Ext</a><ul><li><a href='Fusion 360.html'>Fusion 360</a><li><a href='Control.html'>Control</a><li><a href='Files.html'>Files</a><li><a href='Linux 指令.html'>Linux 指令</a><ul><li><a href='limitation.html'>limitation</a></li></ul><li><a href='Brython2.html'>Brython2</a></li></ul></section></div></body></html>
+    <div id="tipue_search_content">w14-2 << <a href='w14-2.html'>Previous</a> <a href='Brython.html'>Next</a> >> Brython<br /><h1>OOP</h1>
+<p>物件導向範例, <a href="https://mde.tw/demo/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/9df4b372ac1b7386cf259ced15f1a2b2/raw/767c617f853955a5def92cfb2926a064646e84c2/quiz_class_inheritant.py">執行下列程式</a>.</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># 導入 ast 模組是希望利用其 literal_eval() 將 dict 格式的字串轉為 dict 資料型別
+# 以利隨後的取值運算
+import ast
+from browser import document
+
+class quiz:
+    def __init__(self, cname, url):
+        self.cname = cname
+        self.url = url
+
+    # 定義一個函式, 以班級代號字串作為輸入, 可以傳回各班修課學員的學號數列
+    def get_stud(self):
+        # 將課程的班級代號字串作為 dict 的 key, 而 2022 fall 的課程代號作為對應值
+        # 使用者可以利用班級代號從 courses dict 取出課程代號
+        courses = {"1a": "0747", "1b": "0761", "2a": "0773", "2b": "0786"}
+        # 利用 c_name 從 courses 得到該學期的課程代號
+        c = courses[self.cname]
+        # 利用課程代號從學校教務主機取的該班修課人員名單
+        curl = "https://nfu.cycu.org/?semester=1111&amp;courseno=" + c + "&amp;column=True"
+        # 讀出各修課人員資料後, 以跳行符號切割, 得到的 data 為數列
+        data = open(curl).read().split("\n")
+        # 因為最後一筆資料為空字串, 因此利用數列運算將其去除
+        stud = data[:-1]
+        # get_stud() 函式最後將對應班級的修課人員學號以數列格式傳回
+        return stud
+        
+    def get_score(self):
+        # 利用 open() 與 read() 讀取考試結果 JSON 檔案
+        json_data = open(self.url).read()
+        # 利用 ast.literal_eval() 將字串 dict, 轉為程式可用的 dict 資料型別
+        big_dict = ast.literal_eval(json_data)
+        # 從 big_dict 中, 取出 body 中的 testuser 欄位資料
+        data = big_dict["body"]["testuser"]
+        # 定義一個空 dict 資料變數, 隨後利用迴圈逐一將學號作為 key, 考試成績為 valude
+        # 組成 quiz_dict 的資料內容, 以便之後可以用學號當作輸入, 取得該員考試成績
+        quiz_dict = {}
+        for i in data:
+            # data 資料中的 user_name 為考試學員的帳號, 也就是學號
+            stud_id = data[i]["user_name"]
+            # data 資料中的 total_score 欄位為考試成績
+            # 因為考試成績為字串, 先轉為浮點數後, 再轉為整數
+            stud_score = int(float(data[i]["total_score"]))
+            # 逐一以學號為 key, 考試成績為對應 value, 將資料放入 quiz_dict
+            quiz_dict[stud_id] = stud_score
+        # 取得各學員的考試成績 quiz_dict 後, 將資料傳回
+        return quiz_dict
+
+class stud(quiz):
+    def __init__(self, cname, url, github_url):
+        #super(stud, self).__init__(cname, url)
+        super().__init__(cname, url)
+        self.github_url = github_url
+
+    
+try:
+    url = document.query["url"]
+except:
+    url = "https://gist.githubusercontent.com/mdecycu/9df4b372ac1b7386cf259ced15f1a2b2/raw/a6825f13b1bb0b61e09e74dd117729eefe1d947f/20221110_cp1b_w10_quiz.json"
+
+try:
+    cname =document.query["cname"]
+except:
+    cname = "1b"
+
+github_url = ""
+cpb_w14 = stud(cname, url, github_url)
+cp_stud = cpb_w14.get_stud()
+print(cp_stud)
+'''
+cp_score = cpb_w14.get_score()
+print(cp_stud, cp_score)
+'''</pre>
+<p></p><br />w14-2 << <a href='w14-2.html'>Previous</a> <a href='Brython.html'>Next</a> >> Brython</div>
+        
+    <!-- footer -->
+      <div class="container">
+        <div class="row pt-3 mx-auto">
+            <p>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </p>
+        </div>
+      </div>
+    <!-- for footer -->
+    
+        </div> <!-- for site wrap -->
+            <!-- <script src="../cmsimde/static/chimper/js/jquery-3.3.1.min.js"></script> -->
+            <script src="../cmsimde/static/chimper/js/jquery-migrate-3.0.1.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/jquery-ui.js"></script>
+            <script src="../cmsimde/static/chimper/js/popper.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/bootstrap.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/owl.carousel.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/jquery.stellar.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/jquery.countdown.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/jquery.magnific-popup.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/bootstrap-datepicker.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/aos.js"></script>
+            <!--
+            <script src="../cmsimde/static/chimper/js/typed.js"></script>
+                    <script>
+                    var typed = new Typed('.typed-words', {
+                    strings: ["Web Apps"," WordPress"," Mobile Apps"],
+                    typeSpeed: 80,
+                    backSpeed: 80,
+                    backDelay: 4000,
+                    startDelay: 1000,
+                    loop: true,
+                    showCursor: true
+                    });
+                    </script>
+            -->
+            <script src="../cmsimde/static/chimper/js/main.js"></script>
+        
+<!-- 啟用 LaTeX equations 編輯 -->
+  <!-- <script>
+  MathJax = {
+    tex: {inlineMath: [['$', '$'], ['\(', '\)']]}
+  };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>-->
+    </body></html>
+        
