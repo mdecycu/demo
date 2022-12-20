@@ -580,6 +580,24 @@ reader.readAsBinaryString(chunk);
 <p>taskkill /F /T /IM pythonw.exe /FI "USERNAME eq cad2022"</p>
 <p>taskkill /f /PID 9532</p>
 <h2>Windows</h2>
+<p>Git 指令:</p>
+<h4>git error:</h4>
+<p style="padding-left: 30px;"><a href="https://stackoverflow.com/questions/66366582/github-unexpected-disconnect-while-reading-sideband-packet">https://stackoverflow.com/questions/66366582/github-unexpected-disconnect-while-reading-sideband-packet</a> </p>
+<p style="padding-left: 30px;"></p>
+<p>無視近端的改版 (<a href="https://www.nobledesktop.com/learn/git/undo-changes">參考</a>):</p>
+<p>假如近端所進行的諸多改版尚未提交 (commit):</p>
+<p style="padding-left: 30px;">git checkout .</p>
+<p style="padding-left: 30px;">以上指令將會從遠端取下近端改版前的版本內容, 之前所做的改版將會被刪除.</p>
+<p>假如近端所做的改版已經提交但尚未推送時:</p>
+<p style="padding-left: 30px;">若希望刪除上一個提交時, 執行 git reset --soft HEAD~ 或 git reset --soft HEAD^</p>
+<p style="padding-left: 30px;">假如相望刪除上兩個提交時, 執行 git reset --soft HEAD~2</p>
+<p style="padding-left: 30px;">接下來則可自行處理之前改版的內容, 例如: 刪除有意或無意放入的大檔案.</p>
+<p>假如近端所做的改版已經提交並且已經推送時:</p>
+<p style="padding-left: 30px;">先從 github 查詢已經 push 的版次號 (至少 7 個版本代號), 然後執行下列指令:</p>
+<p style="padding-left: 30px;">git revert 版次號 --no-edit</p>
+<p style="padding-left: 30px;">上列指令表示無條件回到所選定的版次號版本內容, 並據此版本新增一個提交. 接著就可以執行 git push.</p>
+<p></p>
+<hr/>
 <p>IPv6 Windows 10 使用授權批次檔案 windows_10_kms_ipv6.bat:</p>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">@echo off
 cscript "%SystemRoot%\system32\slmgr.vbs" /skms [2001:288:6004:1::15]:1688
@@ -596,8 +614,7 @@ pause</pre>
 <p><a href="https://www.computerhope.com/issues/ch000322.htm">https://www.computerhope.com/issues/ch000322.htm</a> (batch for Win 10 startup)</p>
 <p>OpenSSH:</p>
 <p style="padding-left: 30px;">C:\WINDOWS\System32\OpenSSH\sshd.exe</p>
-<p style="padding-left: 30px;">設定檔案位置: C:\ProgramData\ssh\sshd_config</p>
-<h1>News</h1>
+<p style="padding-left: 30px;">設定檔案位置: C:\ProgramData\ssh\sshd_config</p><h1>News</h1>
 <p><a href="https://www.youtube.com/watch?v=ABVn6uMG1OI">https://www.youtube.com/watch?v=ABVn6uMG1OI</a> </p>
 <p><a href="https://builtin.com/artificial-intelligence/use-ai-fix-broken-code">https://builtin.com/artificial-intelligence/use-ai-fix-broken-code</a> </p>
 <p style="padding-left: 30px;"><a href="https://www.testim.io/blog/what-is-a-linter-heres-a-definition-and-quick-start-guide/">What Is a Linter? Here's a Definition and Quick-Start Guide (testim.io)</a></p>

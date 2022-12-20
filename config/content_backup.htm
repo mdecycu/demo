@@ -580,6 +580,23 @@ reader.readAsBinaryString(chunk);
 <p>taskkill /F /T /IM pythonw.exe /FI "USERNAME eq cad2022"</p>
 <p>taskkill /f /PID 9532</p>
 <h2>Windows</h2>
+<p>Git 指令:</p>
+<h4>git error:</h4>
+<p style="padding-left: 30px;"><a href="https://stackoverflow.com/questions/66366582/github-unexpected-disconnect-while-reading-sideband-packet">https://stackoverflow.com/questions/66366582/github-unexpected-disconnect-while-reading-sideband-packet</a> </p>
+<p style="padding-left: 30px;"></p>
+<p>無視近端的改版 (<a href="https://www.nobledesktop.com/learn/git/undo-changes">參考</a>):</p>
+<p>假如近端所進行的諸多改版尚未提交 (commit):</p>
+<p style="padding-left: 30px;">git checkout .</p>
+<p style="padding-left: 30px;">以上指令將會從遠端取下近端改版前的版本內容, 之前所做的改版將會被刪除.</p>
+<p>假如近端所做的改版已經提交但尚未推送時:</p>
+<p style="padding-left: 30px;">若希望刪除上一個提交時, 執行 git reset --soft HEAD~ 或 git reset --soft HEAD^</p>
+<p style="padding-left: 30px;">假如相望刪除上兩個提交時, 執行 git reset --soft HEAD~2</p>
+<p>假如近端所做的改版已經提交並且已經推送時:</p>
+<p style="padding-left: 30px;">先從 github 查詢已經 push 的版次號 (至少 7 個版本代號), 然後執行下列指令:</p>
+<p style="padding-left: 30px;">git revert 版次號 --no-edit</p>
+<p style="padding-left: 30px;">上列指令表示無條件回到所選定的版次號版本內容, 並據此版本新增一個提交. 接著就可以執行 git push.</p>
+<p></p>
+<hr/>
 <p>IPv6 Windows 10 使用授權批次檔案 windows_10_kms_ipv6.bat:</p>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">@echo off
 cscript "%SystemRoot%\system32\slmgr.vbs" /skms [2001:288:6004:1::15]:1688
@@ -596,8 +613,7 @@ pause</pre>
 <p><a href="https://www.computerhope.com/issues/ch000322.htm">https://www.computerhope.com/issues/ch000322.htm</a> (batch for Win 10 startup)</p>
 <p>OpenSSH:</p>
 <p style="padding-left: 30px;">C:\WINDOWS\System32\OpenSSH\sshd.exe</p>
-<p style="padding-left: 30px;">設定檔案位置: C:\ProgramData\ssh\sshd_config</p>
-<h1>News</h1>
+<p style="padding-left: 30px;">設定檔案位置: C:\ProgramData\ssh\sshd_config</p><h1>News</h1>
 <p><a href="https://www.youtube.com/watch?v=ABVn6uMG1OI">https://www.youtube.com/watch?v=ABVn6uMG1OI</a> </p>
 <p><a href="https://builtin.com/artificial-intelligence/use-ai-fix-broken-code">https://builtin.com/artificial-intelligence/use-ai-fix-broken-code</a> </p>
 <p style="padding-left: 30px;"><a href="https://www.testim.io/blog/what-is-a-linter-heres-a-definition-and-quick-start-guide/">What Is a Linter? Here's a Definition and Quick-Start Guide (testim.io)</a></p>
@@ -657,7 +673,7 @@ pause</pre>
 <p>sudo apt install net-tools</p>
 <p>sudo reboot</p>
 <p>sudo apt install squid</p>
-<hr/>
+<hr>
 <p>sudo adduser username</p>
 <p>sudo usermod -aG sudo username</p>
 <hr/>
@@ -1566,7 +1582,7 @@ doc["power"].bind("click", launchAnimation)
 <p><a href="https://betterprogramming.pub/three-js-with-python-syntax-pyweb3d-2152bed1a43d">https://betterprogramming.pub/three-js-with-python-syntax-pyweb3d-2152bed1a43d</a> </p>
 <h3>1b</h3>
 <div id="brython_div1"><a href="https://mdecp2022.github.io/site-warsplte/content/w15.html">41123204</a><br/><a href="https://mdecp2022.github.io/site-Liu16552/content/w15.html">41123210</a><br/><a href="https://mdecp2022.github.io/site-leekuchu006/content/w15.html">41123211</a><br/><a href="https://mdecp2022.github.io/site-41123214/content/w15.html">41123214</a><br/><a href="https://mdecp2022.github.io/site-S41123216/content/w15.html">41123216</a><br/><a href="https://mdecp2022.github.io/site-12tony2/content/w15.html">41123217</a><br/><a href="https://mdecp2022.github.io/site-Changyou41123220/content/w15.html">41123220</a><br/><a href="https://mdecp2022.github.io/site-kao41123222/content/w15.html">41123222</a><br/><a href="https://mdecp2022.github.io/site-CHI-23/content/w15.html">41123223</a><br/><a href="https://mdecp2022.github.io/site-41123226/content/w15.html">41123226</a><br/><a href="https://mdecp2022.github.io/site-tianmiaox/content/w15.html">41123227</a><br/><a href="https://mdecp2022.github.io/site-41123237-Hank/content/w15.html">41123237</a><br/><a href="https://mdecp2022.github.io/site-41123241/content/w15.html">41123241</a><br/><a href="https://mdecp2022.github.io/site-a0408258/content/w15.html">41123243</a><br/><a href="https://mdecp2022.github.io/site-zxc-ops/content/w15.html">41123246</a><br/><a href="https://mdecp2022.github.io/site-41123251/content/w15.html">41123251</a></div>
-<hr/><h2>OOP</h2>
+<hr><h2>OOP</h2>
 <p>物件導向範例, <a href="https://mde.tw/demo/content/Brython.html?src=https://gist.githubusercontent.com/mdecycu/9df4b372ac1b7386cf259ced15f1a2b2/raw/767c617f853955a5def92cfb2926a064646e84c2/quiz_class_inheritant.py">執行下列程式</a>.</p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># 導入 ast 模組是希望利用其 literal_eval() 將 dict 格式的字串轉為 dict 資料型別
 # 以利隨後的取值運算
@@ -3273,7 +3289,8 @@ if res==vrep.simx_return_ok:
 <p>以下使用 CoppeliaSim 4.3.0 rev12 進行測試:</p>
 <p>1. 啟動檔案 start.bat 附加 ZMQ Python API path:</p>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">set PYTHONPATH=%cd%\Python38;%cd%\Python38\DLLs;%cd%\Python38\Lib;%cd%\Python38\Lib\site-packages;C:\NX2027.3401_lite\NXBIN\python;C:\CoppeliaSimEdu_4.3.0_rev12\programming\zmqRemoteApi\clients\python</pre>
-<p>2. CoppeliaSim 下拉式功能表 Modules - Connectivity - ZMQ Remote API Server (running)</p><h3>Pinball</h3>
+<p>2. CoppeliaSim 下拉式功能表 Modules - Connectivity - ZMQ Remote API Server (running).</p>
+<p>3. 執行 C:\CoppeliaSimEdu_4.3.0_rev12\programming\zmqRemoteApi\clients\python\SimpleTest.py</p><h3>Pinball</h3>
 <p>彈珠檯機構設計:</p>
 <p><a href="https://youtube.com/watch?v=yZ1XmdRJcus">https://youtube.com/watch?v=yZ1XmdRJcus</a></p>
 <p><a href="https://youtube.com/shorts/08TMJ_lJdZU?si=EnSIkaIECMiOmarE">https://youtube.com/shorts/08TMJ_lJdZU?si=EnSIkaIECMiOmarE</a> </p>
@@ -3743,7 +3760,7 @@ doc["add1to100"].bind('click', add)
 <div style="width: 100%; height: 100%;"><textarea autocomplete="off" id="kw_console1"></textarea></div>
 <p><!-- Brython 程式執行的結果, 都以 brython_div1 作為切入位置 --></p>
 <div id="brython_div1"></div>
-<!-- editor1 結束 --><hr/><!-- ########################################## -->
+<!-- editor1 結束 --><hr><!-- ########################################## -->
 <p>從 1 累加到 100 part2:</p>
 <p><button id="add1to100part2">1 add to 100</button><button id="cango_three_gears">cango_three_gears</button><button id="bsnake">BSnake</button><button id="aitetris">AI Tetris</button></p>
 <p><!-- 請注意, 這裡使用 Javascript 將 localStorage["kw_py_src2"] 中存在近端瀏覽器的程式碼, 由使用者決定存檔名稱--></p>
@@ -3857,4 +3874,4 @@ doc["aitetris"].bind("click", aitetris.do)
 <div style="width: 100%; height: 100%;"><textarea autocomplete="off" id="kw_console2"></textarea></div>
 <p><!-- Brython 程式執行的結果, 都以 brython_div1 作為切入位置 --></p>
 <div id="brython_div2"></div>
-<!-- editor2 結束 --><hr/>
+<!-- editor2 結束 --><hr/></hr></hr></hr>
