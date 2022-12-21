@@ -582,21 +582,42 @@ reader.readAsBinaryString(chunk);
 <h2>Windows</h2>
 <p>Git 指令:</p>
 <h4>git error:</h4>
-<p style="padding-left: 30px;"><a href="https://stackoverflow.com/questions/66366582/github-unexpected-disconnect-while-reading-sideband-packet">https://stackoverflow.com/questions/66366582/github-unexpected-disconnect-while-reading-sideband-packet</a> </p>
-<p style="padding-left: 30px;"></p>
-<p>無視近端的改版 (<a href="https://www.nobledesktop.com/learn/git/undo-changes">參考</a>):</p>
-<p>假如近端所進行的諸多改版尚未提交 (commit):</p>
+<p style="padding-left: 30px;"><a href="https://stackoverflow.com/questions/66366582/github-unexpected-disconnect-while-reading-sideband-packet">https://stackoverflow.com/questions/66366582/github-unexpected-disconnect-while-reading-sideband-packet</a></p>
+<hr/>
+<h4>如何刪除近端的改版(<a href="https://www.nobledesktop.com/learn/git/undo-changes">參考</a>):</h4>
+<p>1. 假如近端所進行的諸多改版尚未提交 (commit):</p>
 <p style="padding-left: 30px;">git checkout .</p>
 <p style="padding-left: 30px;">以上指令將會從遠端取下近端改版前的版本內容, 之前所做的改版將會被刪除.</p>
-<p>假如近端所做的改版已經提交但尚未推送時:</p>
+<p>2. 假如近端所做的改版已經提交但尚未推送時:</p>
 <p style="padding-left: 30px;">若希望刪除上一個提交時, 執行 git reset --soft HEAD~ 或 git reset --soft HEAD^</p>
 <p style="padding-left: 30px;">假如相望刪除上兩個提交時, 執行 git reset --soft HEAD~2</p>
 <p style="padding-left: 30px;">接下來則可自行處理之前改版的內容, 例如: 刪除有意或無意放入的大檔案.</p>
-<p>假如近端所做的改版已經提交並且已經推送時:</p>
+<p>3. 假如近端所做的改版已經提交並且已經推送時:</p>
 <p style="padding-left: 30px;">先從 github 查詢已經 push 的版次號 (至少 7 個版本代號), 然後執行下列指令:</p>
 <p style="padding-left: 30px;">git revert 版次號 --no-edit</p>
 <p style="padding-left: 30px;">上列指令表示無條件回到所選定的版次號版本內容, 並據此版本新增一個提交. 接著就可以執行 git push.</p>
-<p></p>
+<hr/>
+<p>Divergent Branch 處理(<a href="https://poanchen.github.io/blog/2020/09/19/what-to-do-when-git-branch-has-diverged">參考</a>):</p>
+<p style="padding-left: 30px;">git rebase (以遠端的版本做為基礎, 將近端改版接在其線性改版歷程之後) 或 git merge (保留非線性改版歷程, 將遠端版本拉下來進行合併)</p>
+<p style="padding-left: 30px;">git rebase origin/main</p>
+<p style="padding-left: 30px;">git merge origin/main</p>
+<hr/>
+<h4>如何刪除分支(<a href="https://www.freecodecamp.org/news/git-delete-branch-how-to-remove-a-local-or-remote-branch">參考</a>):</h4>
+<p style="padding-left: 30px;">如何刪除近端分支:</p>
+<p style="padding-left: 60px;">先切換分支, 例如: 切換到 main 分支, 然後刪除近端的其他分支.</p>
+<p style="padding-left: 90px;">git checkout branch_name</p>
+<p style="padding-left: 60px;">若要刪除的分支內容已經合併至其他分支, 則以 -d 刪除</p>
+<p style="padding-left: 90px;">git branch -d local_branch_name</p>
+<p style="padding-left: 60px;">若要刪除的分支內容尚未合併至其他分支, 但仍希望刪除該分支, 則以 -D 刪除</p>
+<p style="padding-left: 90px;">git branch -D local_branch_name</p>
+<p style="padding-left: 60px;">刪除後, 以 git branch 查看近端的倉儲分支情形.</p>
+<p style="padding-left: 30px;">如何刪除遠端分支:</p>
+<p style="padding-left: 60px;">git push remote_name -d remote_branch_name</p>
+<p style="padding-left: 60px;">通常所謂的 remote_name 都命名為 origin, 因此刪除遠端分支的指令:</p>
+<p style="padding-left: 60px;">git push origin -d remote_branch_name</p>
+<p style="padding-left: 60px;">之後再查看遠端分支:</p>
+<p style="padding-left: 60px;">git branch -a</p>
+<p style="padding-left: 60px;">這裡的 -a 表示要查看 all branches, 包括近端與遠端的所有分支.</p>
 <hr/>
 <p>IPv6 Windows 10 使用授權批次檔案 windows_10_kms_ipv6.bat:</p>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">@echo off
