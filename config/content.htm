@@ -704,7 +704,42 @@ pause</pre>
 <p>229 down</p>
 <p></p>
 <p></p>
-<h2>Ubuntu</h2>
+<h2>Webcam</h2>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># close system proxy setting
+# pip install opencv-python
+import cv2
+import time
+
+cap = cv2.VideoCapture(0)
+
+#Check whether user selected camera is opened successfully.
+
+if not (cap.isOpened()):
+    print('Could not open video device')
+else:
+    print('Video device opened')
+
+
+cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
+cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
+
+
+while(True):
+  ret, frame = cap.read()
+
+  # 將圖片轉為灰階
+  #gray = cv2.cvtColor(frqame, cv2.COLOR_BGR2GRAY)
+
+  #cv2.imwrite('test.jpg', frame)
+
+  cv2.imshow('frame', frame )
+
+  if cv2.waitKey(1) &amp; 0xFF == ord('q'):
+    break
+
+cap.release()
+cv2.destroyAllWindows()</pre>
+<p></p><h2>Ubuntu</h2>
 <p>Under Windows use powershell list nssm services:</p>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">Get-WmiObject win32_service | ?{$_.PathName -like '*nssm*'} | select Name, DisplayName, State, PathName</pre>
 <p>處理 209:</p>
@@ -743,8 +778,7 @@ pause</pre>
 <p>nx: 10ff::109</p>
 <p>add server3 as proxy and dns of mde</p>
 <p></p>
-<p></p>
-<h2>OpenSSH</h2>
+<p></p><h2>OpenSSH</h2>
 <p>Windows OpenSSH server:</p>
 <p style="padding-left: 30px;">OpenSSH is a connectivity tool for remote sign-in that uses the SSH protocol. It encrypts all traffic between client and server to eliminate eavesdropping, connection hijacking, and other attacks.</p>
 <p style="padding-left: 30px;">An OpenSSH-compatible client can be used to connect to Windows Server and Windows client devices.</p>
