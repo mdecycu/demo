@@ -705,6 +705,7 @@ pause</pre>
 <p></p>
 <p></p>
 <h2>Webcam</h2>
+<p>Python show webcam image:</p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># close system proxy setting
 # pip install opencv-python
 import cv2
@@ -739,6 +740,75 @@ while(True):
 
 cap.release()
 cv2.destroyAllWindows()</pre>
+<p>Flask based showimage of webcam:</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from flask import Flask, send_from_directory, request, redirect, \
+    render_template, session, make_response, url_for, flash, Response
+from flask_cors import CORS
+import sys
+import os
+import cv2
+import socket
+
+app = Flask(__name__)
+CORS(app, support_credentials=False)
+
+@app.route('/')
+def index():
+    return "index"
+
+@app.route("/video_feed")
+def video_feed():
+    return Response(getimage(), mimetype="multipart/x-mixed-replace; boundary=frame")
+
+@app.route("/showimage")
+def showimage():
+    return '''
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Stream&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;h1&gt;Video Stream&lt;/h1&gt;
+        &lt;img src="/video_feed" width="720" height="540"&gt;&lt;/img&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+'''
+
+def getimage():
+    cap = cv2.VideoCapture(0)
+    
+    '''
+    #Check whether user selected camera is opened successfully.
+    if not (cap.isOpened()):
+        print('Could not open video device')
+    else:
+        print('Video device opened')
+    '''
+
+    cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
+    cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
+
+    while True:
+        ret, frame = cap.read()
+        # 將圖片轉為灰階
+        #gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        #cv2.imwrite('test.jpg', frame)
+        ret, jpeg = cv2.imencode('.jpg', frame)
+        #jpeg.tobytes()
+        yield (b'--frame\r\n'
+        b'Content-Type: image/jpeg\r\n\r\n' + jpeg.tobytes() + b'\r\n')
+    return "getimage"
+
+if __name__ == "__main__":
+    #ipv6_address = socket.getaddrinfo("domain.name", 0, socket.AF_INET6)[0][4][0]
+    ip = "2001:288:6004:17:xxxx::5"
+    port = 443
+    app.run(host=ip, port=port, debug=True, ssl_context="adhoc")
+    #app.run()</pre>
+<p>Reference:</p>
+<p style="padding-left: 30px;"><a href="https://blog.miguelgrinberg.com/post/video-streaming-with-flask">https://blog.miguelgrinberg.com/post/video-streaming-with-flask</a> </p>
+<p style="padding-left: 30px;"><a href="https://towardsdatascience.com/video-streaming-in-web-browsers-with-opencv-flask-93a38846fe00">https://towardsdatascience.com/video-streaming-in-web-browsers-with-opencv-flask-93a38846fe00</a> </p>
+<p style="padding-left: 30px;"><a href="https://www.twilio.com/docs/voice/tutorials/consume-real-time-media-stream-using-websockets-python-and-flask">https://www.twilio.com/docs/voice/tutorials/consume-real-time-media-stream-using-websockets-python-and-flask</a> </p>
 <p></p><h2>Ubuntu</h2>
 <p>Under Windows use powershell list nssm services:</p>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">Get-WmiObject win32_service | ?{$_.PathName -like '*nssm*'} | select Name, DisplayName, State, PathName</pre>
